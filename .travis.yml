@@ -7,4 +7,11 @@ cache:
     - $HOME/.m2
 
 script:
-mvn verify
+  - mvn verify
+
+services:
+  - mysql
+  - neo4j
+
+before_install:
+  - mysql -e 'CREATE DATABASE gutenberg;'
