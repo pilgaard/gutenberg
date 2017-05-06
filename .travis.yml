@@ -15,3 +15,9 @@ before_install:
 
 script:
   - mvn verify
+
+after_success:
+  - surge --project ./target/site --domain x123.surge.sh
+after_failure:
+  #Remove documentation for a failing project
+  - surge teardown x123.surge.sh
