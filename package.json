@@ -1,0 +1,27 @@
+{
+  "name": "gutenberg",
+  "version": "1.0.0",
+  "description": "Travis CI for continuous deployment to Surge",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\""
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/pilgaard/gutenberg.git"
+  },
+  "keywords": [
+    "surge",
+    "surge.sh",
+    "travis ci"
+  ],
+  "author": "emil & andreas",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/pilgaard/gutenberg/issues"
+  },
+  "homepage": "https://github.com/pilgaard/gutenberg#readme",
+  "devDependencies": {
+    "surge": "^0.19.0"
+  }
+}
