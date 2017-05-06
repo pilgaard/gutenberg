@@ -17,7 +17,7 @@ script:
   - mvn verify
 
 after_success:
-  - surge --project ./target/site --domain x123.surge.sh
+  - surge --project ./target/site --domain cheasy.surge.sh
 after_failure:
   #Remove documentation for a failing project
-  - surge teardown x123.surge.sh
+  - surge teardown cheasy.surge.sh
