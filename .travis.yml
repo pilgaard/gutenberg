@@ -11,7 +11,7 @@ script:
 
 services:
   - mysql
-  - neo4j
+#  - neo4j
 
 before_install:
   - mysql -e 'CREATE DATABASE gutenberg;'
