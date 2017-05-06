@@ -51,5 +51,5 @@ VALUES
 	(6255151, 'Oceania', 'OC'),
 	(6255152, 'Antarctica', 'AN');
 	
-LOAD DATA LOCAL INFILE '/Users/Emil/Dropbox/CPHBusiness/examproject/gutenberg/cities5000.txt' INTO TABLE cities;
+LOAD DATA LOCAL INFILE '/Users/Emil/examproject/gutenberg/cities5000.txt' INTO TABLE cities;
 

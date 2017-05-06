@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package cheesychopin.gutenberg;
+package gutenberg;
 
 import static org.hamcrest.CoreMatchers.*;
 import org.junit.After;
