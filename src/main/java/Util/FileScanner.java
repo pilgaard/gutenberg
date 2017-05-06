@@ -13,9 +13,9 @@ import java.util.List;
  * @author Andreas
  */
 public class FileScanner {
-    
-    private String citiesFileLocation = "";
-    private String booksFileLocation = "";
+    private final String dir = System.getProperty("user.dir");
+    private final String citiesFileLocation = dir + "\\cities15000.text";
+    private final String booksFileLocation = "";
     
     // Read cities .CSV file. Create City objects and return all.
     public List<City> FetchAllCities(){
@@ -25,7 +25,7 @@ public class FileScanner {
     // Read Books files. When City name is found, add to a list (if it is not already found). 
     // Create Book objects, and fill with found city names. 
     // Maybe split into 2 methods instead of one.
-    public List<Book> ReadCitiesFromBook(){
+    public List<Book> FetchAllBooks(){
         return null;
     }
 }
