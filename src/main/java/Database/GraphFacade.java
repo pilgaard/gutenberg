@@ -9,11 +9,11 @@ package Database;
  *
  * @author Andreas
  */
-public class MySQLDBFacade {
+public class GraphFacade {
     
-    private MySQLConnector connector;
+    private GraphConnector connector;
     
-    public MySQLDBFacade(MySQLConnector con){
+    public GraphFacade(GraphConnector con){
         this.connector = con;
     }
 }
