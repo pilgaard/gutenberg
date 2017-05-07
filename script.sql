@@ -16,7 +16,7 @@ primary key (id)
 drop table if exists cities;
 create table cities
 (
-geonameid		int,
+geonameId		int,
 `name` 			varchar(200),
 asciiname		varchar(200),
 alternatenames	varchar(10000),
@@ -35,7 +35,7 @@ elevation		int,
 dem				int,
 timezone		varchar(40),
 `modification date` date,
-primary key (name)
+primary key (geonameId)
 );
 
 drop table if exists continentCodes;
