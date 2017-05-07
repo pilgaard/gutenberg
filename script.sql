@@ -1,4 +1,9 @@
-if not exists create database gutenberg;
+drop database if exists gutenberg;
+
+CREATE DATABASE gutenberg
+  DEFAULT CHARACTER SET utf8mb4;
+  
+use gutenberg;
 
 drop table if exists books;
 create table books
@@ -37,11 +42,13 @@ drop table if exists continentCodes;
 create table continentCodes
 (
 geonameId	int,
+continent	varchar(20),
 `code`		varchar(50),
+
 primary key (geonameId)
 );
 
-INSERT INTO `continentCodes` (`geonameId`, `code`, `continent`)
+INSERT INTO `continentCodes` ()
 VALUES
 	(6255146, 'Africa', 'AF'),
 	(6255147, 'Asia', 'AS'),
@@ -52,4 +59,5 @@ VALUES
 	(6255152, 'Antarctica', 'AN');
 	
 LOAD DATA LOCAL INFILE '/Users/Emil/examproject/gutenberg/cities5000.txt' INTO TABLE cities;
+
 

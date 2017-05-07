@@ -1,4 +1,4 @@
-cheesychopin/gutenberg/Main.class
-Database/MySQLDBFacade.class
+gutenberg/Main.class
 Database/MySQLConnector.class
 Database/GraphConnector.class
+Database/MySQLDBFacade.class

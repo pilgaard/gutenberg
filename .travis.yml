@@ -11,7 +11,8 @@ services:
 #  - neo4j
 
 before_install:
-  - mysql -e 'CREATE DATABASE gutenberg;'
+  - mysql -u root -e 'CREATE DATABASE gutenberg;'
+  - mysql -h "127.0.0.1" -u "root" "-proot" "gutenberg" < "TravisSQL.sql"
 
 script:
   - mvn verify
