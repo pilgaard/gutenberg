@@ -8,6 +8,7 @@ cache:
 
 services:
   - mysql
+  - neo4j
 
 before_install:
   - mysql -u root -e 'CREATE DATABASE gutenberg;'
