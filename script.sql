@@ -19,12 +19,22 @@ create table cities
 geonameId			int,
 `name` 				varchar(200),
 asciiname			varchar(200),
+<<<<<<< HEAD
+=======
+alternatenames		varchar(10000),
+>>>>>>> master
 lat					Decimal(10,8),
 `long`				Decimal(11,8),
 `country code`		char(2),			
 population			bigint,
 elevation			int,
+<<<<<<< HEAD
 timezone			varchar(40),
+=======
+dem					int,
+timezone			varchar(40),
+`modification date` date,
+>>>>>>> master
 primary key (geonameId)
 );
 
