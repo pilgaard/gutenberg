@@ -11,8 +11,7 @@ import java.util.List;
 import java.io.File;
 import java.io.FileReader;
 import java.io.IOException;
-import java.text.BreakIterator;
-import java.util.Locale;
+import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import java.util.regex.Matcher;
@@ -34,22 +33,19 @@ public class FileScanner {
         return null;
     }
 
-    public int findCapWords(File f) {
-        int words = 0;
+    public List<String> findCapWords(File f) {
+        List<String> words = new ArrayList();
         BufferedReader reader = null;
-
+        
         try {
             reader = new BufferedReader(new FileReader(f));
-
             String line;
+
             while ((line = reader.readLine()) != null) {
                 Pattern p = Pattern.compile("\\b([A-Z]\\w*)\\b");
-
                 Matcher matcher = p.matcher(line);
-
                 while (matcher.find()) {
-                    words++;
-                    System.out.println(matcher.group(1));
+                    words.add(matcher.group());
                 }
             }
         } catch (IOException e) {
@@ -64,6 +60,35 @@ public class FileScanner {
         return words;
     }
 
+    public ArrayList<String> findCities(ArrayList<String> CapWords) {  // Array must be sorted.
+        // skal erstates af den rigtige liste med alle byer
+        String cities[] = {"Amsterdam", "Copenhagen", "Haslev", "London", "New York"};
+        ArrayList<String> result = new ArrayList();
+
+        while (!CapWords.isEmpty()) {
+            String word = CapWords.get(0);
+            int low = 0;
+            int high = cities.length - 1;
+            int mid;
+            boolean found = false;
+            
+            while (low <= high && !found) {
+                mid = (low + high) / 2;
+
+                if (cities[mid].compareTo(word) < 0) {
+                    low = mid + 1;
+                } else if (cities[mid].compareTo(word) > 0) {
+                    high = mid - 1;
+                } else {
+                    result.add(word);
+                    found = true;
+                }
+            }
+            CapWords.remove(0);
+        }
+        return result;
+    }
+
     public String findTitle(File f) {
         try {
             String title = "";
@@ -73,7 +98,7 @@ public class FileScanner {
             Pattern pattern = Pattern.compile("(?<=Title: ).*");
             String line;
             boolean found = false;
-            while ((line = reader.readLine()) != null && found == false) {
+            while ((line = reader.readLine()) != null && !found) {
                 Matcher matcher = pattern.matcher(line);
                 while (matcher.find()) {
                     title = matcher.group().toString();
@@ -85,16 +110,16 @@ public class FileScanner {
         }
         return null;
     }
-    
+
     public String findAuthor(File f) {
         try {
             String author = "";
             BufferedReader reader = null;
-
             reader = new BufferedReader(new FileReader(f));
             Pattern pattern = Pattern.compile("(?<=Author: ).*");
             String line;
             boolean found = false;
+            
             while ((line = reader.readLine()) != null && found == false) {
                 Matcher matcher = pattern.matcher(line);
                 if (matcher.find()) {
