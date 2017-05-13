@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" ?>
-<testsuite tests="3" failures="0" name="Util.FileScannerTest" time="0.22" errors="0" skipped="0">
+<testsuite tests="4" failures="0" name="Util.FileScannerTest" time="0.108" errors="0" skipped="0">
   <properties>
     <property name="java.runtime.name" value="Java(TM) SE Runtime Environment"/>
     <property name="sun.boot.library.path" value="/Library/Java/JavaVirtualMachines/jdk1.8.0_60.jdk/Contents/Home/jre/lib"/>
@@ -60,7 +60,8 @@
     <property name="sun.io.unicode.encoding" value="UnicodeBig"/>
     <property name="sun.cpu.isalist" value=""/>
   </properties>
-  <testcase classname="Util.FileScannerTest" name="testTitle" time="0.011"/>
-  <testcase classname="Util.FileScannerTest" name="testCapWords" time="0.001"/>
+  <testcase classname="Util.FileScannerTest" name="testTitle" time="0.007"/>
+  <testcase classname="Util.FileScannerTest" name="testFindCities" time="0"/>
+  <testcase classname="Util.FileScannerTest" name="testCapWords" time="0"/>
   <testcase classname="Util.FileScannerTest" name="testAuthorName" time="0"/>
 </testsuite>
