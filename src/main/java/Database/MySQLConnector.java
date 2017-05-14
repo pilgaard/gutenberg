@@ -5,41 +5,30 @@
  */
 package Database;
 
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.SQLException;
+import javax.persistence.EntityManager;
+import javax.persistence.EntityManagerFactory;
+import javax.persistence.Persistence;
 /**
  *
  * @author Andreas
  */
 public class MySQLConnector {
     
-    private String driver;
-    private String uri;
-    private String username;
-    private String password;
-    private Connection connection = null;
+    private static MySQLConnector connector;
+    private EntityManagerFactory emf;
+    private EntityManager em;
     
-    // Insert Actual values.
     public MySQLConnector(){
-        this.driver = "";
-        this.uri = "";
-        this.username = "";
-        this.password = "";
+        connector = new MySQLConnector();
+        emf = Persistence.createEntityManagerFactory("PU");
+        em = emf.createEntityManager();
     }
     
-    public MySQLConnector(String driver, String uri, String username, String password){
-        this.driver = driver;
-        this.uri = uri;
-        this.username = username;
-        this.password = password;
+    public MySQLConnector GetCon(){
+        return connector;
     }
     
-    public Connection getConnection() throws ClassNotFoundException, SQLException{
-        if(connection == null || connection.isClosed()){
-            Class.forName(driver);
-            connection = DriverManager.getConnection(uri, username, password);
-        }
-        return connection;
+    public EntityManager GetEM(){
+        return em;
     }
 }
