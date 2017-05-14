@@ -11,10 +11,9 @@ package Database;
  */
 public class MySQLDBFacade {
     
-     private MySQLConnector connector;
+    private MySQLConnector connector;
     
     public MySQLDBFacade(MySQLConnector con){
         this.connector = con;
     } 
-    
 }

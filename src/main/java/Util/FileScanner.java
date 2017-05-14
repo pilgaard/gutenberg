@@ -131,5 +131,5 @@ public class FileScanner {
             Logger.getLogger(FileScanner.class.getName()).log(Level.SEVERE, null, ex);
         }
         return null;
-    }
+    }  
 }
