@@ -5,6 +5,7 @@
  */
 package DTO;
 
+import Entity.City;
 import java.util.List;
 
 /**
@@ -15,12 +16,12 @@ public class BookDTO {
     
     private String authorName;
     private String title;
-    private List<String> cityNames;
+    private List<City> cities;
 
-    public BookDTO(String authorName, String title, List<String> cityNames) {
+    public BookDTO(String authorName, String title, List<City> cities) {
         this.authorName = authorName;
         this.title = title;
-        this.cityNames = cityNames;
+        this.cities = cities;
     }
 
     public String getAuthorName() {
@@ -39,12 +40,12 @@ public class BookDTO {
         this.title = title;
     }
 
-    public List<String> getCityNames() {
-        return cityNames;
+    public List<City> getCities() {
+        return cities;
     }
 
-    public void setCityNames(List<String> cityNames) {
-        this.cityNames = cityNames;
+    public void setCities(List<City> cities) {
+        this.cities = cities;
     }
     
     

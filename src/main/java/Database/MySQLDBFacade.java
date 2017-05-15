@@ -20,21 +20,30 @@ import java.sql.*;
 public class MySQLDBFacade implements IDBFacade {
 
     private final MySQLConnector connector;
+    private Statement statement;
+    private ResultSet rs;
 
     public MySQLDBFacade(MySQLConnector con, FileScanner fileScanner) {
         this.connector = con;
     }
-    
-    public void InsertBooksInDB(List<BookDTO> books) throws SQLException, ClassNotFoundException{
-        try{
-            connector.GetEM().getTransaction().begin();
-            for(int i = 0; i < books.size(); i++){
-                Book bookToInsert = new Book(books.get(i).getAuthorName(), books.get(i).getTitle(), books.get(i).getCityNames());
-                connector.GetEM().persist(bookToInsert);
+
+    public void InsertBooksInDB(List<BookDTO> books) throws ClassNotFoundException, SQLException {
+        try {
+            Book bookToInsert;
+            statement = connector.GetConnection().createStatement();
+            for (int i = 0; i < books.size(); i++) {
+                bookToInsert = new Book(books.get(i).getAuthorName(), books.get(i).getTitle(), books.get(i).getCities());
+                String query = "INSERT INTO BOOKS (Title, Author, Cities) VALUES ("
+                        + books.get(i).getTitle()+ ", "
+                        + books.get(i).getAuthorName() + ", "
+                        + books.get(i).getCities() + ");";
+                rs = statement.executeQuery(query);
             }
-            connector.GetEM().getTransaction().commit();
-        }finally{
-            connector.GetEM().close();
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+            statement.close();
+            rs.close();
         }
     }
 

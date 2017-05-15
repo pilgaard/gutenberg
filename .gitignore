@@ -5,3 +5,7 @@ node_modules/*
 .idea/*
 
 gutenberg.iml
+
+*.class
+
+target/classes/*

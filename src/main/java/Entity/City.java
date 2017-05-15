@@ -24,6 +24,7 @@ public class City implements Serializable {
     private Long Latitude;
     private Long Longitude;
     private String cityName;
+    
 
     public Long getId() {
         return id;
