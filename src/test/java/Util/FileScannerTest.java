@@ -26,7 +26,6 @@ public class FileScannerTest {
 
     FileScanner fs = new FileScanner();
     private static File file;
-    private static ArrayList<String> words;
 
     public FileScannerTest() {
     }
@@ -36,19 +35,6 @@ public class FileScannerTest {
         String basePath = new File("").getAbsolutePath();
         String path = basePath + "/testFiles/Book.txt";
         file = new File(path);
-        
-        words = new ArrayList();
-        words.add("The");
-        words.add("First");
-        words.add("Book");
-        words.add("Mose");
-        words.add("Called");
-        words.add("Genesis");
-        words.add("In");
-        words.add("Haslev");
-        words.add("Copenhagen");
-        words.add("Their");
-        words.add("London");
     }
 
     @AfterClass
@@ -68,15 +54,8 @@ public class FileScannerTest {
      */
     @Test
     public void testCapWords() {
-        List<String> words = fs.findCapWords(file);
+        ArrayList<String> words = fs.findCapWords(file);
         assertThat(words.size(), is(58));
-    }
-
-    @Test
-    public void testFindCities() {
-        ArrayList<String> found = fs.findCities(words);
-        List<String> actually = Arrays.asList("Copenhagen", "Haslev", "London", "New York");
-        assertTrue(actually.containsAll(found));
     }
 
     @Test
@@ -92,4 +71,17 @@ public class FileScannerTest {
         String answer = "Abraham Lincoln";
         assertThat(author, is(answer));
     }
+    
+    @Test
+    public void nonBookTest() {
+        String basePath = new File("").getAbsolutePath();
+        String path = basePath + "/testFiles/5Cap.txt";
+        File f = new File(path);
+        String author = fs.findAuthor(f);
+        String answer = null;
+        assertThat(author, is(answer));
+        String title = fs.findTitle(f);
+        answer = null;
+        assertThat(title, is(answer));
+    } 
 }

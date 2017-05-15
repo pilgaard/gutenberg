@@ -33,8 +33,8 @@ public class FileScanner {
         return null;
     }
 
-    public List<String> findCapWords(File f) {
-        List<String> words = new ArrayList();
+    public ArrayList<String> findCapWords(File f) {
+        ArrayList<String> words = new ArrayList();
         BufferedReader reader = null;
         
         try {
@@ -59,36 +59,7 @@ public class FileScanner {
         }
         return words;
     }
-
-    public ArrayList<String> findCities(ArrayList<String> CapWords) {  // Array must be sorted.
-        // skal erstates af den rigtige liste med alle byer
-        String cities[] = {"Amsterdam", "Copenhagen", "Haslev", "London", "New York"};
-        ArrayList<String> result = new ArrayList();
-
-        while (!CapWords.isEmpty()) {
-            String word = CapWords.get(0);
-            int low = 0;
-            int high = cities.length - 1;
-            int mid;
-            boolean found = false;
-            
-            while (low <= high && !found) {
-                mid = (low + high) / 2;
-
-                if (cities[mid].compareTo(word) < 0) {
-                    low = mid + 1;
-                } else if (cities[mid].compareTo(word) > 0) {
-                    high = mid - 1;
-                } else {
-                    result.add(word);
-                    found = true;
-                }
-            }
-            CapWords.remove(0);
-        }
-        return result;
-    }
-
+ 
     public String findTitle(File f) {
         try {
             String title = "";
