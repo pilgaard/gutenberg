@@ -9,8 +9,8 @@ drop table if exists books;
 create table books
 (
 id 					int NOT NULL AUTO_INCREMENT,
-title 				varchar(400),
-author				varchar(100),				
+title 				varchar(500),
+author				varchar(500),				
 primary key (id)
 );
 
