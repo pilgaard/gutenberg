@@ -32,11 +32,11 @@ public class MySQLDBFacade implements IDBFacade {
     }
 
     public void InsertBooksInDB(List<BookDTO> books) throws ClassNotFoundException, SQLException {
-        Book bookToInsert;
+        //Book bookToInsert;
         try {
             statement = connector.GetConnection().createStatement();
             for (int i = 0; i < books.size(); i++) {
-                bookToInsert = new Book(books.get(i).getAuthorName(), books.get(i).getTitle(), books.get(i).getCities());
+                //bookToInsert = new Book(books.get(i).getAuthorName(), books.get(i).getTitle(), books.get(i).getCities());
                 String query = "INSERT INTO BOOKS (Title, Author, Cities) VALUES ("
                         + books.get(i).getTitle()+ ", "
                         + books.get(i).getAuthorName() + ", "
@@ -51,22 +51,22 @@ public class MySQLDBFacade implements IDBFacade {
         }
     }
     
-    private List<CityDTO> GetCities(){
+    private List<CityDTO> GetCities() throws SQLException{
         List<CityDTO> citiesToReturn = new ArrayList();
-        CityDTO cityToAdd;
-        String query = "SELECT ";
+        String query = "SELECT geonameId, name, lat, long FROM cities";
         try{
             statement = connector.GetConnection().createStatement();
             rs = statement.executeQuery(query);
             while(rs.next()){
-                
+                citiesToReturn.add(new CityDTO(rs.getLong("geonameId"), rs.getLong("lat"), rs.getLong("long"), rs.getString("name")));     
             }
         }catch(Exception e){
             e.printStackTrace();
         }finally{
-            
+            statement.close();
+            rs.close();
         }
-        return null;
+        return citiesToReturn;
     } 
 
     @Override
