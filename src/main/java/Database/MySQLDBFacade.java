@@ -32,9 +32,9 @@ public class MySQLDBFacade implements IDBFacade {
             statement = connector.GetConnection().createStatement();
             for (int i = 0; i < books.size(); i++) {
                 //bookToInsert = new Book(books.get(i).getAuthorName(), books.get(i).getTitle(), books.get(i).getCities());
-                String query = "INSERT INTO BOOKS (Title, Author) VALUES ("
-                        + books.get(i).getTitle()+ ", "
-                        + books.get(i).getAuthorName() + ");";
+                String query = "INSERT INTO books (Title, Author) VALUES ("
+                        + "'"+books.get(i).getTitle()+"'"+ ", "
+                        + "'"+ books.get(i).getAuthorName()+"')";
                         //+ books.get(i).getCities() + ");";
                 statement.execute(query);
             }
@@ -48,7 +48,7 @@ public class MySQLDBFacade implements IDBFacade {
     
     public ArrayList<CityDTO> GetCities() throws SQLException{
         ArrayList<CityDTO> citiesToReturn = new ArrayList();
-        String query = "SELECT geonameId, name, lat, long FROM cities";
+        String query = "SELECT geonameId, name, lat, `long` FROM cities";
         try{
             statement = connector.GetConnection().createStatement();
             rs = statement.executeQuery(query);
