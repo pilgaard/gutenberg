@@ -32,11 +32,11 @@ public class MySQLDBFacade implements IDBFacade {
             statement = connector.GetConnection().createStatement();
             for (int i = 0; i < books.size(); i++) {
                 //bookToInsert = new Book(books.get(i).getAuthorName(), books.get(i).getTitle(), books.get(i).getCities());
-                String query = "INSERT INTO BOOKS (Title, Author, Cities) VALUES ("
+                String query = "INSERT INTO BOOKS (Title, Author) VALUES ("
                         + books.get(i).getTitle()+ ", "
-                        + books.get(i).getAuthorName() + ", "
-                        + books.get(i).getCities() + ");";
-                rs = statement.executeQuery(query);
+                        + books.get(i).getAuthorName() + ");";
+                        //+ books.get(i).getCities() + ");";
+                statement.execute(query);
             }
         } catch (Exception e) {
             e.printStackTrace();
