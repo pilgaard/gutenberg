@@ -9,8 +9,6 @@ import DTO.BookDTO;
 import DTO.CityDTO;
 import java.io.File;
 import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
 import org.junit.After;
 import org.junit.AfterClass;
 import org.junit.Before;
@@ -73,7 +71,13 @@ public class CityChekkerTest {
     
     @Test
     public void testScanFiles() {
-        ArrayList<BookDTO> books = cc.scanFiles();
+        ArrayList<CityDTO> cities = new ArrayList();
+        cities.add(new CityDTO("Copenhagen"));
+        cities.add(new CityDTO("Haslev"));
+        cities.add(new CityDTO("London"));
+        cities.add(new CityDTO("New York"));
+        
+        ArrayList<BookDTO> books = cc.scanFiles(cities);
         
         for (BookDTO book : books) {
             System.out.println("book = " + book);    

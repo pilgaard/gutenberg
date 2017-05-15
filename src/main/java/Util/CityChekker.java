@@ -33,7 +33,7 @@ public class CityChekker {
         }
     }
 
-    public ArrayList<BookDTO> scanFiles() {
+    public ArrayList<BookDTO> scanFiles(ArrayList<CityDTO> cities) {
         ArrayList<File> files = new ArrayList();
         listF(path, files);
         FileScanner fileScanner = new FileScanner();
@@ -44,7 +44,7 @@ public class CityChekker {
             if (title != null) {
                 String author = fileScanner.findAuthor(file);
                 ArrayList<String> capWords = fileScanner.findCapWords(file);
-                ArrayList<CityDTO> city = findCities(capWords);
+                ArrayList<CityDTO> city = findCities(capWords, cities);
                 ArrayList<Long> cityId = new ArrayList();
                 for (CityDTO cityDTO : city) {
                     cityId.add(cityDTO.getId());
@@ -56,24 +56,28 @@ public class CityChekker {
         return books;
     }
 
-    public static ArrayList<CityDTO> findCities(ArrayList<String> CapWords) {  // Array must be sorted.
+    private static ArrayList<CityDTO> findCities(ArrayList<String> CapWords, ArrayList<CityDTO> CityDTOs) {  // Array must be sorted.
         // skal erstates af den rigtige liste med alle byer
-        String cities[] = {"Amsterdam", "Copenhagen", "Haslev", "London"};
+        ArrayList<String> temp = new ArrayList();
+        for(int i = 0; i < CityDTOs.size(); i++){
+            temp.add(CityDTOs.get(i).getCityName());
+        }
+        //String cities[] = temp;
         ArrayList<CityDTO> result = new ArrayList();
         CityDTO cd = new CityDTO();
         while (!CapWords.isEmpty()) {
             String word = CapWords.get(0);
             int low = 0;
-            int high = cities.length - 1;
+            int high = temp.size() - 1;
             int mid;
             boolean found = false;
 
             while (low <= high && !found) {
                 mid = (low + high) / 2;
 
-                if (cities[mid].compareTo(word) < 0) {
+                if (temp.get(mid).compareTo(word) < 0) {
                     low = mid + 1;
-                } else if (cities[mid].compareTo(word) > 0) {
+                } else if (temp.get(mid).compareTo(word) > 0) {
                     high = mid - 1;
                 } else {
                     cd = new CityDTO(word);

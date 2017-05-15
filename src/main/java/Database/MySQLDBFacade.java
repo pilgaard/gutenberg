@@ -9,11 +9,8 @@ import DTO.BookDTO;
 import DTO.CityDTO;
 import Entity.Book;
 import Entity.City;
-import Util.FileScanner;
-import java.util.HashMap;
-import java.util.List;
+import java.util.*;
 import java.sql.*;
-import java.util.ArrayList;
 
 /**
  *
@@ -24,11 +21,9 @@ public class MySQLDBFacade implements IDBFacade {
     private final MySQLConnector connector;
     private Statement statement;
     private ResultSet rs;
-    private FileScanner fileScanner;
 
-    public MySQLDBFacade(MySQLConnector con, FileScanner fileScanner) {
+    public MySQLDBFacade(MySQLConnector con) {
         this.connector = con;
-        this.fileScanner = fileScanner;
     }
 
     public void InsertBooksInDB(List<BookDTO> books) throws ClassNotFoundException, SQLException {
@@ -70,7 +65,7 @@ public class MySQLDBFacade implements IDBFacade {
     } 
 
     @Override
-    public List<Book> GetBooksByCity(String cityName) {
+    public List<BookDTO> GetBooksByCity(String cityName) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 

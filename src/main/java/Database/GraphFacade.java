@@ -5,6 +5,7 @@
  */
 package Database;
 
+import DTO.BookDTO;
 import Entity.Book;
 import Entity.City;
 import java.util.HashMap;
@@ -23,7 +24,7 @@ public class GraphFacade implements IDBFacade{
     }
 
     @Override
-    public List<Book> GetBooksByCity(String cityName) {
+    public List<BookDTO> GetBooksByCity(String cityName) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
@@ -51,6 +52,5 @@ public class GraphFacade implements IDBFacade{
     public List<Book> GetBooksByGeoLocation(Long latitude, Long longitude) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
-    
     
 }
