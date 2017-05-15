@@ -6,6 +6,7 @@
 package Database;
 
 import Util.CityChekker;
+import java.sql.SQLException;
 import java.util.*;
 
 /**
@@ -13,11 +14,14 @@ import java.util.*;
  * @author Andreas
  */
 public class DBInitializer {
-    public static void main(String[] args) {
+    
+    public static void main(String[] args) throws SQLException, ClassNotFoundException {
         MySQLConnector msc = new MySQLConnector("", "", "", "");
-        ArrayList<String> temp = new ArrayList<String>();
         MySQLDBFacade sql = new MySQLDBFacade(msc);
         CityChekker chek = new CityChekker();
+        
+        sql.InsertBooksInDB(chek.scanFiles(sql.GetCities()));
+        
         
     }
 }

@@ -46,8 +46,8 @@ public class MySQLDBFacade implements IDBFacade {
         }
     }
     
-    private List<CityDTO> GetCities() throws SQLException{
-        List<CityDTO> citiesToReturn = new ArrayList();
+    public ArrayList<CityDTO> GetCities() throws SQLException{
+        ArrayList<CityDTO> citiesToReturn = new ArrayList();
         String query = "SELECT geonameId, name, lat, long FROM cities";
         try{
             statement = connector.GetConnection().createStatement();
