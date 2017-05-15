@@ -24,6 +24,9 @@ public class Book implements Serializable {
     private Long id;
     private String authorName;
     private String title;
+<<<<<<< HEAD
+    private List<Long> cityId;
+=======
     private List<City> cities;
 
     public String getAuthorName() {
@@ -41,6 +44,7 @@ public class Book implements Serializable {
     public void setTitle(String title) {
         this.title = title;
     }
+>>>>>>> master
 
     public Long getId() {
         return id;
@@ -54,10 +58,10 @@ public class Book implements Serializable {
         
     }
     
-    public Book(String authorName, String title, List<City> cities){
+    public Book(String authorName, String title, List<Long> cities){
         this.authorName = authorName;
         this.title = title;
-        this.cities = cities;
+        this.cityId = cities;
     }
 
     @Override

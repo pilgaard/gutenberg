@@ -5,6 +5,7 @@
  */
 package Util;
 
+import DTO.CityDTO;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -57,7 +58,7 @@ public class CityChekkerTest {
 
     @Test
     public void testFindCities() {
-        ArrayList<String> found = cc.findCities(words);
+        ArrayList<CityDTO> found = cc.findCities(words);
         List<String> actually = Arrays.asList("Copenhagen", "Haslev", "London", "New York");
         assertTrue(actually.containsAll(found));
     }
