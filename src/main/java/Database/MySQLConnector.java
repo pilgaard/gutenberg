@@ -16,10 +16,12 @@ public class MySQLConnector {
     
     private static MySQLConnector connector;
     private EntityManagerFactory emf;
+    private EntityManager em;
     
-    private MySQLConnector(){
+    public MySQLConnector(){
         connector = new MySQLConnector();
-        emf = Persistence.createEntityManagerFactory("Gutenberg_PU");
+        emf = Persistence.createEntityManagerFactory("PU");
+        em = emf.createEntityManager();
     }
     
     public MySQLConnector GetCon(){
@@ -27,6 +29,6 @@ public class MySQLConnector {
     }
     
     public EntityManager GetEM(){
-        return emf.createEntityManager();
-    } 
+        return em;
+    }
 }

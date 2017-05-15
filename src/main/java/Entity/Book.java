@@ -57,6 +57,16 @@ public class Book implements Serializable {
     public void setId(Long id) {
         this.id = id;
     }
+    
+    public Book(){
+        
+    }
+    
+    public Book(String authorName, String title, List<String> cityNames){
+        this.authorName = authorName;
+        this.title = title;
+        this.cityNames = cityNames;
+    }
 
     @Override
     public int hashCode() {
