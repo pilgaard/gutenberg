@@ -12,6 +12,7 @@ import Util.FileScanner;
 import java.util.HashMap;
 import java.util.List;
 import java.sql.*;
+import java.util.ArrayList;
 
 /**
  *
@@ -22,14 +23,16 @@ public class MySQLDBFacade implements IDBFacade {
     private final MySQLConnector connector;
     private Statement statement;
     private ResultSet rs;
+    private FileScanner fileScanner;
 
     public MySQLDBFacade(MySQLConnector con, FileScanner fileScanner) {
         this.connector = con;
+        this.fileScanner = fileScanner;
     }
 
     public void InsertBooksInDB(List<BookDTO> books) throws ClassNotFoundException, SQLException {
+        Book bookToInsert;
         try {
-            Book bookToInsert;
             statement = connector.GetConnection().createStatement();
             for (int i = 0; i < books.size(); i++) {
                 bookToInsert = new Book(books.get(i).getAuthorName(), books.get(i).getTitle(), books.get(i).getCities());
@@ -46,6 +49,20 @@ public class MySQLDBFacade implements IDBFacade {
             rs.close();
         }
     }
+    
+    private List<City> GetCities(){
+        List<City> citiesToReturn = new ArrayList<City>();
+        String query = "SELECT ";
+        try{
+            statement = connector.GetConnection().createStatement();
+            rs = statement.executeQuery(query);
+        }catch(Exception e){
+            e.printStackTrace();
+        }finally{
+            
+        }
+        return null;
+    } 
 
     @Override
     public List<Book> GetBooksByCity(String cityName) {
