@@ -8,9 +8,18 @@ use gutenberg;
 drop table if exists books;
 create table books
 (
-id 		int,
-title 	varchar(100),
+id 					int,
+title 				varchar(100),
+author				varchar(50),				
 primary key (id)
+);
+
+drop table if exists CitiesInBooks;
+create table CitiesInBooks
+(
+bookId				int,
+cityId			int,
+primary key (BookId, cityId)
 );
 
 drop table if exists cities;
@@ -28,7 +37,22 @@ timezone			varchar(40),
 primary key (geonameId)
 );
 
+alter table CitiesInBooks
+add foreign key (bookid) references books(id),
+add foreign key (cityId) references cities(geonameId);
+
 LOAD DATA LOCAL INFILE '/Users/Emil/examproject/gutenberg/dbSetup.csv' INTO TABLE cities
 fields terminated by ',' enclosed by '"'
 lines terminated by '\n'
 ignore 1 lines;
+
+DELIMITER $$
+create procedure getCitiesFromBook(bookID int)
+begin
+select `name` from cities
+join CitiesInBooks on cityId = cities.geonameId
+where CitiesInBooks.bookId = bookID;
+end $$
+DELIMITER ;
+
+call getCitiesFromBook(1);
