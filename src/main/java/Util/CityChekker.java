@@ -6,7 +6,9 @@
 package Util;
 
 import DTO.BookDTO;
+import DTO.CityDTO;
 import Entity.Book;
+import Entity.City;
 import java.io.File;
 import java.util.ArrayList;
 
@@ -25,20 +27,24 @@ public class CityChekker {
         FileScanner fileScanner = new FileScanner();
         ArrayList<File> files = new ArrayList();
         for (File file : files) {
-            String Author = fileScanner.findAuthor(file);
-            String Title = fileScanner.findTitle(file);
+            String author = fileScanner.findAuthor(file);
+            String title = fileScanner.findTitle(file);
             ArrayList<String> capWords = fileScanner.findCapWords(file);
-            ArrayList<String> city = findCities(capWords);
-            BookDTO b = new BookDTO(Author, Title,city);
+            ArrayList<CityDTO> city = findCities(capWords);
+            ArrayList<Long> cityId = new ArrayList();
+            for (CityDTO cityDTO : city) {
+                cityId.add(cityDTO.getId());
+            }
+            BookDTO b = new BookDTO(author, title, cityId);
         }
         return "done";
     }
     
-    public static ArrayList<String> findCities(ArrayList<String> CapWords) {  // Array must be sorted.
+    public static ArrayList<CityDTO> findCities(ArrayList<String> CapWords) {  // Array must be sorted.
         // skal erstates af den rigtige liste med alle byer
         String cities[] = {"Amsterdam", "Copenhagen", "Haslev", "London"};
-        ArrayList<String> result = new ArrayList();
-
+        ArrayList<CityDTO> result = new ArrayList();
+        CityDTO cd = new CityDTO();
         while (!CapWords.isEmpty()) {
             String word = CapWords.get(0);
             int low = 0;
@@ -54,7 +60,8 @@ public class CityChekker {
                 } else if (cities[mid].compareTo(word) > 0) {
                     high = mid - 1;
                 } else {
-                    result.add(word);
+                    cd = new CityDTO(word);
+                    result.add(cd);
                     found = true;
                 }
             }

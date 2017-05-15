@@ -16,12 +16,12 @@ public class BookDTO {
     
     private String authorName;
     private String title;
-    private List<City> cities;
+    private List<Long> cityId;
 
-    public BookDTO(String authorName, String title, List<City> cities) {
+    public BookDTO(String authorName, String title, List<Long> cities) {
         this.authorName = authorName;
         this.title = title;
-        this.cities = cities;
+        this.cityId = cities;
     }
 
     public String getAuthorName() {
@@ -40,12 +40,12 @@ public class BookDTO {
         this.title = title;
     }
 
-    public List<City> getCities() {
-        return cities;
+    public List<Long> getCities() {
+        return cityId;
     }
 
-    public void setCities(List<City> cities) {
-        this.cities = cities;
+    public void setCities(List<Long> cities) {
+        this.cityId = cities;
     }
     
     

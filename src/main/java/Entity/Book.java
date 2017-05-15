@@ -24,31 +24,7 @@ public class Book implements Serializable {
     private Long id;
     private String authorName;
     private String title;
-    private List<City> cities;
-
-    public String getAuthorName() {
-        return authorName;
-    }
-
-    public void setAuthorName(String authorName) {
-        this.authorName = authorName;
-    }
-
-    public String getTitle() {
-        return title;
-    }
-
-    public void setTitle(String title) {
-        this.title = title;
-    }
-
-    public List<String> getCityNames() {
-        return cityNames;
-    }
-
-    public void setCityNames(List<String> cityNames) {
-        this.cityNames = cityNames;
-    }
+    private List<Long> cityId;
 
     public Long getId() {
         return id;
@@ -62,10 +38,10 @@ public class Book implements Serializable {
         
     }
     
-    public Book(String authorName, String title, List<City> cities){
+    public Book(String authorName, String title, List<Long> cities){
         this.authorName = authorName;
         this.title = title;
-        this.cities = cities;
+        this.cityId = cities;
     }
 
     @Override
