@@ -6,6 +6,7 @@
 package Database;
 
 import DTO.BookDTO;
+import DTO.CityDTO;
 import Entity.Book;
 import Entity.City;
 import Util.FileScanner;
@@ -50,12 +51,16 @@ public class MySQLDBFacade implements IDBFacade {
         }
     }
     
-    private List<City> GetCities(){
-        List<City> citiesToReturn = new ArrayList<City>();
+    private List<CityDTO> GetCities(){
+        List<CityDTO> citiesToReturn = new ArrayList();
+        CityDTO cityToAdd;
         String query = "SELECT ";
         try{
             statement = connector.GetConnection().createStatement();
             rs = statement.executeQuery(query);
+            while(rs.next()){
+                
+            }
         }catch(Exception e){
             e.printStackTrace();
         }finally{
