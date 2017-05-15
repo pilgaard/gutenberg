@@ -24,7 +24,27 @@ public class Book implements Serializable {
     private Long id;
     private String authorName;
     private String title;
+<<<<<<< HEAD
     private List<Long> cityId;
+=======
+    private List<City> cities;
+
+    public String getAuthorName() {
+        return authorName;
+    }
+
+    public void setAuthorName(String authorName) {
+        this.authorName = authorName;
+    }
+
+    public String getTitle() {
+        return title;
+    }
+
+    public void setTitle(String title) {
+        this.title = title;
+    }
+>>>>>>> master
 
     public Long getId() {
         return id;
