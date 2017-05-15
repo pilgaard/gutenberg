@@ -44,6 +44,8 @@ public class MySQLDBFacade implements IDBFacade {
             statement = connector.GetConnection().createStatement();
             connector.GetConnection().setAutoCommit(false);
             for (int i = 0; i < books.size(); i++) {
+                int remaining = books.size()-i;
+                System.out.println("remaining = " + remaining);
                 PreparedStatement ps = connector.GetConnection().prepareStatement("INSERT INTO books (Title, Author) VALUES (?,?)");
                 ps.setObject(1, books.get(i).getTitle());
                 ps.setObject(2, books.get(i).getAuthorName());

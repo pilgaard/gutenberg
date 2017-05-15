@@ -17,7 +17,7 @@ import java.util.ArrayList;
 public class CityChekker {
 
     private final String dir = System.getProperty("user.dir");
-    private String path = "/Users/Emil/examproject/gutenberg/testFiles";
+    private String path = "/Users/Emil/examproject/project/zipFiles";
     
     public void listF(String directoryName, ArrayList<File> files) {
         File directory = new File(directoryName);
@@ -40,6 +40,7 @@ public class CityChekker {
         ArrayList<BookDTO> books = new ArrayList();
         BookDTO b;
         for (File file : files) {
+            System.out.println(file);
             String title = fileScanner.findTitle(file);
             if (title != null) {
                 String author = fileScanner.findAuthor(file);

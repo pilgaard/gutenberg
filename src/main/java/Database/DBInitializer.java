@@ -5,6 +5,8 @@
  */
 package Database;
 
+import DTO.BookDTO;
+import DTO.CityDTO;
 import Util.CityChekker;
 import java.sql.SQLException;
 import java.util.*;
@@ -20,6 +22,11 @@ public class DBInitializer {
         MySQLDBFacade sql = new MySQLDBFacade(msc);
         CityChekker chek = new CityChekker();
         //sql.insertList();
-        sql.InsertBooksInDB(chek.scanFiles(sql.GetCities()));
+        ArrayList<CityDTO> cities = sql.GetCities();
+        System.out.println("step 1");
+        ArrayList<BookDTO> books = chek.scanFiles(cities);
+        System.out.println("step 2");
+        sql.InsertBooksInDB(books);
+        System.out.println("done");
     }
 }

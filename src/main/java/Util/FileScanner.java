@@ -5,7 +5,7 @@
  */
 package Util;
 
-import Entity.Book;
+import DTO.BookDTO;
 import java.io.BufferedReader;
 import java.util.List;
 import java.io.File;
@@ -22,16 +22,6 @@ import java.util.regex.Pattern;
  * @author Andreas
  */
 public class FileScanner {
-
-    private final String dir = System.getProperty("user.dir");
-    private final String booksFileLocation = "";
-
-    // Read Books files. When City name is found, add to a list (if it is not already found). 
-    // Create Book objects, and fill with found city names. 
-    // Maybe split into 2 methods instead of one.
-    public List<Book> FetchAllBooks() {
-        return null;
-    }
 
     public ArrayList<String> findCapWords(File f) {
         ArrayList<String> words = new ArrayList();
