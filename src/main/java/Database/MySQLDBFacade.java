@@ -26,17 +26,46 @@ public class MySQLDBFacade implements IDBFacade {
         this.connector = con;
     }
 
+    public void insertList() throws ClassNotFoundException, SQLException {
+        statement = connector.GetConnection().createStatement();
+        connector.GetConnection().setAutoCommit(false);
+        PreparedStatement ps = connector.GetConnection().prepareStatement("INSERT INTO test(data) VALUES (?)");
+        for (int i = 0; i < 100; i++) {
+            ps.setObject(1, i);
+            ps.addBatch();
+        }
+        ps.executeBatch();
+        connector.GetConnection().commit();
+    }
+
     public void InsertBooksInDB(List<BookDTO> books) throws ClassNotFoundException, SQLException {
         //Book bookToInsert;
         try {
             statement = connector.GetConnection().createStatement();
+            connector.GetConnection().setAutoCommit(false);
             for (int i = 0; i < books.size(); i++) {
-                //bookToInsert = new Book(books.get(i).getAuthorName(), books.get(i).getTitle(), books.get(i).getCities());
-                String query = "INSERT INTO books (Title, Author) VALUES ("
-                        + "'"+books.get(i).getTitle()+"'"+ ", "
-                        + "'"+ books.get(i).getAuthorName()+"')";
-                        //+ books.get(i).getCities() + ");";
-                statement.execute(query);
+                PreparedStatement ps = connector.GetConnection().prepareStatement("INSERT INTO books (Title, Author) VALUES (?,?)");
+                ps.setObject(1, books.get(i).getTitle());
+                ps.setObject(2, books.get(i).getAuthorName());
+                ps.execute();
+                connector.GetConnection().commit();
+                statement = connector.GetConnection().createStatement();
+                ps = connector.GetConnection().prepareStatement("SELECT LAST_INSERT_ID() as bookId;");
+                ResultSet rs = ps.executeQuery();
+                int id = 0;
+                while (rs.next()) {
+                    id = rs.getInt("bookId");
+                    System.out.println("id = " + id);
+                }
+                ps = connector.GetConnection().prepareStatement("INSERT INTO CitiesInBooks(bookId, cityId) VALUES (?,?)");
+                List<Long> ids = books.get(i).getCities();
+                for (Long id1 : ids) {
+                    ps.setObject(1, id);
+                    ps.setObject(2, id1);
+                    ps.addBatch();
+                }
+                ps.executeBatch();
+                connector.GetConnection().commit();
             }
         } catch (Exception e) {
             e.printStackTrace();
@@ -45,24 +74,24 @@ public class MySQLDBFacade implements IDBFacade {
             rs.close();
         }
     }
-    
-    public ArrayList<CityDTO> GetCities() throws SQLException{
+
+    public ArrayList<CityDTO> GetCities() throws SQLException {
         ArrayList<CityDTO> citiesToReturn = new ArrayList();
-        String query = "SELECT geonameId, name, lat, `long` FROM cities";
-        try{
+        String query = "SELECT geonameId, asciiname, lat, `long` FROM cities order by asciiname asc;";
+        try {
             statement = connector.GetConnection().createStatement();
             rs = statement.executeQuery(query);
-            while(rs.next()){
-                citiesToReturn.add(new CityDTO(rs.getLong("geonameId"), rs.getLong("lat"), rs.getLong("long"), rs.getString("name")));     
+            while (rs.next()) {
+                citiesToReturn.add(new CityDTO(rs.getLong("geonameId"), rs.getLong("lat"), rs.getLong("long"), rs.getString("asciiname")));
             }
-        }catch(Exception e){
+        } catch (Exception e) {
             e.printStackTrace();
-        }finally{
+        } finally {
             statement.close();
             rs.close();
         }
         return citiesToReturn;
-    } 
+    }
 
     @Override
     public List<BookDTO> GetBooksByCity(String cityName) {

@@ -57,31 +57,22 @@ public class CityChekker {
     }
 
     private static ArrayList<CityDTO> findCities(ArrayList<String> CapWords, ArrayList<CityDTO> CityDTOs) {  // Array must be sorted.
-        // skal erstates af den rigtige liste med alle byer
-        ArrayList<String> temp = new ArrayList();
-        for(int i = 0; i < CityDTOs.size(); i++){
-            temp.add(CityDTOs.get(i).getCityName());
-        }
-        //String cities[] = temp;
         ArrayList<CityDTO> result = new ArrayList();
-        CityDTO cd = new CityDTO();
         while (!CapWords.isEmpty()) {
             String word = CapWords.get(0);
             int low = 0;
-            int high = temp.size() - 1;
+            int high = CityDTOs.size() - 1;
             int mid;
             boolean found = false;
 
             while (low <= high && !found) {
                 mid = (low + high) / 2;
-
-                if (temp.get(mid).compareTo(word) < 0) {
+                if (CityDTOs.get(mid).getCityName().compareTo(word) < 0) {
                     low = mid + 1;
-                } else if (temp.get(mid).compareTo(word) > 0) {
+                } else if (CityDTOs.get(mid).getCityName().compareTo(word) > 0) {
                     high = mid - 1;
                 } else {
-                    cd = new CityDTO(word);
-                    result.add(cd);
+                    result.add(CityDTOs.get(mid));
                     found = true;
                 }
             }

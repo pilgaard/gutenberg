@@ -45,7 +45,9 @@ public class FileScanner {
                 Pattern p = Pattern.compile("\\b([A-Z]\\w*)\\b");
                 Matcher matcher = p.matcher(line);
                 while (matcher.find()) {
-                    words.add(matcher.group());
+                    if (!words.contains(matcher.group())) {
+                        words.add(matcher.group());
+                    } 
                 }
             }
         } catch (IOException e) {

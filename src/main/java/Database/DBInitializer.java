@@ -19,9 +19,7 @@ public class DBInitializer {
         MySQLConnector msc = new MySQLConnector("com.mysql.cj.jdbc.Driver", "jdbc:mysql://localhost:3306/gutenberg", "root", "root");
         MySQLDBFacade sql = new MySQLDBFacade(msc);
         CityChekker chek = new CityChekker();
-        
+        //sql.insertList();
         sql.InsertBooksInDB(chek.scanFiles(sql.GetCities()));
-        
-        
     }
 }
