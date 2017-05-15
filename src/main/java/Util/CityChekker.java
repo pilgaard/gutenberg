@@ -5,6 +5,7 @@
  */
 package Util;
 
+import DTO.BookDTO;
 import Entity.Book;
 import java.io.File;
 import java.util.ArrayList;
@@ -28,10 +29,7 @@ public class CityChekker {
             String Title = fileScanner.findTitle(file);
             ArrayList<String> capWords = fileScanner.findCapWords(file);
             ArrayList<String> city = findCities(capWords);
-            Book b = new Book();
-            b.setAuthorName(Author);
-            b.setTitle(Title);
-            b.setCityNames(city);
+            BookDTO b = new BookDTO(Author, Title,city);
         }
         return "done";
     }
