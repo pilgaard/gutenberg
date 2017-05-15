@@ -42,14 +42,6 @@ public class Book implements Serializable {
         this.title = title;
     }
 
-    public List<String> getCityNames() {
-        return cityNames;
-    }
-
-    public void setCityNames(List<String> cityNames) {
-        this.cityNames = cityNames;
-    }
-
     public Long getId() {
         return id;
     }
