@@ -5,7 +5,6 @@
  */
 package DTO;
 
-import Entity.City;
 import java.util.List;
 
 /**
@@ -47,6 +46,12 @@ public class BookDTO {
     public void setCities(List<Long> cities) {
         this.cityId = cities;
     }
+
+    @Override
+    public String toString() {
+        return "BookDTO{" + "authorName=" + authorName + ", title=" + title + ", cityId=" + cityId + '}';
+    }
+    
     
     
 }

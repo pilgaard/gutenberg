@@ -7,8 +7,6 @@ package Util;
 
 import DTO.BookDTO;
 import DTO.CityDTO;
-import Entity.Book;
-import Entity.City;
 import java.io.File;
 import java.util.ArrayList;
 
@@ -19,27 +17,45 @@ import java.util.ArrayList;
 public class CityChekker {
 
     private final String dir = System.getProperty("user.dir");
-
-    public String scanFiles() {
-        /*String basePath = new File("").getAbsolutePath();
-        String path = basePath + "/zipFiles/*.txt";
-        File f = new File(path);*/
-        FileScanner fileScanner = new FileScanner();
-        ArrayList<File> files = new ArrayList();
-        for (File file : files) {
-            String author = fileScanner.findAuthor(file);
-            String title = fileScanner.findTitle(file);
-            ArrayList<String> capWords = fileScanner.findCapWords(file);
-            ArrayList<CityDTO> city = findCities(capWords);
-            ArrayList<Long> cityId = new ArrayList();
-            for (CityDTO cityDTO : city) {
-                cityId.add(cityDTO.getId());
-            }
-            BookDTO b = new BookDTO(author, title, cityId);
-        }
-        return "done";
-    }
+    private String path = "/Users/Emil/examproject/gutenberg/testFiles";
     
+    public void listF(String directoryName, ArrayList<File> files) {
+        File directory = new File(directoryName);
+
+        // get all the files from a directory
+        File[] fList = directory.listFiles();
+        for (File file : fList) {
+            if (file.isFile()) {
+                files.add(file);
+            } else if (file.isDirectory()) {
+                listF(file.getAbsolutePath(), files);
+            }
+        }
+    }
+
+    public ArrayList<BookDTO> scanFiles() {
+        ArrayList<File> files = new ArrayList();
+        listF(path, files);
+        FileScanner fileScanner = new FileScanner();
+        ArrayList<BookDTO> books = new ArrayList();
+        BookDTO b;
+        for (File file : files) {
+            String title = fileScanner.findTitle(file);
+            if (title != null) {
+                String author = fileScanner.findAuthor(file);
+                ArrayList<String> capWords = fileScanner.findCapWords(file);
+                ArrayList<CityDTO> city = findCities(capWords);
+                ArrayList<Long> cityId = new ArrayList();
+                for (CityDTO cityDTO : city) {
+                    cityId.add(cityDTO.getId());
+                }
+                b = new BookDTO(author, title, cityId);
+                books.add(b);
+            }
+        }
+        return books;
+    }
+
     public static ArrayList<CityDTO> findCities(ArrayList<String> CapWords) {  // Array must be sorted.
         // skal erstates af den rigtige liste med alle byer
         String cities[] = {"Amsterdam", "Copenhagen", "Haslev", "London"};

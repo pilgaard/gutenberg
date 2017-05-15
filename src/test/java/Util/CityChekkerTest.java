@@ -5,7 +5,9 @@
  */
 package Util;
 
+import DTO.BookDTO;
 import DTO.CityDTO;
+import java.io.File;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -56,10 +58,25 @@ public class CityChekkerTest {
     public void tearDown() {
     }
 
-    @Test
+    /*@Test
     public void testFindCities() {
         ArrayList<CityDTO> found = cc.findCities(words);
         List<String> actually = Arrays.asList("Copenhagen", "Haslev", "London", "New York");
         assertTrue(actually.containsAll(found));
+    }*/
+    
+    @Test
+    public void testListF() {
+        ArrayList<File> files = new ArrayList();
+        cc.listF("/Users/Emil/examproject/project/zipfiles", files);
+    }
+    
+    @Test
+    public void testScanFiles() {
+        ArrayList<BookDTO> books = cc.scanFiles();
+        
+        for (BookDTO book : books) {
+            System.out.println("book = " + book);    
+        }  
     }
 }
