@@ -8,6 +8,7 @@ package Database;
 import DTO.BookDTO;
 import DTO.CityDTO;
 import DTO.Coordinate;
+import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -88,7 +89,7 @@ public class MySQLDBFacadeTest {
      * Test of GetCitiesByBookTitle method, of class MySQLDBFacade.
      */
     @Test
-    public void testGetCitiesByBookTitle() {
+    public void testGetCitiesByBookTitle() throws SQLException {
         String bookTitle = "Byron";
         List<Coordinate> expResult = sqlFacade.GetCitiesByBookTitle(bookTitle);
         assertThat(expResult.size(), is(478));
@@ -113,7 +114,7 @@ public class MySQLDBFacadeTest {
      * Test of GetBooksByAuthorName method, of class MySQLDBFacade.
      */
     @Test
-    public void testGetBooksByAuthorName() {
+    public void testGetBooksByAuthorName() throws SQLException {
         System.out.println("GetBooksByAuthorName");
         String authorName = "William Shakespeare";
         
@@ -140,7 +141,7 @@ public class MySQLDBFacadeTest {
      * Test of GetBooksByGeoLocation method, of class MySQLDBFacade.
      */
     @Test
-    public void testGetBooksByGeoLocation() {
+    public void testGetBooksByGeoLocation() throws SQLException {
         System.out.println("GetBooksByGeoLocation");
         Long latitude = null;
         Long longitude = null;
