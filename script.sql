@@ -85,14 +85,12 @@ drop procedure if exists GetBooksByCity;
 DELIMITER $$
 create procedure GetBooksByCity(cityName varchar(50))
 begin
-select b.id, b.title, b.author, group_concat(c.id) as cityID
+select b.id, b.title, b.author
 from books b
-		join CitiesInBooks on bookId = bookID
-		join cities c on geonameId = CitiesInBooks.cityId
+		join CitiesInBooks cib on cib.bookId = b.Id
+		join cities c on c.geonameId = cib.cityId
 		where c.asciiname = cityName;
-	select cityId from cities 
-		join CitiesInBooks on cityId = cities.`geonameId`
-		where CitiesInBooks.`bookId` = bookID;
+ 	
 end $$
 DELIMITER ;
 call GetBooksByCity("London");
@@ -103,7 +101,29 @@ drop procedure if exists GetBooksByGeoLocation;
 DELIMITER $$
 create procedure GetBooksByGeoLocation(latitude Decimal(10,8), longitude Decimal(11,8))
 begin
-
+SELECT b.*, z.asciiname, 
+        p.distance_unit
+                 * DEGREES(ACOS(COS(RADIANS(p.latpoint))
+                 * COS(RADIANS(z.lat))
+                 * COS(RADIANS(p.longpoint) - RADIANS(z.long))
+                 + SIN(RADIANS(p.latpoint))
+                 * SIN(RADIANS(z.lat)))) AS distance_in_km
+  FROM cities AS z
+  JOIN CitiesInBooks cib on cib.cityId = z.geonameId
+  JOIN books b on b.id = cib.bookId
+  JOIN (   /* these are the query parameters */
+        SELECT  latitude  AS latpoint,  longitude AS longpoint,
+                50.0 AS radius,      111.045 AS distance_unit
+    ) AS p ON 1=1
+  
+  WHERE z.lat
+     BETWEEN p.latpoint  - (p.radius / p.distance_unit)
+         AND p.latpoint  + (p.radius / p.distance_unit)
+    AND z.long
+     BETWEEN p.longpoint - (p.radius / (p.distance_unit * COS(RADIANS(p.latpoint))))
+         AND p.longpoint + (p.radius / (p.distance_unit * COS(RADIANS(p.latpoint))))
+  ORDER BY distance_in_km
+  LIMIT 1;
 end $$
 DELIMITER ;
 call GetBooksByGeoLocation(48.81680000, 9.57690000);
