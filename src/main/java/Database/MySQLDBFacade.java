@@ -146,8 +146,22 @@ public class MySQLDBFacade implements IDBFacade {
     }
 
     @Override
-    public HashMap<Long, Long> GetGeoLocationByBook(BookDTO book) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    public List<Coordinate> GetGeoLocationByBook(BookDTO book) throws SQLException{
+        String query = "";
+        List<Coordinate> coordinates = new ArrayList();
+        try(Connection conn = connector.GetConnection();
+                CallableStatement stmt = conn.prepareCall(query)){
+            //stmt.setString(query, query); <- Tilføj korrekte parametere
+            rs = stmt.executeQuery();
+            while(rs.next()){
+                coordinates.add(new Coordinate(rs.getLong(""), rs.getLong("")));
+            }
+        }catch(SQLException ex){
+            System.out.println(ex.getMessage());
+        }finally{
+            rs.close();
+        }
+        return coordinates;
     }
 
     @Override
@@ -157,7 +171,7 @@ public class MySQLDBFacade implements IDBFacade {
         List<BookDTO> booksBeingMentioned = new ArrayList<>();
         try(Connection conn = connector.GetConnection();
                 CallableStatement stmt = conn.prepareCall(query)){
-            
+            //stmt.setString(query, query); <- Tilføj korrekte parametere.
             rs = stmt.executeQuery();
             while(rs.next()){
                 dto.setTitle(rs.getString("title"));
