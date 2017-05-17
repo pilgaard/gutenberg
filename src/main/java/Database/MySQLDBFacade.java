@@ -30,13 +30,11 @@ public class MySQLDBFacade implements IDBFacade {
             statement = connector.GetConnection().createStatement();
             connector.GetConnection().setAutoCommit(false);
             for (int i = 0; i < books.size(); i++) {
-<<<<<<< HEAD
                 //bookToInsert = new Book(books.get(i).getAuthorName(), books.get(i).getTitle(), books.get(i).getCities());
                 String query = "INSERT INTO books (Title, Author) VALUES ("
                         + "'" + books.get(i).getTitle() + "'" + ", "
                         + "'" + books.get(i).getAuthorName() + "')";
                 statement.execute(query);
-=======
                 int remaining = books.size()-i;
                 System.out.println("remaining = " + remaining);
                 PreparedStatement ps = connector.GetConnection().prepareStatement("INSERT INTO books (Title, Author) VALUES (?,?)");
@@ -61,7 +59,6 @@ public class MySQLDBFacade implements IDBFacade {
                 }
                 ps.executeBatch();
                 connector.GetConnection().commit();
->>>>>>> 335e209931a05461fb72ad3e883ec1d67342a2ba
             }
         } catch (Exception e) {
             e.printStackTrace();
@@ -70,25 +67,7 @@ public class MySQLDBFacade implements IDBFacade {
             rs.close();
         }
     }
-<<<<<<< HEAD
     
-    public ArrayList<CityDTO> GetCities() throws SQLException {
-        ArrayList<CityDTO> citiesToReturn = new ArrayList();
-        String query = "SELECT geonameId, name, lat, `long` FROM cities";
-        try {
-            statement = connector.GetConnection().createStatement();
-            rs = statement.executeQuery(query);
-            while (rs.next()) {
-                citiesToReturn.add(new CityDTO(rs.getLong("geonameId"), rs.getLong("lat"), rs.getLong("long"), rs.getString("name")));
-            }
-        } catch (Exception e) {
-            e.printStackTrace();
-        } finally {
-            statement.close();
-            rs.close();
-        }
-=======
-
     public ArrayList<CityDTO> GetCities() throws SQLException {
         ArrayList<CityDTO> citiesToReturn = new ArrayList();
         String query = "call GetCities()";
@@ -102,7 +81,6 @@ public class MySQLDBFacade implements IDBFacade {
         } catch (Exception e) {
             e.printStackTrace();
         } 
->>>>>>> 335e209931a05461fb72ad3e883ec1d67342a2ba
         return citiesToReturn;
     }
 
