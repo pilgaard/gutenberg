@@ -7,6 +7,7 @@ package Database;
 
 import DTO.BookDTO;
 import DTO.Coordinate;
+import java.math.BigDecimal;
 import java.sql.SQLException;
 import java.util.*;
 
@@ -28,7 +29,7 @@ public interface IDBFacade {
     
     //Given an author name your application lists all books written by that author and plots all cities mentioned in any of the books onto a map.
     public List<BookDTO> GetBooksByAuthorName(String authorName) throws SQLException;
-    public List<Coordinate> GetGeoLocationByBook(List<BookDTO> books) throws SQLException;
+    public ArrayList<Coordinate> GetGeoLocationByBook(List<BookDTO> books) throws SQLException;
     
     
     /**
@@ -37,7 +38,7 @@ public interface IDBFacade {
      * @param longitude
      * @return 
      */
-    public List<BookDTO> GetBooksByGeoLocation(Long latitude, Long longitude) throws SQLException;
+    public List<BookDTO> GetBooksByGeoLocation(BigDecimal latitude, BigDecimal longitude) throws SQLException;
     
 
 }

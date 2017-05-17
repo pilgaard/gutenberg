@@ -8,6 +8,7 @@ package Database;
 import DTO.BookDTO;
 import DTO.CityDTO;
 import DTO.Coordinate;
+import java.math.BigDecimal;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -143,8 +144,8 @@ public class MySQLDBFacadeTest {
     @Test
     public void testGetBooksByGeoLocation() throws SQLException {
         System.out.println("GetBooksByGeoLocation");
-        Long latitude = null;
-        Long longitude = null;
+        BigDecimal latitude = null;
+        BigDecimal longitude = null;
         MySQLDBFacade instance = null;
         List<BookDTO> expResult = null;
         List<BookDTO> result = instance.GetBooksByGeoLocation(latitude, longitude);

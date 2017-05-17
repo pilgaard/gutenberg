@@ -8,6 +8,7 @@ package Database;
 import DTO.BookDTO;
 import DTO.CityDTO;
 import Util.CityChekker;
+import java.math.BigDecimal;
 import java.sql.SQLException;
 import java.util.*;
 
@@ -22,7 +23,7 @@ public class DBInitializer {
         MySQLDBFacade sql = new MySQLDBFacade(msc);
         CityChekker chek = new CityChekker();
         //sql.insertList();
-        ArrayList<CityDTO> cities = sql.GetCities();
+        /*ArrayList<CityDTO> cities = sql.GetCities();
         System.out.println("step 1");
         ArrayList<BookDTO> books = chek.scanFiles(cities);
         int authorLength = 0;
@@ -34,9 +35,11 @@ public class DBInitializer {
         System.out.println("authorLength = " + authorLength);
         System.out.println("step 2");
         sql.InsertBooksInDB(books);
-        System.out.println("done");
-        sql.GetBooksByGeoLocation((long)48.8168000, (long)9.57690000);
-        sql.GetGeoLocationByBook(sql.GetBooksByAuthorName("William Shakespear"));
+        System.out.println("done");*/
+        BigDecimal lat = new BigDecimal(48.8168000);
+        BigDecimal longitude = new BigDecimal(9.57690000);
+        sql.GetBooksByGeoLocation(lat, longitude );
+        sql.GetGeoLocationByBook(sql.GetBooksByAuthorName("William Shakespeare"));
         
     }
 }

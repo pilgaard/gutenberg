@@ -5,35 +5,43 @@
  */
 package DTO;
 
+import java.math.BigDecimal;
+
 /**
  *
  * @author Andreas
  */
 public class Coordinate {
     
-    private Long longitude;
-    private Long latitude;
+    private BigDecimal longitude;
+    private BigDecimal latitude;
 
-    public Long getLongitude() {
+    public BigDecimal getLongitude() {
         return longitude;
     }
 
-    public void setLongitude(Long longitude) {
+    public void setLongitude(BigDecimal longitude) {
         this.longitude = longitude;
     }
 
-    public Long getLatitude() {
+    public BigDecimal getLatitude() {
         return latitude;
     }
 
-    public void setLatitude(Long latitude) {
+    public void setLatitude(BigDecimal latitude) {
         this.latitude = latitude;
     }
 
-    public Coordinate(Long longitude, Long latitude) {
+    public Coordinate(BigDecimal longitude, BigDecimal latitude) {
         this.longitude = longitude;
         this.latitude = latitude;
     }
+
+    @Override
+    public String toString() {
+        return longitude+","+latitude;
+    }
+    
     
     
 }

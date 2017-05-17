@@ -9,6 +9,7 @@ import DTO.BookDTO;
 import DTO.CityDTO;
 import DTO.Coordinate;
 import java.awt.Point;
+import java.math.BigDecimal;
 import java.util.*;
 import java.sql.*;
 
@@ -77,7 +78,7 @@ public class MySQLDBFacade implements IDBFacade {
                 CallableStatement stmt = conn.prepareCall(query)){
             rs = stmt.executeQuery();
             while (rs.next()) {
-                citiesToReturn.add(new CityDTO(rs.getLong("geonameId"), rs.getLong("lat"), rs.getLong("long"), rs.getString("asciiname")));
+                citiesToReturn.add(new CityDTO(rs.getLong("geonameId"), rs.getBigDecimal("lat"), rs.getBigDecimal("long"), rs.getString("asciiname")));
             }
         } catch (Exception e) {
             e.printStackTrace();
@@ -103,7 +104,7 @@ public class MySQLDBFacade implements IDBFacade {
             stmt.setString(1, bookTitle);
             rs = stmt.executeQuery();
             while (rs.next()) {
-                citiesToReturn.add(new CityDTO(rs.getLong("geonameId"), rs.getLong("lat"), rs.getLong("long"), rs.getString("asciiname")));
+                citiesToReturn.add(new CityDTO(rs.getLong("geonameId"), rs.getBigDecimal("lat"), rs.getBigDecimal("long"), rs.getString("asciiname")));
             }
         } catch (Exception e) {
             e.printStackTrace();
@@ -146,9 +147,9 @@ public class MySQLDBFacade implements IDBFacade {
     }
 
     @Override
-    public List<Coordinate> GetGeoLocationByBook(List<BookDTO> books) throws SQLException{
+    public ArrayList<Coordinate> GetGeoLocationByBook(List<BookDTO> books) throws SQLException{
         ArrayList<CityDTO> cities = GetCities();
-        List<Coordinate> coordinates = new ArrayList<>();
+        ArrayList<Coordinate> coordinates = new ArrayList();
         for (BookDTO book : books) {
             for(CityDTO city : cities){
                 if(book.getCities().contains(city.getId())){
@@ -156,21 +157,21 @@ public class MySQLDBFacade implements IDBFacade {
                 }
             }
         }
-        for (Coordinate coordinate : coordinates) {
-            System.out.println(coordinate.getLatitude() + " " + coordinate.getLongitude());
-        }
+        /*for (Coordinate coordinate : coordinates) {
+            System.out.println(coordinate);
+        }*/
         return coordinates;
     }
 
     @Override
-    public List<BookDTO> GetBooksByGeoLocation(Long latitude, Long longitude) throws SQLException{
+    public List<BookDTO> GetBooksByGeoLocation(BigDecimal latitude, BigDecimal longitude) throws SQLException{
         String query = "call GetBooksByGeoLocation(?, ?)";
         BookDTO dto = new BookDTO();
         List<BookDTO> booksBeingMentioned = new ArrayList<>();
         try(Connection conn = connector.GetConnection();
                 CallableStatement stmt = conn.prepareCall(query)){
-            stmt.setLong(1, latitude);
-            stmt.setLong(2, longitude);
+            stmt.setBigDecimal(1, latitude);
+            stmt.setBigDecimal(2, longitude);
             rs = stmt.executeQuery();
             while(rs.next()){
                 dto.setTitle(rs.getString("title"));
@@ -182,6 +183,7 @@ public class MySQLDBFacade implements IDBFacade {
         }finally{
             rs.close();
         }
+        System.out.println("booksbeingMentioned = " + booksBeingMentioned.size());
         return booksBeingMentioned;
     }
 

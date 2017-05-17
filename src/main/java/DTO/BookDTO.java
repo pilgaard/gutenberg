@@ -24,7 +24,6 @@ public class BookDTO {
     }
     
     public BookDTO(){
-        
     }
     
     public String getAuthorName() {

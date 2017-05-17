@@ -10,6 +10,8 @@ import DTO.CityDTO;
 import DTO.Coordinate;
 import Entity.Book;
 import Entity.City;
+import java.math.BigDecimal;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
@@ -36,12 +38,12 @@ public class GraphFacade implements IDBFacade{
     }
 
     @Override
-    public List<Coordinate> GetGeoLocationByBook(List<BookDTO> book) {
+    public ArrayList<Coordinate> GetGeoLocationByBook(List<BookDTO> book) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
     @Override
-    public List<BookDTO> GetBooksByGeoLocation(Long latitude, Long longitude) {
+    public List<BookDTO> GetBooksByGeoLocation(BigDecimal latitude, BigDecimal longitude) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 

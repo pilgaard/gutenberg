@@ -5,6 +5,8 @@
  */
 package DTO;
 
+import java.math.BigDecimal;
+
 /**
  *
  * @author Emil
@@ -12,11 +14,11 @@ package DTO;
 public class CityDTO {
     
     private Long id;
-    private Long Latitude;
-    private Long Longitude;
+    private BigDecimal Latitude;
+    private BigDecimal Longitude;
     private String cityName;
 
-    public CityDTO(Long id, Long Latitude, Long Longitude, String cityName) {
+    public CityDTO(Long id, BigDecimal Latitude, BigDecimal Longitude, String cityName) {
         this.id = id;
         this.Latitude = Latitude;
         this.Longitude = Longitude;
@@ -38,19 +40,19 @@ public class CityDTO {
         this.id = id;
     }
 
-    public Long getLatitude() {
+    public BigDecimal getLatitude() {
         return Latitude;
     }
 
-    public void setLatitude(Long Latitude) {
+    public void setLatitude(BigDecimal Latitude) {
         this.Latitude = Latitude;
     }
 
-    public Long getLongitude() {
+    public BigDecimal getLongitude() {
         return Longitude;
     }
 
-    public void setLongitude(Long Longitude) {
+    public void setLongitude(BigDecimal Longitude) {
         this.Longitude = Longitude;
     }
 
