@@ -7,6 +7,7 @@ package Database;
 
 import DTO.BookDTO;
 import DTO.CityDTO;
+import DTO.Coordinate;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -89,7 +90,7 @@ public class MySQLDBFacadeTest {
     @Test
     public void testGetCitiesByBookTitle() {
         String bookTitle = "Byron";
-        List<CityDTO> expResult = sqlFacade.GetCitiesByBookTitle(bookTitle);
+        List<Coordinate> expResult = sqlFacade.GetCitiesByBookTitle(bookTitle);
         assertThat(expResult.size(), is(478));
     }
 
@@ -102,8 +103,8 @@ public class MySQLDBFacadeTest {
         CityDTO city = null;
         MySQLDBFacade instance = null;
         HashMap<Long, Long> expResult = null;
-        HashMap<Long, Long> result = instance.GetGeoLocationByCity(city);
-        assertEquals(expResult, result);
+        //HashMap<Long, Long> result = instance.GetGeoLocationByCity(city);
+        //assertEquals(expResult, result);
         // TODO review the generated test code and remove the default call to fail.
         fail("The test case is a prototype.");
     }

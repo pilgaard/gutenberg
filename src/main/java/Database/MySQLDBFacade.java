@@ -7,6 +7,8 @@ package Database;
 
 import DTO.BookDTO;
 import DTO.CityDTO;
+import DTO.Coordinate;
+import java.awt.Point;
 import java.util.*;
 import java.sql.*;
 
@@ -90,8 +92,9 @@ public class MySQLDBFacade implements IDBFacade {
     }
 
     @Override
-    public List<CityDTO> GetCitiesByBookTitle(String bookTitle) {
+    public List<Coordinate> GetCitiesByBookTitle(String bookTitle) {
         ArrayList<CityDTO> citiesToReturn = new ArrayList();
+        List<Coordinate> coordinates = new ArrayList<Coordinate>();
         String query = "call GetCitiesByBookTitle(?)";
         ResultSet rs;
         try (Connection conn = connector.GetConnection();
@@ -105,12 +108,10 @@ public class MySQLDBFacade implements IDBFacade {
         } catch (Exception e) {
             e.printStackTrace();
         } 
-        return citiesToReturn;
-    }
-
-    @Override
-    public HashMap<Long, Long> GetGeoLocationByCity(CityDTO city) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        for (CityDTO city : citiesToReturn) {
+            coordinates.add(new Coordinate(city.getLongitude(), city.getLatitude()));
+        }
+        return coordinates;
     }
 
     @Override

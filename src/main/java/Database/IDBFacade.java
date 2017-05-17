@@ -7,8 +7,10 @@ package Database;
 
 import DTO.BookDTO;
 import DTO.CityDTO;
+import DTO.Coordinate;
 import Entity.Book;
 import Entity.City;
+import java.awt.Point;
 import java.util.*;
 
 /**
@@ -25,8 +27,7 @@ public interface IDBFacade {
     public List<BookDTO> GetBooksByCity(String cityName);
     
     //Given a book title, your application plots all cities mentioned in this book onto a map.
-    public List<CityDTO> GetCitiesByBookTitle(String bookTitle);
-    public HashMap<Long, Long> GetGeoLocationByCity(CityDTO city);
+    public List<Coordinate> GetCitiesByBookTitle(String bookTitle);
     
     //Given an author name your application lists all books written by that author and plots all cities mentioned in any of the books onto a map.
     public List<BookDTO> GetBooksByAuthorName(String authorName);
