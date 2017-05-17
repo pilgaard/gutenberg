@@ -6,11 +6,8 @@
 package Database;
 
 import DTO.BookDTO;
-import DTO.CityDTO;
 import DTO.Coordinate;
-import Entity.Book;
-import Entity.City;
-import java.awt.Point;
+import java.sql.SQLException;
 import java.util.*;
 
 /**
@@ -27,14 +24,20 @@ public interface IDBFacade {
     public List<BookDTO> GetBooksByCity(String cityName);
     
     //Given a book title, your application plots all cities mentioned in this book onto a map.
-    public List<Coordinate> GetCitiesByBookTitle(String bookTitle);
+    public List<Coordinate> GetCitiesByBookTitle(String bookTitle) throws SQLException;
     
     //Given an author name your application lists all books written by that author and plots all cities mentioned in any of the books onto a map.
-    public List<BookDTO> GetBooksByAuthorName(String authorName);
+    public List<BookDTO> GetBooksByAuthorName(String authorName) throws SQLException;
     public HashMap<Long, Long> GetGeoLocationByBook(BookDTO book);
     
-    //Given a geolocation, your application lists all books mentioning a city in vicinity of the given geolocation.
-    public List<BookDTO> GetBooksByGeoLocation(Long latitude, Long longitude);
+    
+    /**
+     * Given a geolocation, your application lists all books mentioning a city in vicinity of the given geolocation.
+     * @param latitude
+     * @param longitude
+     * @return 
+     */
+    public List<BookDTO> GetBooksByGeoLocation(Long latitude, Long longitude) throws SQLException;
     
 
 }

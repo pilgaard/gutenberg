@@ -23,6 +23,10 @@ public class BookDTO {
         this.cityId = cityId;
     }
     
+    public BookDTO(){
+        
+    }
+    
     public String getAuthorName() {
         return authorName;
     }

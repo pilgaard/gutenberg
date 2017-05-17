@@ -46,7 +46,7 @@ public class MySQLDBFacade implements IDBFacade {
                 connector.GetConnection().commit();
                 statement = connector.GetConnection().createStatement();
                 ps = connector.GetConnection().prepareStatement("SELECT LAST_INSERT_ID() as bookId;");
-                ResultSet rs = ps.executeQuery();
+                rs = ps.executeQuery();
                 int id = 0;
                 while (rs.next()) {
                     id = rs.getInt("bookId");
@@ -73,7 +73,6 @@ public class MySQLDBFacade implements IDBFacade {
     public ArrayList<CityDTO> GetCities() throws SQLException {
         ArrayList<CityDTO> citiesToReturn = new ArrayList();
         String query = "call GetCities()";
-        ResultSet rs;
         try (Connection conn = connector.GetConnection();
                 CallableStatement stmt = conn.prepareCall(query)){
             rs = stmt.executeQuery();
@@ -82,7 +81,9 @@ public class MySQLDBFacade implements IDBFacade {
             }
         } catch (Exception e) {
             e.printStackTrace();
-        } 
+        }finally{
+            rs.close();
+        }
         return citiesToReturn;
     }
 
@@ -92,11 +93,10 @@ public class MySQLDBFacade implements IDBFacade {
     }
 
     @Override
-    public List<Coordinate> GetCitiesByBookTitle(String bookTitle) {
+    public List<Coordinate> GetCitiesByBookTitle(String bookTitle) throws SQLException {
         ArrayList<CityDTO> citiesToReturn = new ArrayList();
         List<Coordinate> coordinates = new ArrayList<Coordinate>();
         String query = "call GetCitiesByBookTitle(?)";
-        ResultSet rs;
         try (Connection conn = connector.GetConnection();
                 CallableStatement stmt = conn.prepareCall(query)){
             
@@ -107,6 +107,8 @@ public class MySQLDBFacade implements IDBFacade {
             }
         } catch (Exception e) {
             e.printStackTrace();
+        }finally{
+            rs.close();
         } 
         for (CityDTO city : citiesToReturn) {
             coordinates.add(new Coordinate(city.getLongitude(), city.getLatitude()));
@@ -115,10 +117,9 @@ public class MySQLDBFacade implements IDBFacade {
     }
 
     @Override
-    public List<BookDTO> GetBooksByAuthorName(String authorName) {
+    public List<BookDTO> GetBooksByAuthorName(String authorName) throws SQLException{
         ArrayList<BookDTO> booksToReturn = new ArrayList();
         String query = "call GetBooksByAuthorName(?)";
-        ResultSet rs;
  
         try (Connection conn = connector.GetConnection();
                 CallableStatement stmt = conn.prepareCall(query)) {
@@ -138,6 +139,8 @@ public class MySQLDBFacade implements IDBFacade {
             }
         } catch (SQLException ex) {
             System.out.println(ex.getMessage());
+        }finally{
+            rs.close();
         }
         return booksToReturn;
     }
@@ -148,8 +151,25 @@ public class MySQLDBFacade implements IDBFacade {
     }
 
     @Override
-    public List<BookDTO> GetBooksByGeoLocation(Long latitude, Long longitude) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    public List<BookDTO> GetBooksByGeoLocation(Long latitude, Long longitude) throws SQLException{
+        String query = "";
+        BookDTO dto = new BookDTO();
+        List<BookDTO> booksBeingMentioned = new ArrayList<>();
+        try(Connection conn = connector.GetConnection();
+                CallableStatement stmt = conn.prepareCall(query)){
+            
+            rs = stmt.executeQuery();
+            while(rs.next()){
+                dto.setTitle(rs.getString("title"));
+                dto.setAuthorName(rs.getString("author"));
+                booksBeingMentioned.add(dto);
+            }
+        }catch(SQLException ex){
+            System.out.println(ex.getMessage());
+        }finally{
+            rs.close();
+        }
+        return booksBeingMentioned;
     }
 
 }
