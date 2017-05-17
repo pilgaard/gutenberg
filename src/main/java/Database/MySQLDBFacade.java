@@ -146,20 +146,18 @@ public class MySQLDBFacade implements IDBFacade {
     }
 
     @Override
-    public List<Coordinate> GetGeoLocationByBook(BookDTO book) throws SQLException{
-        String query = "";
-        List<Coordinate> coordinates = new ArrayList();
-        try(Connection conn = connector.GetConnection();
-                CallableStatement stmt = conn.prepareCall(query)){
-            //stmt.setString(query, query); <- Tilføj korrekte parametere
-            rs = stmt.executeQuery();
-            while(rs.next()){
-                coordinates.add(new Coordinate(rs.getLong(""), rs.getLong("")));
+    public List<Coordinate> GetGeoLocationByBook(List<BookDTO> books) throws SQLException{
+        ArrayList<CityDTO> cities = GetCities();
+        List<Coordinate> coordinates = new ArrayList<>();
+        for (BookDTO book : books) {
+            for(CityDTO city : cities){
+                if(book.getCities().contains(city.getId())){
+                    coordinates.add(new Coordinate(city.getLongitude(), city.getLatitude()));
+                }
             }
-        }catch(SQLException ex){
-            System.out.println(ex.getMessage());
-        }finally{
-            rs.close();
+        }
+        for (Coordinate coordinate : coordinates) {
+            System.out.println(coordinate.getLatitude() + " " + coordinate.getLongitude());
         }
         return coordinates;
     }

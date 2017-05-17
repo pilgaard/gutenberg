@@ -28,7 +28,7 @@ public interface IDBFacade {
     
     //Given an author name your application lists all books written by that author and plots all cities mentioned in any of the books onto a map.
     public List<BookDTO> GetBooksByAuthorName(String authorName) throws SQLException;
-    public List<Coordinate> GetGeoLocationByBook(BookDTO book) throws SQLException;
+    public List<Coordinate> GetGeoLocationByBook(List<BookDTO> books) throws SQLException;
     
     
     /**

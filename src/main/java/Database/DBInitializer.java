@@ -35,5 +35,8 @@ public class DBInitializer {
         System.out.println("step 2");
         sql.InsertBooksInDB(books);
         System.out.println("done");
+        sql.GetBooksByGeoLocation((long)48.8168000, (long)9.57690000);
+        sql.GetGeoLocationByBook(sql.GetBooksByAuthorName("William Shakespear"));
+        
     }
 }

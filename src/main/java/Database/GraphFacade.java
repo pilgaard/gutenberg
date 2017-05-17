@@ -36,7 +36,7 @@ public class GraphFacade implements IDBFacade{
     }
 
     @Override
-    public List<Coordinate> GetGeoLocationByBook(BookDTO book) {
+    public List<Coordinate> GetGeoLocationByBook(List<BookDTO> book) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
