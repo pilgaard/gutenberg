@@ -166,12 +166,13 @@ public class MySQLDBFacade implements IDBFacade {
 
     @Override
     public List<BookDTO> GetBooksByGeoLocation(Long latitude, Long longitude) throws SQLException{
-        String query = "";
+        String query = "call GetBooksByGeoLocation(?, ?)";
         BookDTO dto = new BookDTO();
         List<BookDTO> booksBeingMentioned = new ArrayList<>();
         try(Connection conn = connector.GetConnection();
                 CallableStatement stmt = conn.prepareCall(query)){
-            //stmt.setString(query, query); <- Tilføj korrekte parametere.
+            stmt.setLong(1, latitude);
+            stmt.setLong(2, longitude);
             rs = stmt.executeQuery();
             while(rs.next()){
                 dto.setTitle(rs.getString("title"));
