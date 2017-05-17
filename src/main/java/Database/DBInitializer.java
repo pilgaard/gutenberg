@@ -5,6 +5,8 @@
  */
 package Database;
 
+import DTO.BookDTO;
+import DTO.CityDTO;
 import Util.CityChekker;
 import java.sql.SQLException;
 import java.util.*;
@@ -19,9 +21,19 @@ public class DBInitializer {
         MySQLConnector msc = new MySQLConnector("com.mysql.cj.jdbc.Driver", "jdbc:mysql://localhost:3306/gutenberg", "root", "root");
         MySQLDBFacade sql = new MySQLDBFacade(msc);
         CityChekker chek = new CityChekker();
-        
-        sql.InsertBooksInDB(chek.scanFiles(sql.GetCities()));
-        
-        
+        //sql.insertList();
+        ArrayList<CityDTO> cities = sql.GetCities();
+        System.out.println("step 1");
+        ArrayList<BookDTO> books = chek.scanFiles(cities);
+        int authorLength = 0;
+        for (BookDTO book : books) {
+            if (authorLength < book.getTitle().length()) {
+                authorLength = book.getTitle().length();
+            }
+        }
+        System.out.println("authorLength = " + authorLength);
+        System.out.println("step 2");
+        sql.InsertBooksInDB(books);
+        System.out.println("done");
     }
 }

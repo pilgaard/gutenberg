@@ -17,12 +17,12 @@ public class BookDTO {
     private String title;
     private List<Long> cityId;
 
-    public BookDTO(String authorName, String title, List<Long> cities) {
+    public BookDTO(String authorName, String title, List<Long> cityId) {
         this.authorName = authorName;
         this.title = title;
-        this.cityId = cities;
+        this.cityId = cityId;
     }
-
+    
     public String getAuthorName() {
         return authorName;
     }
