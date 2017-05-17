@@ -33,9 +33,8 @@ public class MySQLDBFacade implements IDBFacade {
             for (int i = 0; i < books.size(); i++) {
                 //bookToInsert = new Book(books.get(i).getAuthorName(), books.get(i).getTitle(), books.get(i).getCities());
                 String query = "INSERT INTO books (Title, Author) VALUES ("
-                        + "'"+books.get(i).getTitle()+"'"+ ", "
-                        + "'"+ books.get(i).getAuthorName()+"')";
-                        //+ books.get(i).getCities() + ");";
+                        + "'" + books.get(i).getTitle() + "'" + ", "
+                        + "'" + books.get(i).getAuthorName() + "')";
                 statement.execute(query);
             }
         } catch (Exception e) {
@@ -46,23 +45,23 @@ public class MySQLDBFacade implements IDBFacade {
         }
     }
     
-    public ArrayList<CityDTO> GetCities() throws SQLException{
+    public ArrayList<CityDTO> GetCities() throws SQLException {
         ArrayList<CityDTO> citiesToReturn = new ArrayList();
         String query = "SELECT geonameId, name, lat, `long` FROM cities";
-        try{
+        try {
             statement = connector.GetConnection().createStatement();
             rs = statement.executeQuery(query);
-            while(rs.next()){
-                citiesToReturn.add(new CityDTO(rs.getLong("geonameId"), rs.getLong("lat"), rs.getLong("long"), rs.getString("name")));     
+            while (rs.next()) {
+                citiesToReturn.add(new CityDTO(rs.getLong("geonameId"), rs.getLong("lat"), rs.getLong("long"), rs.getString("name")));
             }
-        }catch(Exception e){
+        } catch (Exception e) {
             e.printStackTrace();
-        }finally{
+        } finally {
             statement.close();
             rs.close();
         }
         return citiesToReturn;
-    } 
+    }
 
     @Override
     public List<BookDTO> GetBooksByCity(String cityName) {
