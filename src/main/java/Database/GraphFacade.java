@@ -101,8 +101,8 @@ public class GraphFacade implements IDBFacade{
         }
         session.close();
         driver.close();
-        for (CityDTO city : citiesToReturn) {
-            coordinates.add(new Coordinate(city.getLongitude(), city.getLatitude()));
+        for (CityDTO ci : citiesToReturn) {
+            coordinates.add(new Coordinate(ci.getLongitude(), ci.getLatitude()));
         }
         return null;
     }
@@ -140,7 +140,4 @@ public class GraphFacade implements IDBFacade{
     public List<BookDTO> GetBooksByGeoLocation(BigDecimal latitude, BigDecimal longitude) throws SQLException {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
-
-   
-
 }

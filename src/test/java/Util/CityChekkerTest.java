@@ -9,6 +9,8 @@ import DTO.BookDTO;
 import DTO.CityDTO;
 import java.io.File;
 import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
 import org.junit.After;
 import org.junit.AfterClass;
 import org.junit.Before;
@@ -21,11 +23,18 @@ import static org.junit.Assert.*;
  * @author Emil
  */
 public class CityChekkerTest {
-    
+    private String path = "/Users/Emil/examproject/gutenberg/testFiles";
+    private List<CityDTO> cities = new ArrayList();
     CityChekker cc = new CityChekker();
     private static ArrayList<String> words;
     
     public CityChekkerTest() {
+        cities.add(new CityDTO("Copenhagen"));
+        cities.add(new CityDTO("Haslev"));
+        cities.add(new CityDTO("London"));
+        cities.add(new CityDTO("New York"));
+        
+        
     }
     
     @BeforeClass
@@ -56,17 +65,16 @@ public class CityChekkerTest {
     public void tearDown() {
     }
 
-    /*@Test
+    @Test
     public void testFindCities() {
-        ArrayList<CityDTO> found = cc.findCities(words);
-        List<String> actually = Arrays.asList("Copenhagen", "Haslev", "London", "New York");
-        assertTrue(actually.containsAll(found));
-    }*/
+        List<CityDTO> found = cc.findCities(words,cities);
+        assertTrue(cities.containsAll(found));
+    }
     
     @Test
     public void testListF() {
         ArrayList<File> files = new ArrayList();
-        cc.listF("/Users/Emil/examproject/project/zipfiles", files);
+        cc.listF(path, files);
     }
     
     @Test
@@ -77,7 +85,7 @@ public class CityChekkerTest {
         cities.add(new CityDTO("London"));
         cities.add(new CityDTO("New York"));
         
-        ArrayList<BookDTO> books = cc.scanFiles(cities);
+        ArrayList<BookDTO> books = cc.scanFiles(cities, path);
         
         for (BookDTO book : books) {
             System.out.println("book = " + book);    
