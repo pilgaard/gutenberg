@@ -44,4 +44,13 @@ public class MySQLConnector {
         }
         return connection;
     }
+
+    public void SetConnection(Connection con) {
+        this.connection = con;
+    }
+
+    public int executeQuery(String query) throws ClassNotFoundException, SQLException {
+        return connection.createStatement().executeUpdate(query);
+    }
+
 }

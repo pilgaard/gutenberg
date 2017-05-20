@@ -16,6 +16,9 @@ public class Coordinate {
     private BigDecimal longitude;
     private BigDecimal latitude;
 
+    public Coordinate() {
+    }
+
     public BigDecimal getLongitude() {
         return longitude;
     }
