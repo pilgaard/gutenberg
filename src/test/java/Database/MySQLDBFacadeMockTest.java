@@ -6,6 +6,7 @@
 package Database;
 
 import DTO.BookDTO;
+import DTO.CityDTO;
 import DTO.Coordinate;
 import java.math.BigDecimal;
 import java.sql.SQLException;
@@ -29,6 +30,15 @@ public class MySQLDBFacadeMockTest {
     @Before
     public void SetUp(){
         facade = mock(MySQLDBFacade.class);
+    }
+    
+    @Test
+    public void GetAllCities(){
+        List<CityDTO> cities = new ArrayList<CityDTO>();
+        cities.add(new CityDTO());
+        
+        when(facade.GetCities()).thenReturn(cities);
+        assertThat(facade.GetCities(), is(cities));
     }
     
     @Test
