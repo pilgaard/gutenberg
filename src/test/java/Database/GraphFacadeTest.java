@@ -5,11 +5,7 @@
  */
 package Database;
 
-import DTO.BookDTO;
 import DTO.CityDTO;
-import DTO.Coordinate;
-import java.math.BigDecimal;
-import java.util.ArrayList;
 import java.util.List;
 import static org.hamcrest.CoreMatchers.*;
 import org.junit.After;
@@ -53,7 +49,7 @@ public class GraphFacadeTest {
     @Test
     public void testGetCities() {
         System.out.println("getCities");
-        List<CityDTO> result = gf.getCities();
+        List<CityDTO> result = gf.GetCities();
         assertThat(result.size(), is(47847));
     }    
 }

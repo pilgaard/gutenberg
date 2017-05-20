@@ -6,6 +6,7 @@
 package Database;
 
 import DTO.BookDTO;
+import DTO.CityDTO;
 import DTO.Coordinate;
 import java.math.BigDecimal;
 import java.sql.SQLException;
@@ -21,9 +22,10 @@ public interface IDBFacade {
     Given a city name your application returns all book titles with corresponding authors that mention this city.
     @param cityName The name of the city to look for.
     @return Returns a List of BookDTO.
-    */
+    */    
     public List<BookDTO> GetBooksByCity(String cityName);
     
+    public List<CityDTO> GetCities();
     //Given a book title, your application plots all cities mentioned in this book onto a map.
     public List<Coordinate> GetCitiesByBookTitle(String bookTitle) throws SQLException;
     

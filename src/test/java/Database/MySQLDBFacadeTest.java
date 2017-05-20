@@ -14,11 +14,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import static org.hamcrest.CoreMatchers.*;
-import org.junit.After;
-import org.junit.AfterClass;
-import org.junit.Before;
-import org.junit.BeforeClass;
-import org.junit.Test;
+import org.junit.*;
 import static org.junit.Assert.*;
 
 /**
@@ -67,7 +63,7 @@ public class MySQLDBFacadeTest {
      */
     @Test
     public void testGetCities() throws Exception {
-        ArrayList<CityDTO> expResult = sqlFacade.GetCities();
+        List<CityDTO> expResult = sqlFacade.GetCities();
         assertThat(expResult.size(), is(47847));
     }
 
