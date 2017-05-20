@@ -12,6 +12,8 @@ import java.awt.Point;
 import java.math.BigDecimal;
 import java.util.*;
 import java.sql.*;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  *
@@ -71,8 +73,9 @@ public class MySQLDBFacade implements IDBFacade {
         }
     }
     
-    public ArrayList<CityDTO> GetCities() throws SQLException {
-        ArrayList<CityDTO> citiesToReturn = new ArrayList();
+    @Override
+    public List<CityDTO> GetCities() {
+        List<CityDTO> citiesToReturn = new ArrayList();
         String query = "call GetCities()";
         try (Connection conn = connector.GetConnection();
                 CallableStatement stmt = conn.prepareCall(query)){
@@ -83,7 +86,11 @@ public class MySQLDBFacade implements IDBFacade {
         } catch (Exception e) {
             e.printStackTrace();
         }finally{
-            rs.close();
+            try {
+                rs.close();
+            } catch (SQLException ex) {
+                Logger.getLogger(MySQLDBFacade.class.getName()).log(Level.SEVERE, null, ex);
+            }
         }
         return citiesToReturn;
     }
@@ -148,7 +155,7 @@ public class MySQLDBFacade implements IDBFacade {
 
     @Override
     public ArrayList<Coordinate> GetGeoLocationByBook(List<BookDTO> books) throws SQLException{
-        ArrayList<CityDTO> cities = GetCities();
+        List<CityDTO> cities = GetCities();
         ArrayList<Coordinate> coordinates = new ArrayList();
         for (BookDTO book : books) {
             for(CityDTO city : cities){
@@ -166,7 +173,7 @@ public class MySQLDBFacade implements IDBFacade {
     @Override
     public List<BookDTO> GetBooksByGeoLocation(BigDecimal latitude, BigDecimal longitude) throws SQLException{
         String query = "call GetBooksByGeoLocation(?, ?)";
-        BookDTO dto = new BookDTO();
+        BookDTO dto;
         List<BookDTO> booksBeingMentioned = new ArrayList<>();
         try(Connection conn = connector.GetConnection();
                 CallableStatement stmt = conn.prepareCall(query)){
@@ -174,6 +181,7 @@ public class MySQLDBFacade implements IDBFacade {
             stmt.setBigDecimal(2, longitude);
             rs = stmt.executeQuery();
             while(rs.next()){
+                dto = new BookDTO();
                 dto.setTitle(rs.getString("title"));
                 dto.setAuthorName(rs.getString("author"));
                 booksBeingMentioned.add(dto);
@@ -186,5 +194,4 @@ public class MySQLDBFacade implements IDBFacade {
         System.out.println("booksbeingMentioned = " + booksBeingMentioned.size());
         return booksBeingMentioned;
     }
-
 }

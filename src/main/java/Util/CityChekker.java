@@ -9,6 +9,7 @@ import DTO.BookDTO;
 import DTO.CityDTO;
 import java.io.File;
 import java.util.ArrayList;
+import java.util.List;
 
 /**
  *
@@ -16,7 +17,6 @@ import java.util.ArrayList;
  */
 public class CityChekker {
 
-    private final String dir = System.getProperty("user.dir");
     private String path = "/Users/Emil/examproject/project/zipFiles";
     
     public void listF(String directoryName, ArrayList<File> files) {
@@ -33,7 +33,7 @@ public class CityChekker {
         }
     }
 
-    public ArrayList<BookDTO> scanFiles(ArrayList<CityDTO> cities) {
+    public ArrayList<BookDTO> scanFiles(ArrayList<CityDTO> cities, String path) {
         ArrayList<File> files = new ArrayList();
         listF(path, files);
         FileScanner fileScanner = new FileScanner();
@@ -57,7 +57,7 @@ public class CityChekker {
         return books;
     }
 
-    private static ArrayList<CityDTO> findCities(ArrayList<String> CapWords, ArrayList<CityDTO> CityDTOs) {  // Array must be sorted.
+    public ArrayList<CityDTO> findCities(ArrayList<String> CapWords, List<CityDTO> CityDTOs) {  // Array must be sorted.
         ArrayList<CityDTO> result = new ArrayList();
         while (!CapWords.isEmpty()) {
             String word = CapWords.get(0);

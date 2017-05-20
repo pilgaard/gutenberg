@@ -1,10 +1,10 @@
 -------------------------------------------------------------------------------
 Test set: Database.MySQLDBFacadeTest
 -------------------------------------------------------------------------------
-Tests run: 8, Failures: 0, Errors: 5, Skipped: 0, Time elapsed: 1.229 sec <<< FAILURE!
+Tests run: 8, Failures: 2, Errors: 3, Skipped: 0, Time elapsed: 1.373 sec <<< FAILURE!
 testGetBooksByGeoLocation(Database.MySQLDBFacadeTest)  Time elapsed: 0.002 sec  <<< ERROR!
 java.lang.NullPointerException
-	at Database.MySQLDBFacadeTest.testGetBooksByGeoLocation(MySQLDBFacadeTest.java:148)
+	at Database.MySQLDBFacadeTest.testGetBooksByGeoLocation(MySQLDBFacadeTest.java:147)
 	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
 	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
 	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
@@ -38,9 +38,9 @@ java.lang.NullPointerException
 	at org.apache.maven.surefire.booter.SurefireStarter.invokeProvider(SurefireStarter.java:175)
 	at org.apache.maven.surefire.booter.SurefireStarter.runSuitesInProcessWhenForked(SurefireStarter.java:107)
 	at org.apache.maven.surefire.booter.ForkedBooter.main(ForkedBooter.java:68)
-testInsertBooksInDB(Database.MySQLDBFacadeTest)  Time elapsed: 0.001 sec  <<< ERROR!
+testInsertBooksInDB(Database.MySQLDBFacadeTest)  Time elapsed: 0.005 sec  <<< ERROR!
 java.lang.NullPointerException
-	at Database.MySQLDBFacadeTest.testInsertBooksInDB(MySQLDBFacadeTest.java:57)
+	at Database.MySQLDBFacadeTest.testInsertBooksInDB(MySQLDBFacadeTest.java:56)
 	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
 	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
 	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
@@ -74,9 +74,10 @@ java.lang.NullPointerException
 	at org.apache.maven.surefire.booter.SurefireStarter.invokeProvider(SurefireStarter.java:175)
 	at org.apache.maven.surefire.booter.SurefireStarter.runSuitesInProcessWhenForked(SurefireStarter.java:107)
 	at org.apache.maven.surefire.booter.ForkedBooter.main(ForkedBooter.java:68)
-testGetGeoLocationByBook(Database.MySQLDBFacadeTest)  Time elapsed: 0.004 sec  <<< ERROR!
-java.lang.NullPointerException
-	at Database.MySQLDBFacadeTest.testGetGeoLocationByBook(MySQLDBFacadeTest.java:132)
+testGetGeoLocationByBook(Database.MySQLDBFacadeTest)  Time elapsed: 0.003 sec  <<< FAILURE!
+java.lang.AssertionError: The test case is a prototype.
+	at org.junit.Assert.fail(Assert.java:88)
+	at Database.MySQLDBFacadeTest.testGetGeoLocationByBook(MySQLDBFacadeTest.java:134)
 	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
 	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
 	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
@@ -110,9 +111,10 @@ java.lang.NullPointerException
 	at org.apache.maven.surefire.booter.SurefireStarter.invokeProvider(SurefireStarter.java:175)
 	at org.apache.maven.surefire.booter.SurefireStarter.runSuitesInProcessWhenForked(SurefireStarter.java:107)
 	at org.apache.maven.surefire.booter.ForkedBooter.main(ForkedBooter.java:68)
-testGetGeoLocationByCity(Database.MySQLDBFacadeTest)  Time elapsed: 0.001 sec  <<< ERROR!
-java.lang.NullPointerException
-	at Database.MySQLDBFacadeTest.testGetGeoLocationByCity(MySQLDBFacadeTest.java:105)
+testGetGeoLocationByCity(Database.MySQLDBFacadeTest)  Time elapsed: 0.002 sec  <<< FAILURE!
+java.lang.AssertionError: The test case is a prototype.
+	at org.junit.Assert.fail(Assert.java:88)
+	at Database.MySQLDBFacadeTest.testGetGeoLocationByCity(MySQLDBFacadeTest.java:107)
 	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
 	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
 	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
@@ -146,9 +148,9 @@ java.lang.NullPointerException
 	at org.apache.maven.surefire.booter.SurefireStarter.invokeProvider(SurefireStarter.java:175)
 	at org.apache.maven.surefire.booter.SurefireStarter.runSuitesInProcessWhenForked(SurefireStarter.java:107)
 	at org.apache.maven.surefire.booter.ForkedBooter.main(ForkedBooter.java:68)
-testGetBooksByCity(Database.MySQLDBFacadeTest)  Time elapsed: 0.002 sec  <<< ERROR!
+testGetBooksByCity(Database.MySQLDBFacadeTest)  Time elapsed: 0.001 sec  <<< ERROR!
 java.lang.NullPointerException
-	at Database.MySQLDBFacadeTest.testGetBooksByCity(MySQLDBFacadeTest.java:80)
+	at Database.MySQLDBFacadeTest.testGetBooksByCity(MySQLDBFacadeTest.java:79)
 	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
 	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
 	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
