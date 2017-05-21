@@ -30,7 +30,7 @@ public class MySQLDBFacadeTest {
     private List<BookDTO> books;
 
     public MySQLDBFacadeTest() {
-        connector = new MySQLConnector("com.mysql.cj.jdbc.Driver", "jdbc:mysql://127.0.0.1:3306/gutenberg", "root", "");
+        connector = new MySQLConnector("com.mysql.cj.jdbc.Driver", "jdbc:mysql://127.0.0.1:3306/gutenberg", "travis", "");
         facade = new MySQLDBFacade(connector);
         double d1 = Math.round((48.8168D * 100000000));
         double d2 = Math.round((9.5769D * 100000000));
@@ -115,5 +115,4 @@ public class MySQLDBFacadeTest {
         List<BookDTO> result = facade.GetBooksByGeoLocation(city.getLatitude(), city.getLongitude());
         assertThat(result.size(), is(1768));
     }
-
 }
