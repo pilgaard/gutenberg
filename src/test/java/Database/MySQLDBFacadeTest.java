@@ -30,7 +30,7 @@ public class MySQLDBFacadeTest {
     private List<BookDTO> books;
 
     public MySQLDBFacadeTest() {
-        connector = new MySQLConnector("com.mysql.cj.jdbc.Driver", "jdbc:mysql://localhost:3306/gutenberg", "root", "root");
+        connector = new MySQLConnector("com.mysql.cj.jdbc.Driver", "jdbc:mysql://localhost:3306/gutenberg", "root", "");
         facade = new MySQLDBFacade(connector);
         double d1 = Math.round((48.8168D * 100000000));
         double d2 = Math.round((9.5769D * 100000000));
