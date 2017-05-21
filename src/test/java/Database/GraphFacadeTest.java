@@ -67,7 +67,7 @@ public class GraphFacadeTest {
      */
     @Test
     public void testGetCities() {
-        if (env.get("TRAVIS") != "true") {
+        if (env.get("TRAVIS") ==null) {
             List<CityDTO> result = facade.GetCities();
             assertThat(result.size(), is(47847));
         }
@@ -78,7 +78,7 @@ public class GraphFacadeTest {
      */
     @Test
     public void testGetBooksByCity() {
-        if (env.get("TRAVIS") != "true") {
+        if (env.get("TRAVIS") ==null) {
             List<BookDTO> result = facade.GetBooksByCity(city.getCityName());
             assertThat(result.size(), is(5));
         }
@@ -89,7 +89,7 @@ public class GraphFacadeTest {
      */
     @Test
     public void testGetCitiesByBookTitle() throws Exception {
-        if (env.get("TRAVIS") != "true") {
+        if (env.get("TRAVIS") ==null) {
             List<Coordinate> result = facade.GetCitiesByBookTitle(book.getTitle());
             assertThat(result.size(), is(97));
         }
@@ -100,7 +100,7 @@ public class GraphFacadeTest {
      */
     @Test
     public void testGetBooksByAuthorName() throws Exception {
-        if (env.get("TRAVIS") != "true") {
+        if (env.get("TRAVIS") ==null) {
             List<BookDTO> result = facade.GetBooksByAuthorName(book.getAuthorName());
             assertThat(result.size(), is(1));
         }
@@ -111,7 +111,7 @@ public class GraphFacadeTest {
      */
     @Test
     public void testGetGeoLocationByBook() throws Exception {
-        if (env.get("TRAVIS") != "true") {
+        if (env.get("TRAVIS") ==null) {
             List<Coordinate> result = facade.GetGeoLocationByBook(books);
             Coordinate answer = new Coordinate(city.getLongitude(), city.getLatitude());
             assertThat(result.get(0).toString(), is(answer.toString()));

@@ -9,8 +9,6 @@ import DTO.BookDTO;
 import DTO.CityDTO;
 import DTO.Coordinate;
 import java.math.BigDecimal;
-import java.sql.SQLException;
-import java.text.DecimalFormat;
 import java.util.ArrayList;
 import java.util.List;
 import org.neo4j.driver.v1.*;
@@ -34,7 +32,6 @@ public class GraphFacade implements IDBFacade{
         Driver driver = connector.GetDriver();
         Session session = driver.session();
 
-        // Run a query matching all nodes
         StatementResult result = session.run(query);
 
         while ( result.hasNext() ) {
@@ -62,7 +59,6 @@ public class GraphFacade implements IDBFacade{
         Driver driver = connector.GetDriver();
         Session session = driver.session();
 
-        // Run a query matching all nodes
         StatementResult result = session.run(query);
         while ( result.hasNext() ) {
             book = new BookDTO();
@@ -88,7 +84,6 @@ public class GraphFacade implements IDBFacade{
         Driver driver = connector.GetDriver();
         Session session = driver.session();
 
-        // Run a query matching all nodes
         StatementResult result = session.run(query);
         while ( result.hasNext() ) {
             Record record = result.next();
@@ -117,7 +112,6 @@ public class GraphFacade implements IDBFacade{
         Driver driver = connector.GetDriver();
         Session session = driver.session();
 
-        // Run a query matching all nodes
         StatementResult result = session.run(query);
         while ( result.hasNext() ) {
             book = new BookDTO();
@@ -144,9 +138,6 @@ public class GraphFacade implements IDBFacade{
                 }
             }
         }
-        /*for (Coordinate coordinate : coordinates) {
-            System.out.println(coordinate);
-        }*/
         return coordinates;
     }
 
@@ -160,7 +151,6 @@ public class GraphFacade implements IDBFacade{
         Driver driver = connector.GetDriver();
         Session session = driver.session();
 
-        // Run a query matching all nodes
         StatementResult result = session.run(query);
         while ( result.hasNext() ) {
             book = new BookDTO();
