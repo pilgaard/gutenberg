@@ -5,6 +5,7 @@
  */
 package Database;
 
+import java.util.Map;
 import org.neo4j.driver.v1.*;
 /**
  *
@@ -12,9 +13,14 @@ import org.neo4j.driver.v1.*;
  */
 public class GraphConnector {
     private static Driver driver;
+    private Map<String, String> env = System.getenv();
     
     public GraphConnector(){
-        driver = GraphDatabase.driver("bolt://localhost:7687", AuthTokens.basic("neo4j", "class")); //Change Password
+        if (env.get("TRAVIS") == "true") {
+            driver = GraphDatabase.driver("bolt://localhost:7474", AuthTokens.basic("neo4j", "class"));
+        } else {
+            driver = GraphDatabase.driver("bolt://localhost:7687", AuthTokens.basic("neo4j", "class"));
+        }
     }
     
     public Driver GetDriver(){
