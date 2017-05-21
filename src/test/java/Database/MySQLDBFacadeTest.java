@@ -29,7 +29,7 @@ public class MySQLDBFacadeTest {
     private List<BookDTO> books;
 
     public MySQLDBFacadeTest() {
-        connector = new MySQLConnector("com.mysql.cj.jdbc.Driver", "jdbc:mysql://localhost:3306/gutenberg", "root", "root");
+        connector = new MySQLConnector("com.mysql.cj.jdbc.Driver", "jdbc:mysql://localhost:7687/gutenberg", "root", "root");
         facade = new MySQLDBFacade(connector);
         double d1 = Math.round((48.8168D * 100000000));
         double d2 = Math.round((9.5769D * 100000000));
@@ -101,7 +101,6 @@ public class MySQLDBFacadeTest {
     @Test
     public void testGetGeoLocationByBook() throws SQLException {
         List<Coordinate> result = facade.GetGeoLocationByBook(books);
-        System.out.println(city.getLongitude());
         Coordinate answer = new Coordinate(new BigDecimal("9.57690000"), new BigDecimal("48.81680000"));
         assertThat(result.get(0).toString(), is(answer.toString()));
     }
