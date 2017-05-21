@@ -17,8 +17,14 @@ public class GraphConnector {
     
     public GraphConnector(){
         if (env.get("TRAVIS") == "true") {
+            for (int i = 0; i < 10; i++) {
+                System.out.println(env.get("TRAVIS") == "true");
+            }
             driver = GraphDatabase.driver("bolt://localhost:7474", AuthTokens.basic("neo4j", "class"));
         } else {
+            for (int i = 0; i < 10; i++) {
+                System.out.println(env.get("TRAVIS") == "true");
+            }
             driver = GraphDatabase.driver("bolt://localhost:7687", AuthTokens.basic("neo4j", "class"));
         }
     }

@@ -21,9 +21,9 @@ public class DBInitializer {
     public static void main(String[] args) throws SQLException, ClassNotFoundException {
         MySQLConnector msc = new MySQLConnector();
         MySQLDBFacade sql = new MySQLDBFacade(msc);
-        CityChekker chek = new CityChekker();
-        //sql.insertList();
-        /*ArrayList<CityDTO> cities = sql.GetCities();
+        /*CityChekker chek = new CityChekker();
+        sql.insertList();
+        ArrayList<CityDTO> cities = sql.GetCities();
         System.out.println("step 1");
         ArrayList<BookDTO> books = chek.scanFiles(cities);
         int authorLength = 0;

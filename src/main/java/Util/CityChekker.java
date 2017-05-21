@@ -79,9 +79,4 @@ public class CityChekker {
         }
         return result;
     }
-
-    public ArrayList<String> findCitiesWithSpaces(ArrayList<String> CapWords) {
-        String cities[] = {"New Amsterdam", "New Orleans", "New York", "Abu Dhabi", "Rio de Janeiro"};
-        return null;
-    }
 }
