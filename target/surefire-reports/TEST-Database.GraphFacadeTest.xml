@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" ?>
-<testsuite tests="1" failures="0" name="Database.GraphFacadeTest" time="0.914" errors="1" skipped="0">
+<testsuite tests="6" failures="0" name="Database.GraphFacadeTest" time="4.996" errors="0" skipped="0">
   <properties>
     <property name="java.runtime.name" value="Java(TM) SE Runtime Environment"/>
     <property name="sun.boot.library.path" value="/Library/Java/JavaVirtualMachines/jdk1.8.0_60.jdk/Contents/Home/jre/lib"/>
@@ -14,6 +14,7 @@
     <property name="user.country" value="DK"/>
     <property name="sun.java.launcher" value="SUN_STANDARD"/>
     <property name="sun.os.patch.level" value="unknown"/>
+    <property name="test" value="Database.**.*Test"/>
     <property name="java.vm.specification.name" value="Java Virtual Machine Specification"/>
     <property name="user.dir" value="/Users/Emil/examproject/gutenberg"/>
     <property name="java.runtime.version" value="1.8.0_60-b27"/>
@@ -43,7 +44,7 @@
     <property name="java.vm.specification.version" value="1.8"/>
     <property name="sun.arch.data.model" value="64"/>
     <property name="java.home" value="/Library/Java/JavaVirtualMachines/jdk1.8.0_60.jdk/Contents/Home/jre"/>
-    <property name="sun.java.command" value="org.codehaus.plexus.classworlds.launcher.Launcher -Dmaven.ext.class.path=/Applications/NetBeans/NetBeans 8.2.app/Contents/Resources/NetBeans/java/maven-nblib/netbeans-eventspy.jar clean install"/>
+    <property name="sun.java.command" value="org.codehaus.plexus.classworlds.launcher.Launcher -Dtest=Database.**.*Test -Dmaven.ext.class.path=/Applications/NetBeans/NetBeans 8.2.app/Contents/Resources/NetBeans/java/maven-nblib/netbeans-eventspy.jar surefire:test"/>
     <property name="java.specification.vendor" value="Oracle Corporation"/>
     <property name="user.language" value="da"/>
     <property name="awt.toolkit" value="sun.lwawt.macosx.LWCToolkit"/>
@@ -59,69 +60,10 @@
     <property name="sun.io.unicode.encoding" value="UnicodeBig"/>
     <property name="sun.cpu.isalist" value=""/>
   </properties>
-  <testcase classname="Database.GraphFacadeTest" name="testGetCities" time="0.416">
-    <error message="Unable to process request: Connection reset by peer" type="org.neo4j.driver.v1.exceptions.ClientException">org.neo4j.driver.v1.exceptions.ClientException: Unable to process request: Connection reset by peer
-	at org.neo4j.driver.internal.net.SocketClient.start(SocketClient.java:137)
-	at org.neo4j.driver.internal.net.SocketConnection.&lt;init&gt;(SocketConnection.java:66)
-	at org.neo4j.driver.internal.net.pooling.SocketConnectionPool.connect(SocketConnectionPool.java:83)
-	at org.neo4j.driver.internal.net.pooling.SocketConnectionPool.access$000(SocketConnectionPool.java:55)
-	at org.neo4j.driver.internal.net.pooling.SocketConnectionPool$1.get(SocketConnectionPool.java:119)
-	at org.neo4j.driver.internal.net.pooling.SocketConnectionPool$1.get(SocketConnectionPool.java:111)
-	at org.neo4j.driver.internal.net.pooling.BlockingPooledConnectionQueue.acquire(BlockingPooledConnectionQueue.java:87)
-	at org.neo4j.driver.internal.net.pooling.SocketConnectionPool.acquire(SocketConnectionPool.java:122)
-	at org.neo4j.driver.internal.DirectDriver.newSessionWithMode(DirectDriver.java:49)
-	at org.neo4j.driver.internal.BaseDriver.session(BaseDriver.java:62)
-	at org.neo4j.driver.internal.BaseDriver.session(BaseDriver.java:55)
-	at Database.GraphFacade.GetCities(GraphFacade.java:34)
-	at Database.GraphFacadeTest.testGetCities(GraphFacadeTest.java:52)
-	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
-	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
-	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
-	at java.lang.reflect.Method.invoke(Method.java:497)
-	at org.junit.runners.model.FrameworkMethod$1.runReflectiveCall(FrameworkMethod.java:50)
-	at org.junit.internal.runners.model.ReflectiveCallable.run(ReflectiveCallable.java:12)
-	at org.junit.runners.model.FrameworkMethod.invokeExplosively(FrameworkMethod.java:47)
-	at org.junit.internal.runners.statements.InvokeMethod.evaluate(InvokeMethod.java:17)
-	at org.junit.internal.runners.statements.RunBefores.evaluate(RunBefores.java:26)
-	at org.junit.internal.runners.statements.RunAfters.evaluate(RunAfters.java:27)
-	at org.junit.runners.ParentRunner.runLeaf(ParentRunner.java:325)
-	at org.junit.runners.BlockJUnit4ClassRunner.runChild(BlockJUnit4ClassRunner.java:78)
-	at org.junit.runners.BlockJUnit4ClassRunner.runChild(BlockJUnit4ClassRunner.java:57)
-	at org.junit.runners.ParentRunner$3.run(ParentRunner.java:290)
-	at org.junit.runners.ParentRunner$1.schedule(ParentRunner.java:71)
-	at org.junit.runners.ParentRunner.runChildren(ParentRunner.java:288)
-	at org.junit.runners.ParentRunner.access$000(ParentRunner.java:58)
-	at org.junit.runners.ParentRunner$2.evaluate(ParentRunner.java:268)
-	at org.junit.internal.runners.statements.RunBefores.evaluate(RunBefores.java:26)
-	at org.junit.internal.runners.statements.RunAfters.evaluate(RunAfters.java:27)
-	at org.junit.runners.ParentRunner.run(ParentRunner.java:363)
-	at org.apache.maven.surefire.junit4.JUnit4TestSet.execute(JUnit4TestSet.java:53)
-	at org.apache.maven.surefire.junit4.JUnit4Provider.executeTestSet(JUnit4Provider.java:123)
-	at org.apache.maven.surefire.junit4.JUnit4Provider.invoke(JUnit4Provider.java:104)
-	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
-	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
-	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
-	at java.lang.reflect.Method.invoke(Method.java:497)
-	at org.apache.maven.surefire.util.ReflectionUtils.invokeMethodWithArray(ReflectionUtils.java:164)
-	at org.apache.maven.surefire.booter.ProviderFactory$ProviderProxy.invoke(ProviderFactory.java:110)
-	at org.apache.maven.surefire.booter.SurefireStarter.invokeProvider(SurefireStarter.java:175)
-	at org.apache.maven.surefire.booter.SurefireStarter.runSuitesInProcessWhenForked(SurefireStarter.java:107)
-	at org.apache.maven.surefire.booter.ForkedBooter.main(ForkedBooter.java:68)
-Caused by: java.io.IOException: Connection reset by peer
-	at sun.nio.ch.FileDispatcherImpl.read0(Native Method)
-	at sun.nio.ch.SocketDispatcher.read(SocketDispatcher.java:39)
-	at sun.nio.ch.IOUtil.readIntoNativeBuffer(IOUtil.java:223)
-	at sun.nio.ch.IOUtil.read(IOUtil.java:197)
-	at sun.nio.ch.SocketChannelImpl.read(SocketChannelImpl.java:380)
-	at org.neo4j.driver.internal.security.TLSSocketChannel.unwrap(TLSSocketChannel.java:164)
-	at org.neo4j.driver.internal.security.TLSSocketChannel.runHandshake(TLSSocketChannel.java:114)
-	at org.neo4j.driver.internal.security.TLSSocketChannel.&lt;init&gt;(TLSSocketChannel.java:81)
-	at org.neo4j.driver.internal.security.TLSSocketChannel.create(TLSSocketChannel.java:69)
-	at org.neo4j.driver.internal.net.SocketClient$ChannelFactory.create(SocketClient.java:297)
-	at org.neo4j.driver.internal.net.SocketClient.start(SocketClient.java:124)
-	... 45 more
-</error>
-    <system-out>getCities
-</system-out>
-  </testcase>
+  <testcase classname="Database.GraphFacadeTest" name="testGetBooksByAuthorName" time="1.327"/>
+  <testcase classname="Database.GraphFacadeTest" name="testGetBooksByGeoLocation" time="1.155"/>
+  <testcase classname="Database.GraphFacadeTest" name="testGetGeoLocationByBook" time="1.084"/>
+  <testcase classname="Database.GraphFacadeTest" name="testGetCities" time="0.559"/>
+  <testcase classname="Database.GraphFacadeTest" name="testGetCitiesByBookTitle" time="0.138"/>
+  <testcase classname="Database.GraphFacadeTest" name="testGetBooksByCity" time="0.168"/>
 </testsuite>

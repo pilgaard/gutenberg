@@ -22,48 +22,50 @@ import static org.junit.Assert.*;
  * @author Emil
  */
 public class MySQLDBFacadeTest {
+
     private final MySQLConnector connector;
-    MySQLDBFacade sqlFacade;
+    private MySQLDBFacade facade;
+    private CityDTO city;
+    private BookDTO book;
+    private List<BookDTO> books;
+
     public MySQLDBFacadeTest() {
         connector = new MySQLConnector("com.mysql.cj.jdbc.Driver", "jdbc:mysql://localhost:3306/gutenberg", "root", "root");
-        sqlFacade= new MySQLDBFacade(connector);
+        facade = new MySQLDBFacade(connector);
+        double d1 = Math.round((48.8168D * 100000000));
+        double d2 = Math.round((9.5769D * 100000000));
+        BigDecimal latitude = new BigDecimal(d1 / 100000000);
+        BigDecimal longitude = new BigDecimal(d2 / 100000000);
+        city = new CityDTO(3206285L, latitude, longitude, "Urbach");
+        List<Long> cities = new ArrayList();
+        cities.add(city.getId());
+        book = new BookDTO("Gustav Just", "Life of Luther", cities);
+        books = new ArrayList();
+        books.add(book);
     }
-    
+
     @BeforeClass
     public static void setUpClass() {
     }
-    
+
     @AfterClass
     public static void tearDownClass() {
     }
-    
+
     @Before
     public void setUp() {
     }
-    
+
     @After
     public void tearDown() {
-    }
-
-    /**
-     * Test of InsertBooksInDB method, of class MySQLDBFacade.
-     */
-    @Test
-    public void testInsertBooksInDB() throws Exception {
-        System.out.println("InsertBooksInDB");
-        List<BookDTO> books = null;
-        MySQLDBFacade instance = null;
-        instance.InsertBooksInDB(books);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
     }
 
     /**
      * Test of GetCities method, of class MySQLDBFacade.
      */
     @Test
-    public void testGetCities() throws Exception {
-        List<CityDTO> expResult = sqlFacade.GetCities();
+    public void testGetCities() throws SQLException {
+        List<CityDTO> expResult = facade.GetCities();
         assertThat(expResult.size(), is(47847));
     }
 
@@ -71,15 +73,9 @@ public class MySQLDBFacadeTest {
      * Test of GetBooksByCity method, of class MySQLDBFacade.
      */
     @Test
-    public void testGetBooksByCity() {
-        System.out.println("GetBooksByCity");
-        String cityName = "Byron";
-        MySQLDBFacade instance = null;
-        List<BookDTO> expResult = null;
-        List<BookDTO> result = instance.GetBooksByCity(cityName);
-        assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+    public void testGetBooksByCity() throws SQLException {
+        List<BookDTO> result = facade.GetBooksByCity(city.getCityName());
+        assertThat(result.size(), is(5));
     }
 
     /**
@@ -87,24 +83,8 @@ public class MySQLDBFacadeTest {
      */
     @Test
     public void testGetCitiesByBookTitle() throws SQLException {
-        String bookTitle = "Byron";
-        List<Coordinate> expResult = sqlFacade.GetCitiesByBookTitle(bookTitle);
-        assertThat(expResult.size(), is(478));
-    }
-
-    /**
-     * Test of GetGeoLocationByCity method, of class MySQLDBFacade.
-     */
-    @Test
-    public void testGetGeoLocationByCity() {
-        System.out.println("GetGeoLocationByCity");
-        CityDTO city = null;
-        MySQLDBFacade instance = null;
-        HashMap<Long, Long> expResult = null;
-        //HashMap<Long, Long> result = instance.GetGeoLocationByCity(city);
-        //assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+        List<Coordinate> result = facade.GetCitiesByBookTitle(book.getTitle());
+        assertThat(result.size(), is(97));
     }
 
     /**
@@ -112,26 +92,19 @@ public class MySQLDBFacadeTest {
      */
     @Test
     public void testGetBooksByAuthorName() throws SQLException {
-        System.out.println("GetBooksByAuthorName");
-        String authorName = "William Shakespeare";
-        
-        List<BookDTO> result = sqlFacade.GetBooksByAuthorName(authorName);
-        assertThat(result.size(), is(22));
+        List<BookDTO> result = facade.GetBooksByAuthorName(book.getAuthorName());
+        assertThat(result.size(), is(1));
     }
 
     /**
      * Test of GetGeoLocationByBook method, of class MySQLDBFacade.
      */
     @Test
-    public void testGetGeoLocationByBook() {
-        System.out.println("GetGeoLocationByBook");
-        BookDTO book = null;
-        MySQLDBFacade instance = null;
-        HashMap<Long, Long> expResult = null;
-        //HashMap<Long, Long> result = instance.GetGeoLocationByBook(book);
-        //assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+    public void testGetGeoLocationByBook() throws SQLException {
+        List<Coordinate> result = facade.GetGeoLocationByBook(books);
+        System.out.println(city.getLongitude());
+        Coordinate answer = new Coordinate(new BigDecimal("9.57690000"), new BigDecimal("48.81680000"));
+        assertThat(result.get(0).toString(), is(answer.toString()));
     }
 
     /**
@@ -139,15 +112,8 @@ public class MySQLDBFacadeTest {
      */
     @Test
     public void testGetBooksByGeoLocation() throws SQLException {
-        System.out.println("GetBooksByGeoLocation");
-        BigDecimal latitude = null;
-        BigDecimal longitude = null;
-        MySQLDBFacade instance = null;
-        List<BookDTO> expResult = null;
-        List<BookDTO> result = instance.GetBooksByGeoLocation(latitude, longitude);
-        assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+        List<BookDTO> result = facade.GetBooksByGeoLocation(city.getLatitude(), city.getLongitude());
+        assertThat(result.size(), is(1768));
     }
-    
+
 }

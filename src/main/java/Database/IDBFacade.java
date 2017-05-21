@@ -23,15 +23,15 @@ public interface IDBFacade {
     @param cityName The name of the city to look for.
     @return Returns a List of BookDTO.
     */    
-    public List<BookDTO> GetBooksByCity(String cityName);
+    public List<BookDTO> GetBooksByCity(String cityName) throws Exception;
     
-    public List<CityDTO> GetCities();
+    public List<CityDTO> GetCities() throws Exception;
     //Given a book title, your application plots all cities mentioned in this book onto a map.
-    public List<Coordinate> GetCitiesByBookTitle(String bookTitle) throws SQLException;
+    public List<Coordinate> GetCitiesByBookTitle(String bookTitle) throws Exception;
     
     //Given an author name your application lists all books written by that author and plots all cities mentioned in any of the books onto a map.
-    public List<BookDTO> GetBooksByAuthorName(String authorName) throws SQLException;
-    public ArrayList<Coordinate> GetGeoLocationByBook(List<BookDTO> books) throws SQLException;
+    public List<BookDTO> GetBooksByAuthorName(String authorName) throws Exception;
+    public ArrayList<Coordinate> GetGeoLocationByBook(List<BookDTO> books) throws Exception;
     
     
     /**
@@ -40,7 +40,7 @@ public interface IDBFacade {
      * @param longitude
      * @return 
      */
-    public List<BookDTO> GetBooksByGeoLocation(BigDecimal latitude, BigDecimal longitude) throws SQLException;
+    public List<BookDTO> GetBooksByGeoLocation(BigDecimal latitude, BigDecimal longitude) throws Exception;
     
 
 }

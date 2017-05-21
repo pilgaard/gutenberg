@@ -32,9 +32,7 @@ public class CityChekkerTest {
         cities.add(new CityDTO("Copenhagen"));
         cities.add(new CityDTO("Haslev"));
         cities.add(new CityDTO("London"));
-        cities.add(new CityDTO("New York"));
-        
-        
+        cities.add(new CityDTO("New York"));   
     }
     
     @BeforeClass

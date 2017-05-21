@@ -74,7 +74,7 @@ public class MySQLDBFacade implements IDBFacade {
     }
     
     @Override
-    public List<CityDTO> GetCities() {
+    public List<CityDTO> GetCities() throws SQLException {
         List<CityDTO> citiesToReturn = new ArrayList();
         String query = "call GetCities()";
         try (Connection conn = connector.GetConnection();
@@ -86,18 +86,33 @@ public class MySQLDBFacade implements IDBFacade {
         } catch (Exception e) {
             e.printStackTrace();
         }finally{
-            try {
                 rs.close();
-            } catch (SQLException ex) {
-                Logger.getLogger(MySQLDBFacade.class.getName()).log(Level.SEVERE, null, ex);
-            }
         }
         return citiesToReturn;
     }
 
     @Override
-    public List<BookDTO> GetBooksByCity(String cityName) {
-        throw new UnsupportedOperationException("Not supported yet.");
+    public List<BookDTO> GetBooksByCity(String cityName) throws SQLException{
+        ArrayList<BookDTO> booksToReturn = new ArrayList();
+        String query = "call GetBooksByCity(?);";
+        BookDTO dto;
+        try (Connection conn = connector.GetConnection();
+                CallableStatement stmt = conn.prepareCall(query)) {
+ 
+            stmt.setString(1, cityName);
+            rs = stmt.executeQuery();
+            while(rs.next()){
+                dto = new BookDTO();
+                dto.setTitle(rs.getString("title"));
+                dto.setAuthorName(rs.getString("author"));
+                booksToReturn.add(dto);
+            }
+        }catch(SQLException ex){
+            System.out.println(ex.getMessage());
+        }finally{
+            rs.close();
+        }
+        return booksToReturn;
     }
 
     @Override
@@ -164,9 +179,6 @@ public class MySQLDBFacade implements IDBFacade {
                 }
             }
         }
-        /*for (Coordinate coordinate : coordinates) {
-            System.out.println(coordinate);
-        }*/
         return coordinates;
     }
 
@@ -191,7 +203,6 @@ public class MySQLDBFacade implements IDBFacade {
         }finally{
             rs.close();
         }
-        System.out.println("booksbeingMentioned = " + booksBeingMentioned.size());
         return booksBeingMentioned;
     }
 }

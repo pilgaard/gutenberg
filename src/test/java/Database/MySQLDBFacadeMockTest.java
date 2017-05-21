@@ -33,7 +33,7 @@ public class MySQLDBFacadeMockTest {
     }
     
     @Test
-    public void GetAllCities(){
+    public void GetAllCities()throws Exception{
         List<CityDTO> cities = new ArrayList<CityDTO>();
         cities.add(new CityDTO());
         
@@ -42,7 +42,7 @@ public class MySQLDBFacadeMockTest {
     }
     
     @Test
-    public void TestGetBooksByCity(){
+    public void TestGetBooksByCity()throws Exception{
         String title = "Book Title";
         
         List<BookDTO> books = new ArrayList<BookDTO>();
@@ -53,7 +53,7 @@ public class MySQLDBFacadeMockTest {
     }
     
     @Test
-    public void TestGetCitiesByBookTitle() throws SQLException{
+    public void TestGetCitiesByBookTitle() throws Exception{
         String title = "Book Title";
         
         List<Coordinate> coordinates = new ArrayList<Coordinate>();
@@ -64,7 +64,7 @@ public class MySQLDBFacadeMockTest {
     }
     
     @Test
-    public void TestGetBooksByAuthorName() throws SQLException{
+    public void TestGetBooksByAuthorName() throws Exception{
         String author = "Author Name";
         
         List<BookDTO> books = new ArrayList<BookDTO>();
@@ -75,7 +75,7 @@ public class MySQLDBFacadeMockTest {
     }
     
     @Test
-    public void TestGetGeoLocationByBook() throws SQLException{
+    public void TestGetGeoLocationByBook() throws Exception{
         ArrayList<BookDTO> books = new ArrayList<BookDTO>();
         books.add(new BookDTO());
         
@@ -87,7 +87,7 @@ public class MySQLDBFacadeMockTest {
     }
     
     @Test
-    public void GetBooksByGeoLocation() throws SQLException{
+    public void GetBooksByGeoLocation() throws Exception{
         List<BookDTO> books = new ArrayList<BookDTO>();
         books.add(new BookDTO());
         

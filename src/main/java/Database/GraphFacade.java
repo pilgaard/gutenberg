@@ -10,6 +10,7 @@ import DTO.CityDTO;
 import DTO.Coordinate;
 import java.math.BigDecimal;
 import java.sql.SQLException;
+import java.text.DecimalFormat;
 import java.util.ArrayList;
 import java.util.List;
 import org.neo4j.driver.v1.*;
@@ -38,11 +39,12 @@ public class GraphFacade implements IDBFacade{
 
         while ( result.hasNext() ) {
             Record record = result.next();
-            long id = Long.parseLong(record.get("n.id").asString()); 
+            long id = record.get("n.id").asLong(); 
             String name = record.get("n.asciiname").asString();
-            BigDecimal latitude = new BigDecimal(record.get("n.lat").asString());
-            BigDecimal longitude = new BigDecimal(record.get("n.long").asString());
-            
+            double d1 = Math.round((record.get("n.lat").asDouble()*100000000));
+            double d2 = Math.round((record.get("n.long").asDouble()*100000000));
+            BigDecimal latitude = new BigDecimal(d1/100000000);
+            BigDecimal longitude = new BigDecimal(d2/100000000);
             CityDTO cityDTO = new CityDTO(id, latitude, longitude, name);
             cities.add(cityDTO);
         }
@@ -77,12 +79,12 @@ public class GraphFacade implements IDBFacade{
     }
 
     @Override
-    public List<Coordinate> GetCitiesByBookTitle(String bookTitle) throws SQLException {
+    public List<Coordinate> GetCitiesByBookTitle(String bookTitle) {
         List<CityDTO> citiesToReturn = new ArrayList();
         CityDTO city;
         List<Coordinate> coordinates = new ArrayList<Coordinate>();
         String query = "MATCH (c:City)-[r:MENTIONED_IN]->(b:Book { title: '"+bookTitle+"' })\n" +
-                        "RETURN  c.id, c.asciiname, c.lat, long;";
+                        "RETURN  c.id, c.asciiname, c.lat, c.long;";
         Driver driver = connector.GetDriver();
         Session session = driver.session();
 
@@ -93,8 +95,8 @@ public class GraphFacade implements IDBFacade{
             city = new CityDTO();
             long id = record.get("c.id").asLong();
             String name = record.get("c.asciiname").asString();
-            BigDecimal latitude = new BigDecimal(record.get("n.lat").asString());
-            BigDecimal longitude = new BigDecimal(record.get("n.long").asString());
+            BigDecimal latitude = new BigDecimal(record.get("c.lat").asDouble());
+            BigDecimal longitude = new BigDecimal(record.get("c.long").asDouble());
             
             CityDTO cityDTO = new CityDTO(id, latitude, longitude, name);
             citiesToReturn.add(cityDTO);
@@ -104,11 +106,11 @@ public class GraphFacade implements IDBFacade{
         for (CityDTO ci : citiesToReturn) {
             coordinates.add(new Coordinate(ci.getLongitude(), ci.getLatitude()));
         }
-        return null;
+        return coordinates;
     }
 
     @Override
-    public List<BookDTO> GetBooksByAuthorName(String authorName) throws SQLException {
+    public List<BookDTO> GetBooksByAuthorName(String authorName) {
         List<BookDTO> books = new ArrayList();
         BookDTO book;
         String query = "MATCH (b:Book{author: '"+authorName+"'}) RETURN b;";
@@ -132,12 +134,45 @@ public class GraphFacade implements IDBFacade{
     }
 
     @Override
-    public ArrayList<Coordinate> GetGeoLocationByBook(List<BookDTO> books) throws SQLException {
-        return null;
+    public ArrayList<Coordinate> GetGeoLocationByBook(List<BookDTO> books) {
+        List<CityDTO> cities = GetCities();
+        ArrayList<Coordinate> coordinates = new ArrayList();
+        for (BookDTO book : books) {
+            for(CityDTO city : cities){
+                if(book.getCities().contains(city.getId())){
+                    coordinates.add(new Coordinate(city.getLongitude(), city.getLatitude()));
+                }
+            }
+        }
+        /*for (Coordinate coordinate : coordinates) {
+            System.out.println(coordinate);
+        }*/
+        return coordinates;
     }
 
     @Override
-    public List<BookDTO> GetBooksByGeoLocation(BigDecimal latitude, BigDecimal longitude) throws SQLException {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    public List<BookDTO> GetBooksByGeoLocation(BigDecimal latitude, BigDecimal longitude) {
+        List<BookDTO> books = new ArrayList();
+        BookDTO book;
+        String query = "WITH "+latitude+" AS latitude, "+longitude+" AS longitude MATCH (c:City)-[r:MENTIONED_IN]->(b:Book) "
+                + "WHERE 2 * 6371 * asin(sqrt(haversin(radians(latitude - c.lat))+ cos(radians(latitude))* cos(radians(c.lat))* "
+                + "haversin(radians(longitude - c.long)))) < 50.0 RETURN c;";
+        Driver driver = connector.GetDriver();
+        Session session = driver.session();
+
+        // Run a query matching all nodes
+        StatementResult result = session.run(query);
+        while ( result.hasNext() ) {
+            book = new BookDTO();
+            Record record = result.next();
+            String author = record.get("b.author").asString();
+            String title = record.get("b.title").asString();
+            book.setAuthorName(author);
+            book.setTitle(title);
+            books.add(book);
+        }
+        session.close();
+        driver.close();
+        return books;
     }
 }

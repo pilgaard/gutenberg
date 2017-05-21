@@ -52,7 +52,7 @@ public class FileScannerTest {
     @Test
     public void testCapWords() {
         ArrayList<String> words = fs.findCapWords(file);
-        assertThat(words.size(), is(58));
+        assertThat(words.size(), is(42));
     }
 
     @Test
