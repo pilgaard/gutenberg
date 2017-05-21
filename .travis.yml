@@ -13,6 +13,8 @@ services:
 before_install:
   - mysql -u root -e 'CREATE DATABASE gutenberg;'
   - mysql -h "localhost" -u "root" "gutenberg" < "DBSetup.sql"
+  - mysql -u root -e "CREATE USER 'testUser'@'localhost' IDENTIFIED BY 'testUser';"
+  - mysql -u root -e "GRANT ALL ON gutenberg.* TO 'testUser'@'localhost';"
 
 
 script:

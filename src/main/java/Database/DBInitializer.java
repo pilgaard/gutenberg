@@ -19,7 +19,7 @@ import java.util.*;
 public class DBInitializer {
     
     public static void main(String[] args) throws SQLException, ClassNotFoundException {
-        MySQLConnector msc = new MySQLConnector("com.mysql.cj.jdbc.Driver", "jdbc:mysql://localhost:3306/gutenberg", "root", "");
+        MySQLConnector msc = new MySQLConnector("com.mysql.cj.jdbc.Driver", "jdbc:mysql://localhost:3306/gutenberg", "testUser", "");
         MySQLDBFacade sql = new MySQLDBFacade(msc);
         CityChekker chek = new CityChekker();
         //sql.insertList();

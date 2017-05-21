@@ -8,9 +8,9 @@ package Database;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
+import java.util.Map;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import javax.persistence.EntityManagerFactory;
 
 /**
  *
@@ -23,12 +23,22 @@ public class MySQLConnector {
     private String username;
     private String password;
     private Connection connection = null;
+    
+    private void getInvironment() {
+        Map<String, String> env = System.getenv();
+        for (String envName : env.keySet()) {
+            System.out.format("%s=%s%n",
+                              envName,
+                              env.get(envName));
+        }
+    }
 
     public MySQLConnector(String driver, String uri, String username, String password) {
         this.driver = driver;
         this.uri = uri;
         this.username = username;
         this.password = password;
+        //getInvironment();
     }
 
     public Connection GetConnection() {
