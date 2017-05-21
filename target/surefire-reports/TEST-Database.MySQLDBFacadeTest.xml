@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" ?>
-<testsuite tests="6" failures="0" name="Database.MySQLDBFacadeTest" time="2.025" errors="0" skipped="0">
+<testsuite tests="6" failures="0" name="Database.MySQLDBFacadeTest" time="2.386" errors="0" skipped="0">
   <properties>
     <property name="java.runtime.name" value="Java(TM) SE Runtime Environment"/>
     <property name="sun.boot.library.path" value="/Library/Java/JavaVirtualMachines/jdk1.8.0_60.jdk/Contents/Home/jre/lib"/>
@@ -60,10 +60,10 @@
     <property name="sun.io.unicode.encoding" value="UnicodeBig"/>
     <property name="sun.cpu.isalist" value=""/>
   </properties>
-  <testcase classname="Database.MySQLDBFacadeTest" name="testGetBooksByAuthorName" time="0.686"/>
-  <testcase classname="Database.MySQLDBFacadeTest" name="testGetBooksByGeoLocation" time="0.1"/>
-  <testcase classname="Database.MySQLDBFacadeTest" name="testGetGeoLocationByBook" time="0.709"/>
-  <testcase classname="Database.MySQLDBFacadeTest" name="testGetCities" time="0.348"/>
-  <testcase classname="Database.MySQLDBFacadeTest" name="testGetCitiesByBookTitle" time="0.028"/>
-  <testcase classname="Database.MySQLDBFacadeTest" name="testGetBooksByCity" time="0.029"/>
+  <testcase classname="Database.MySQLDBFacadeTest" name="testGetBooksByAuthorName" time="0.68"/>
+  <testcase classname="Database.MySQLDBFacadeTest" name="testGetBooksByGeoLocation" time="0.109"/>
+  <testcase classname="Database.MySQLDBFacadeTest" name="testGetGeoLocationByBook" time="0.681"/>
+  <testcase classname="Database.MySQLDBFacadeTest" name="testGetCities" time="0.701"/>
+  <testcase classname="Database.MySQLDBFacadeTest" name="testGetCitiesByBookTitle" time="0.032"/>
+  <testcase classname="Database.MySQLDBFacadeTest" name="testGetBooksByCity" time="0.04"/>
 </testsuite>

@@ -24,21 +24,20 @@ public class MySQLConnector {
     private String password;
     private Connection connection = null;
     
-    private void getInvironment() {
+    private String getInvironment() {
         Map<String, String> env = System.getenv();
-        for (String envName : env.keySet()) {
-            System.out.format("%s=%s%n",
-                              envName,
-                              env.get(envName));
-        }
+        System.out.println(env.get("Travis"));
+        return env.get("Travis");
     }
 
-    public MySQLConnector(String driver, String uri, String username, String password) {
-        this.driver = driver;
-        this.uri = uri;
-        this.username = username;
-        this.password = password;
-        //getInvironment();
+    public MySQLConnector() {
+        driver = "com.mysql.cj.jdbc.Driver";
+        username = "root";
+        password = "root";
+        if (getInvironment()=="true") {
+            uri = "jdbc:mysql://localhost:7687/gutenberg";
+        } else uri = "jdbc:mysql://localhost:3306/gutenberg";
+        
     }
 
     public Connection GetConnection() {
