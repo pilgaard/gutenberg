@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" ?>
-<testsuite tests="6" failures="0" name="Database.GraphFacadeTest" time="5.397" errors="0" skipped="0">
+<testsuite tests="6" failures="0" name="Database.GraphFacadeTest" time="5.169" errors="0" skipped="0">
   <properties>
     <property name="java.runtime.name" value="Java(TM) SE Runtime Environment"/>
     <property name="sun.boot.library.path" value="/Library/Java/JavaVirtualMachines/jdk1.8.0_60.jdk/Contents/Home/jre/lib"/>
@@ -60,10 +60,10 @@
     <property name="sun.io.unicode.encoding" value="UnicodeBig"/>
     <property name="sun.cpu.isalist" value=""/>
   </properties>
-  <testcase classname="Database.GraphFacadeTest" name="testGetBooksByAuthorName" time="1.284"/>
-  <testcase classname="Database.GraphFacadeTest" name="testGetBooksByGeoLocation" time="1.36"/>
-  <testcase classname="Database.GraphFacadeTest" name="testGetGeoLocationByBook" time="1.288"/>
-  <testcase classname="Database.GraphFacadeTest" name="testGetCities" time="0.612"/>
-  <testcase classname="Database.GraphFacadeTest" name="testGetCitiesByBookTitle" time="0.242"/>
-  <testcase classname="Database.GraphFacadeTest" name="testGetBooksByCity" time="0.196"/>
+  <testcase classname="Database.GraphFacadeTest" name="testGetBooksByAuthorName" time="0.915"/>
+  <testcase classname="Database.GraphFacadeTest" name="testGetBooksByGeoLocation" time="1.049"/>
+  <testcase classname="Database.GraphFacadeTest" name="testGetGeoLocationByBook" time="1.53"/>
+  <testcase classname="Database.GraphFacadeTest" name="testGetCities" time="0.933"/>
+  <testcase classname="Database.GraphFacadeTest" name="testGetCitiesByBookTitle" time="0.145"/>
+  <testcase classname="Database.GraphFacadeTest" name="testGetBooksByCity" time="0.19"/>
 </testsuite>
