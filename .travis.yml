@@ -11,9 +11,10 @@ services:
  # - neo4j
 
 before_install:
+  - mysql -u root -e "SET PASSWORD FOR 'root'@'localhost' = PASSWORD('root')"
   - mysql -u root -e 'CREATE DATABASE gutenberg;'
   - mysql -h "localhost" -u "root" "gutenberg" < "DBSetup.sql"
-  - mysql -u root -e "SET PASSWORD FOR 'root'@'localhost' = PASSWORD('root')"
+
 
 script:
   - mvn verify
