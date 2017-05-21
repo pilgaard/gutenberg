@@ -123,7 +123,7 @@ public class GraphFacadeTest {
      */
     @Test
     public void testGetBooksByGeoLocation() throws Exception {
-        if (env.get("TRAVIS") != "true") {
+        if (env.get("TRAVIS") == null) {
             List<BookDTO> result = facade.GetBooksByGeoLocation(city.getLatitude(), city.getLongitude());
             assertThat(result.size(), is(852));
         }

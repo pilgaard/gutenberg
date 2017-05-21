@@ -16,10 +16,10 @@ public class GraphConnector {
     private Map<String, String> env = System.getenv();
     
     public GraphConnector(){
-        if (env.get("TRAVIS") != null) {
-            driver = GraphDatabase.driver("bolt://localhost:7474", AuthTokens.basic("neo4j", "class"));
-        } else {
+        if (env.get("TRAVIS") == null) {
             driver = GraphDatabase.driver("bolt://localhost:7687", AuthTokens.basic("neo4j", "class"));
+        } else {
+            driver = GraphDatabase.driver("bolt://localhost:7474", AuthTokens.basic("neo4j", "class"));
         }
     }
     
