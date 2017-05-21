@@ -23,9 +23,10 @@ import static org.junit.Assert.*;
  * @author Emil
  */
 public class CityChekkerTest {
-    private String path = "/Users/Emil/examproject/gutenberg/testFiles";
+    private String basePath = new File("").getAbsolutePath();
+    private String path = basePath + "/testFiles";
     private List<CityDTO> cities = new ArrayList();
-    CityChekker cc = new CityChekker();
+    private CityChekker cc = new CityChekker();
     private static ArrayList<String> words;
     
     public CityChekkerTest() {
@@ -69,11 +70,6 @@ public class CityChekkerTest {
         assertTrue(cities.containsAll(found));
     }
     
-    @Test
-    public void testListF() {
-        ArrayList<File> files = new ArrayList();
-        cc.listF(path, files);
-    }
     
     @Test
     public void testScanFiles() {
@@ -82,7 +78,7 @@ public class CityChekkerTest {
         cities.add(new CityDTO("Haslev"));
         cities.add(new CityDTO("London"));
         cities.add(new CityDTO("New York"));
-        
+        System.out.println(path);
         ArrayList<BookDTO> books = cc.scanFiles(cities, path);
         
         for (BookDTO book : books) {
