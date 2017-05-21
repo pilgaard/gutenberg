@@ -1,4 +1,4 @@
-# gutenberg opsætning
+# gutenberg opsætning https://travis-ci.org/pilgaard/gutenberg.svg?branch=master
 
 # Neo4j
 Kør commandoerne fra cypher.cql en ad gangen i din neo4j CLI
