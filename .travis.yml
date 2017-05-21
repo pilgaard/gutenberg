@@ -12,8 +12,8 @@ services:
 
 before_install:
   - mysql -u root -e 'CREATE DATABASE gutenberg;'
-  - mysql -h "127.0.0.1" -u "root" "gutenberg" < "DBSetup.sql"
-
+  - mysql -h "localhost" -u "root" "gutenberg" < "DBSetup.sql"
+  - mysql -h "localhost" -u "root" "gutenberg" < "procedures.sql"
 
 script:
   - mvn verify

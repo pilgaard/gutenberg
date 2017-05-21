@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" ?>
-<testsuite tests="6" failures="0" name="Database.GraphFacadeTest" time="4.996" errors="0" skipped="0">
+<testsuite tests="6" failures="0" name="Database.GraphFacadeTest" time="5.397" errors="0" skipped="0">
   <properties>
     <property name="java.runtime.name" value="Java(TM) SE Runtime Environment"/>
     <property name="sun.boot.library.path" value="/Library/Java/JavaVirtualMachines/jdk1.8.0_60.jdk/Contents/Home/jre/lib"/>
@@ -14,7 +14,7 @@
     <property name="user.country" value="DK"/>
     <property name="sun.java.launcher" value="SUN_STANDARD"/>
     <property name="sun.os.patch.level" value="unknown"/>
-    <property name="test" value="Database.**.*Test"/>
+    <property name="test" value="Database.GraphFacadeTest"/>
     <property name="java.vm.specification.name" value="Java Virtual Machine Specification"/>
     <property name="user.dir" value="/Users/Emil/examproject/gutenberg"/>
     <property name="java.runtime.version" value="1.8.0_60-b27"/>
@@ -44,7 +44,7 @@
     <property name="java.vm.specification.version" value="1.8"/>
     <property name="sun.arch.data.model" value="64"/>
     <property name="java.home" value="/Library/Java/JavaVirtualMachines/jdk1.8.0_60.jdk/Contents/Home/jre"/>
-    <property name="sun.java.command" value="org.codehaus.plexus.classworlds.launcher.Launcher -Dtest=Database.**.*Test -Dmaven.ext.class.path=/Applications/NetBeans/NetBeans 8.2.app/Contents/Resources/NetBeans/java/maven-nblib/netbeans-eventspy.jar surefire:test"/>
+    <property name="sun.java.command" value="org.codehaus.plexus.classworlds.launcher.Launcher -Dtest=Database.GraphFacadeTest -Dmaven.ext.class.path=/Applications/NetBeans/NetBeans 8.2.app/Contents/Resources/NetBeans/java/maven-nblib/netbeans-eventspy.jar surefire:test"/>
     <property name="java.specification.vendor" value="Oracle Corporation"/>
     <property name="user.language" value="da"/>
     <property name="awt.toolkit" value="sun.lwawt.macosx.LWCToolkit"/>
@@ -60,10 +60,10 @@
     <property name="sun.io.unicode.encoding" value="UnicodeBig"/>
     <property name="sun.cpu.isalist" value=""/>
   </properties>
-  <testcase classname="Database.GraphFacadeTest" name="testGetBooksByAuthorName" time="1.327"/>
-  <testcase classname="Database.GraphFacadeTest" name="testGetBooksByGeoLocation" time="1.155"/>
-  <testcase classname="Database.GraphFacadeTest" name="testGetGeoLocationByBook" time="1.084"/>
-  <testcase classname="Database.GraphFacadeTest" name="testGetCities" time="0.559"/>
-  <testcase classname="Database.GraphFacadeTest" name="testGetCitiesByBookTitle" time="0.138"/>
-  <testcase classname="Database.GraphFacadeTest" name="testGetBooksByCity" time="0.168"/>
+  <testcase classname="Database.GraphFacadeTest" name="testGetBooksByAuthorName" time="1.284"/>
+  <testcase classname="Database.GraphFacadeTest" name="testGetBooksByGeoLocation" time="1.36"/>
+  <testcase classname="Database.GraphFacadeTest" name="testGetGeoLocationByBook" time="1.288"/>
+  <testcase classname="Database.GraphFacadeTest" name="testGetCities" time="0.612"/>
+  <testcase classname="Database.GraphFacadeTest" name="testGetCitiesByBookTitle" time="0.242"/>
+  <testcase classname="Database.GraphFacadeTest" name="testGetBooksByCity" time="0.196"/>
 </testsuite>

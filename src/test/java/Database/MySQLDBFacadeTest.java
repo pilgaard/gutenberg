@@ -11,7 +11,6 @@ import DTO.Coordinate;
 import java.math.BigDecimal;
 import java.sql.SQLException;
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
 import static org.hamcrest.CoreMatchers.*;
 import org.junit.*;
@@ -30,7 +29,7 @@ public class MySQLDBFacadeTest {
     private List<BookDTO> books;
 
     public MySQLDBFacadeTest() {
-        connector = new MySQLConnector("com.mysql.cj.jdbc.Driver", "jdbc:mysql://127.0.0.1:3306/gutenberg", "travis", "");
+        connector = new MySQLConnector("com.mysql.cj.jdbc.Driver", "jdbc:mysql://localhost:3306/gutenberg", "root", "root");
         facade = new MySQLDBFacade(connector);
         double d1 = Math.round((48.8168D * 100000000));
         double d2 = Math.round((9.5769D * 100000000));
