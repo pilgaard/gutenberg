@@ -31,7 +31,7 @@ public class MySQLConnector {
                               envName,
                               env.get(envName));
         }
-        return env.get("Travis");
+        return env.get("TRAVIS");
     }
 
     public MySQLConnector() {
