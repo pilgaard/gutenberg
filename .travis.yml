@@ -12,7 +12,7 @@ services:
 
 before_install:
   - mysql -u root -e 'CREATE DATABASE gutenberg;'
-  - mysql -h "127.0.0.1" -u "root" "gutenberg" < "TravisSQL.sql"
+  - mysql -h "127.0.0.1" -u "root" "gutenberg" < "DBSetup.sql"
 
 script:
   - mvn verify
