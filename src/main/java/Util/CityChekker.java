@@ -16,8 +16,6 @@ import java.util.List;
  * @author Emil
  */
 public class CityChekker {
-
-    private String path = "/Users/Emil/examproject/project/zipFiles";
     
     public void listF(String directoryName, ArrayList<File> files) {
         File directory = new File(directoryName);

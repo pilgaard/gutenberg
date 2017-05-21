@@ -26,7 +26,7 @@ import static org.junit.Assert.*;
  */
 public class GraphFacadeTest {
 
-    private final GraphConnector gc;
+    private GraphConnector gc;
     private GraphFacade facade;
     private CityDTO city;
     private BookDTO book;
@@ -34,8 +34,10 @@ public class GraphFacadeTest {
     private Map<String, String> env = System.getenv();
 
     public GraphFacadeTest() {
+        if (env.get("TRAVIS") != "true") {
         gc = new GraphConnector();
         facade = new GraphFacade(gc);
+        }
         city = new CityDTO(3206285L, new BigDecimal(48.8168D), new BigDecimal(9.5769D), "Urbach");
         List<Long> cities = new ArrayList();
         cities.add(city.getId());
