@@ -7,7 +7,9 @@ package Util;
 
 import DTO.BookDTO;
 import DTO.CityDTO;
+import com.google.gson.FieldNamingPolicy;
 import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
 import java.util.List;
 
 /**
@@ -16,7 +18,10 @@ import java.util.List;
  */
 public class JsonBuilder {
     
-    private static final Gson gson = new Gson();
+    private static final Gson gson = new GsonBuilder()
+                                        .setPrettyPrinting()
+                                        .setFieldNamingPolicy(FieldNamingPolicy.IDENTITY)
+                                        .create();
     
     public static String GetJsonFromCityDTO(CityDTO city){
         return gson.toJson(city);
@@ -32,5 +37,9 @@ public class JsonBuilder {
     
     public static String GetJsonFromBooks(List<BookDTO> books){
         return gson.toJson(books);
+    }
+    
+    public static String ConvertStringToJson(String string){
+        return gson.toJson(string);
     }
 }

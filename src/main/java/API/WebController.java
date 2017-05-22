@@ -5,6 +5,7 @@
  */
 package API;
 
+import Util.JsonBuilder;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -20,6 +21,6 @@ public class WebController {
     
     @RequestMapping(value = "/greet", method = RequestMethod.GET)
     public String GreetUser(@RequestParam(value="name", defaultValue="World") String name){
-        return hello + name;
+        return JsonBuilder.ConvertStringToJson(hello + name);
     }
 }
