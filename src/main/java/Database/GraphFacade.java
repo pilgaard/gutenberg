@@ -213,4 +213,8 @@ public class GraphFacade implements IDBFacade {
         //driver.close();
         return books;
     }
+    
+        public String DoSomething(String msg){
+        return msg;
+    }
 }

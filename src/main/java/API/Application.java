@@ -11,7 +11,6 @@ import Database.MySQLDBFacade;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
-
 /**
  *
  * @author Andreas
@@ -24,7 +23,7 @@ public class Application {
         GraphConnector graphCon = new GraphConnector();
         MySQLDBFacade mysqlFacade = new MySQLDBFacade(mysqlCon);
         GraphFacade graphFacade = new GraphFacade(graphCon);
-        //WebController webController = new MySQLWebController();
+        GraphWebController.SetFacade(graphFacade);
         MySQLWebController.SetFacade(mysqlFacade);
         SpringApplication.run(Application.class, args);
     }

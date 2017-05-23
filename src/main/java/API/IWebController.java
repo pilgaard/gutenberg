@@ -4,14 +4,11 @@
  * and open the template in the editor.
  */
 package API;
-
-import Database.IDBFacade;
-
 /**
  *
  * @author Andreas
  */
-public interface IWebController {
+public interface IWebController{
     
-    
+    public String DoSomething(String msg);
 }
