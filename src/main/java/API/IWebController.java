@@ -4,6 +4,8 @@
  * and open the template in the editor.
  */
 package API;
+
+import java.math.BigDecimal;
 /**
  *
  * @author Andreas
@@ -11,4 +13,14 @@ package API;
 public interface IWebController{
     
     public String DoSomething(String msg);
+    
+    public String GetCities();
+    
+    public String GetBooksByCity(String City);
+    
+    public String GetCitiesByBookTitle(String Title);
+    
+    public String GetBooksByAuthorName(String authorName);
+    
+    public String GetBooksByGeoLocation(BigDecimal latitude, BigDecimal longitude); 
 }

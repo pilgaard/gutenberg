@@ -1,0 +1,403 @@
+{
+	"variables": [],
+	"info": {
+		"name": "gutenbergTest",
+		"_postman_id": "6672ba7a-f186-97fe-5a29-93ee9092e8fc",
+		"description": "",
+		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "mysql cities",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							"tests[\"Status code is 200\"] = responseCode.code === 200;",
+							"",
+							"var contentTypeHeaderExists = postman.getResponseHeader(\"Content-Type\");",
+							"",
+							"tests[\"Content-Type is present\"] = contentTypeHeaderExists;",
+							" ",
+							"if (contentTypeHeaderExists) {",
+							"    tests[\"Content-Type is json\"] = responseHeaders[\"Content-Type\"].has(\"application/json\");",
+							"}"
+						]
+					}
+				}
+			],
+			"request": {
+				"url": "{{server}}mysql/cities",
+				"method": "GET",
+				"header": [],
+				"body": {},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "mysql booksbycity",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							"tests[\"Status code is 200\"] = responseCode.code === 200;",
+							"",
+							"var contentTypeHeaderExists = postman.getResponseHeader(\"Content-Type\");",
+							"",
+							"tests[\"Content-Type is present\"] = contentTypeHeaderExists;",
+							" ",
+							"if (contentTypeHeaderExists) {",
+							"    tests[\"Content-Type is json\"] = responseHeaders[\"Content-Type\"].has(\"application/json\");",
+							"}"
+						]
+					}
+				}
+			],
+			"request": {
+				"url": "{{server}}mysql/booksbycity",
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "city",
+							"value": "Copenhagen",
+							"type": "text",
+							"enabled": true
+						}
+					]
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "mysql citiesbytitle",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							"tests[\"Status code is 200\"] = responseCode.code === 200;",
+							"",
+							"var contentTypeHeaderExists = postman.getResponseHeader(\"Content-Type\");",
+							"",
+							"tests[\"Content-Type is present\"] = contentTypeHeaderExists;",
+							" ",
+							"if (contentTypeHeaderExists) {",
+							"    tests[\"Content-Type is json\"] = responseHeaders[\"Content-Type\"].has(\"application/json\");",
+							"}"
+						]
+					}
+				}
+			],
+			"request": {
+				"url": "{{server}}mysql/citiesbytitle",
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "title",
+							"value": "Tenterhooks",
+							"type": "text",
+							"enabled": true
+						}
+					]
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "mysql booksbyauthor",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							"tests[\"Status code is 200\"] = responseCode.code === 200;",
+							"",
+							"var contentTypeHeaderExists = postman.getResponseHeader(\"Content-Type\");",
+							"",
+							"tests[\"Content-Type is present\"] = contentTypeHeaderExists;",
+							" ",
+							"if (contentTypeHeaderExists) {",
+							"    tests[\"Content-Type is json\"] = responseHeaders[\"Content-Type\"].has(\"application/json\");",
+							"}"
+						]
+					}
+				}
+			],
+			"request": {
+				"url": "{{server}}mysql/booksbyauthor",
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "authorName",
+							"value": "Charles Darwin",
+							"type": "text",
+							"enabled": true
+						}
+					]
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "mysql booksbygeolacation",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							"tests[\"Status code is 200\"] = responseCode.code === 200;",
+							"",
+							"var contentTypeHeaderExists = postman.getResponseHeader(\"Content-Type\");",
+							"",
+							"tests[\"Content-Type is present\"] = contentTypeHeaderExists;",
+							" ",
+							"if (contentTypeHeaderExists) {",
+							"    tests[\"Content-Type is json\"] = responseHeaders[\"Content-Type\"].has(\"application/json\");",
+							"}"
+						]
+					}
+				}
+			],
+			"request": {
+				"url": "{{server}}mysql/booksbygeolacation",
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "latitude",
+							"value": "52.52437000",
+							"type": "text",
+							"enabled": true
+						},
+						{
+							"key": "longitude",
+							"value": "13.41053000",
+							"type": "text",
+							"enabled": true
+						}
+					]
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "graph cities",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							"tests[\"Status code is 200\"] = responseCode.code === 200;",
+							"",
+							"var contentTypeHeaderExists = postman.getResponseHeader(\"Content-Type\");",
+							"",
+							"tests[\"Content-Type is present\"] = contentTypeHeaderExists;",
+							" ",
+							"if (contentTypeHeaderExists) {",
+							"    tests[\"Content-Type is json\"] = responseHeaders[\"Content-Type\"].has(\"application/json\");",
+							"}"
+						]
+					}
+				}
+			],
+			"request": {
+				"url": "{{server}}graph/cities",
+				"method": "GET",
+				"header": [],
+				"body": {},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "graph booksbycity",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							"tests[\"Status code is 200\"] = responseCode.code === 200;",
+							"",
+							"var contentTypeHeaderExists = postman.getResponseHeader(\"Content-Type\");",
+							"",
+							"tests[\"Content-Type is present\"] = contentTypeHeaderExists;",
+							" ",
+							"if (contentTypeHeaderExists) {",
+							"    tests[\"Content-Type is json\"] = responseHeaders[\"Content-Type\"].has(\"application/json\");",
+							"}"
+						]
+					}
+				}
+			],
+			"request": {
+				"url": "{{server}}graph/booksbycity",
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "city",
+							"value": "Copenhagen",
+							"type": "text",
+							"enabled": true
+						}
+					]
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "graph citiesbytitle",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							"tests[\"Status code is 200\"] = responseCode.code === 200;",
+							"",
+							"var contentTypeHeaderExists = postman.getResponseHeader(\"Content-Type\");",
+							"",
+							"tests[\"Content-Type is present\"] = contentTypeHeaderExists;",
+							" ",
+							"if (contentTypeHeaderExists) {",
+							"    tests[\"Content-Type is json\"] = responseHeaders[\"Content-Type\"].has(\"application/json\");",
+							"}"
+						]
+					}
+				}
+			],
+			"request": {
+				"url": "{{server}}mysql/citiesbytitle",
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "title",
+							"value": "Tenterhooks",
+							"type": "text",
+							"enabled": true
+						}
+					]
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "graph booksbyauthor",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							"tests[\"Status code is 200\"] = responseCode.code === 200;",
+							"",
+							"var contentTypeHeaderExists = postman.getResponseHeader(\"Content-Type\");",
+							"",
+							"tests[\"Content-Type is present\"] = contentTypeHeaderExists;",
+							" ",
+							"if (contentTypeHeaderExists) {",
+							"    tests[\"Content-Type is json\"] = responseHeaders[\"Content-Type\"].has(\"application/json\");",
+							"}"
+						]
+					}
+				}
+			],
+			"request": {
+				"url": "{{server}}graph/booksbyauthor",
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "authorName",
+							"value": "Charles Darwin",
+							"type": "text",
+							"enabled": true
+						}
+					]
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "graph booksbygeolacation",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							"tests[\"Status code is 200\"] = responseCode.code === 200;",
+							"",
+							"var contentTypeHeaderExists = postman.getResponseHeader(\"Content-Type\");",
+							"",
+							"tests[\"Content-Type is present\"] = contentTypeHeaderExists;",
+							" ",
+							"if (contentTypeHeaderExists) {",
+							"    tests[\"Content-Type is json\"] = responseHeaders[\"Content-Type\"].has(\"application/json\");",
+							"}"
+						]
+					}
+				}
+			],
+			"request": {
+				"url": "{{server}}graph/booksbygeolacation",
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "latitude",
+							"value": "52.52437000",
+							"type": "text",
+							"enabled": true
+						},
+						{
+							"key": "longitude",
+							"value": "13.41053000",
+							"type": "text",
+							"enabled": true
+						}
+					]
+				},
+				"description": ""
+			},
+			"response": []
+		}
+	]
+}

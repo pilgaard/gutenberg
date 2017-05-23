@@ -1,4 +1,4 @@
-gutenberg/Main.class
+API/MySQLWebController.class
 Database/MySQLConnector.class
 DTO/BookDTO.class
 Database/GraphFacade.class
@@ -8,10 +8,11 @@ API/Application.class
 Database/IDBFacade.class
 DTO/Coordinate.class
 Database/DBInitializer.class
-API/WebController.class
+API/GraphWebController.class
 Entity/Book.class
 Util/CityChekker.class
 Entity/City.class
 Util/FileScanner.class
+API/IWebController.class
 Database/MySQLDBFacade.class
 Util/JsonBuilder.class

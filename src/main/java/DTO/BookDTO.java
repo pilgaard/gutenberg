@@ -5,13 +5,14 @@
  */
 package DTO;
 
+import java.io.Serializable;
 import java.util.List;
 
 /**
  *
  * @author Andreas
  */
-public class BookDTO {
+public class BookDTO implements Serializable{
     
     private String authorName;
     private String title;

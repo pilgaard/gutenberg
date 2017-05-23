@@ -5,13 +5,14 @@
  */
 package DTO;
 
+import java.io.Serializable;
 import java.math.BigDecimal;
 
 /**
  *
  * @author Emil
  */
-public class CityDTO {
+public class CityDTO implements Serializable{
     
     private Long id;
     private BigDecimal Latitude;
