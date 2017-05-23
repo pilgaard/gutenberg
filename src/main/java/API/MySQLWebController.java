@@ -28,7 +28,6 @@ public class MySQLWebController implements IWebController {
 
     public static void SetFacade(MySQLDBFacade mysqlFacade) {
         MySQLWebController.mysqlFacade = mysqlFacade;
-        
     }
 
     @Override

@@ -5,5 +5,4 @@ Database/GraphSpeedTest.class
 Database/GraphFacadeTest.class
 Util/FileScannerTest.class
 Database/GraphDBFacadeMockTest.class
-gutenberg/MainTest.class
 Util/CityChekkerTest.class
