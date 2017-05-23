@@ -7,12 +7,14 @@ package API;
 
 import Database.MySQLDBFacade;
 import Util.JsonBuilder;
+import com.google.gson.Gson;
 import java.math.BigDecimal;
-import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
+
 /**
  *
  * @author Andreas
@@ -20,58 +22,54 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 @RequestMapping("/mysql")
 public class MySQLWebController implements IWebController {
-    
-    private static MySQLDBFacade mysqlFacade; 
-    
-    public static void SetFacade(MySQLDBFacade mysqlFacade){
+
+    private static MySQLDBFacade mysqlFacade;
+    private Gson gson = new Gson();
+
+    public static void SetFacade(MySQLDBFacade mysqlFacade) {
         MySQLWebController.mysqlFacade = mysqlFacade;
+        
     }
-    
+
     @Override
-    @RequestMapping(value = "/msg", method = RequestMethod.GET, produces = "application/json")
-    public String DoSomething(@RequestParam(value = "msg", defaultValue = "something") String msg){
+    @RequestMapping(value = "/msg", method = RequestMethod.GET, produces = "application/json", params="msg")
+    public String DoSomething(@RequestParam(value = "msg", defaultValue = "something") String msg) {
         return JsonBuilder.ConvertStringToJson(
                 mysqlFacade.DoSomething(msg));
     }
-    
+
     @Override
-    @RequestMapping(
-            value = "/GetBooksByCity/{cityName}", 
-            method = RequestMethod.GET, 
-            produces = "application/json")
-    public String GetBooksByCity(@PathVariable String cityName) {
-        String books = JsonBuilder.GetJsonFromBooks(
-                mysqlFacade.GetBooksByCity(cityName)
-        );
-        return books;
+    @RequestMapping(value="/cities", method=RequestMethod.GET, produces = "application/json")
+    public @ResponseBody String GetCities( ) {
+        String json = gson.toJson(mysqlFacade.GetCities());
+    return json;
+}
+
+    @Override
+    @RequestMapping(value="/booksbycity", method=RequestMethod.POST, produces = "application/json")
+    public @ResponseBody String GetBooksByCity(@RequestParam("city") String City) {
+        String json = gson.toJson(mysqlFacade.GetBooksByCity(City));
+    return json;
     }
 
     @Override
-    @RequestMapping(
-            value = "/GetCitiesByBookTitle/{bookTitle}", 
-            method = RequestMethod.GET, 
-            produces = "application/json")
-    public String GetCitiesByBookTitle(@PathVariable String bookTitle) {
-        String coordinates = JsonBuilder.GetJsonFromCoordinates(
-                mysqlFacade.GetCitiesByBookTitle(bookTitle)
-        );
-        return coordinates;
+    @RequestMapping(value="/citiesbytitle", method=RequestMethod.POST, produces = "application/json")
+    public @ResponseBody String GetCitiesByBookTitle(@RequestParam("title")String title) {
+        String json = gson.toJson(mysqlFacade.GetCitiesByBookTitle(title));
+    return json;
     }
 
     @Override
-    @RequestMapping(
-            value = "/GetBooksByGeoLocation/{latitude}/{longitude}", 
-            method = RequestMethod.GET, 
-            produces = "application/json")
-    public String GetBooksByGeoLocation(@PathVariable String latitude, @PathVariable String longitude) {
-        BigDecimal tempLat = new BigDecimal(latitude);
-        BigDecimal tempLong = new BigDecimal(longitude);
-        String books = JsonBuilder.GetJsonFromBooks(
-                mysqlFacade.GetBooksByGeoLocation(tempLat, tempLong)
-        );
-        return books;
+    @RequestMapping(value="/booksbyauthor", method=RequestMethod.POST, produces = "application/json")
+    public @ResponseBody String GetBooksByAuthorName(@RequestParam("authorName")String authorName) {
+        String json = gson.toJson(mysqlFacade.GetBooksByAuthorName(authorName));
+    return json;
     }
-    
-    
 
+    @Override
+    @RequestMapping(value="/booksbygeolacation", method=RequestMethod.POST, produces = "application/json")
+    public @ResponseBody String GetBooksByGeoLocation(@RequestParam("latitude")BigDecimal latitude, @RequestParam("longitude")BigDecimal longitude) {
+        String json = gson.toJson(mysqlFacade.GetBooksByGeoLocation(latitude, longitude));
+    return json;
+    }
 }

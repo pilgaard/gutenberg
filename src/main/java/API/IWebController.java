@@ -5,6 +5,7 @@
  */
 package API;
 
+import java.math.BigDecimal;
 /**
  *
  * @author Andreas
@@ -12,8 +13,16 @@ package API;
 public interface IWebController{
     
     public String DoSomething(String msg);
-    public String GetBooksByCity(String cityName);
-    public String GetCitiesByBookTitle(String bookTitle);
     
-    public String GetBooksByGeoLocation(String latitude, String longitude);
+    public String GetCities();
+    
+    public String GetBooksByCity(String City);
+    
+    public String GetCitiesByBookTitle(String Title);
+    
+    public String GetBooksByAuthorName(String authorName);
+    
+    public String GetBooksByGeoLocation(BigDecimal latitude, BigDecimal longitude); 
+    
+
 }

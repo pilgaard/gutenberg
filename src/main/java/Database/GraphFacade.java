@@ -156,7 +156,7 @@ public class GraphFacade implements IDBFacade {
     public List<BookDTO> GetBooksByAuthorName(String authorName) {
         List<BookDTO> books = new ArrayList();
         BookDTO book;
-        String query = "MATCH (b:Book{author: '" + authorName + "'}) RETURN b;";
+        String query = "MATCH (b:Book{author: '" + authorName + "'}) RETURN b.author, b.title;";
         Driver driver = connector.GetDriver();
         Session session = driver.session();
         
@@ -195,7 +195,7 @@ public class GraphFacade implements IDBFacade {
         BookDTO book;
         String query = "WITH " + latitude + " AS latitude, " + longitude + " AS longitude MATCH (c:City)-[r:MENTIONED_IN]->(b:Book) "
                 + "WHERE 2 * 6371 * asin(sqrt(haversin(radians(latitude - c.lat))+ cos(radians(latitude))* cos(radians(c.lat))* "
-                + "haversin(radians(longitude - c.long)))) < 50.0 RETURN c;";
+                + "haversin(radians(longitude - c.long)))) < 50.0 RETURN b.author, b.title;";
         Driver driver = connector.GetDriver();
         Session session = driver.session();
         

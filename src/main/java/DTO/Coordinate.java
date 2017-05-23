@@ -5,13 +5,14 @@
  */
 package DTO;
 
+import java.io.Serializable;
 import java.math.BigDecimal;
 
 /**
  *
  * @author Andreas
  */
-public class Coordinate {
+public class Coordinate implements Serializable{
     
     private BigDecimal longitude;
     private BigDecimal latitude;
