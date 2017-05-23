@@ -14,4 +14,6 @@ public interface IWebController{
     public String DoSomething(String msg);
     public String GetBooksByCity(String cityName);
     public String GetCitiesByBookTitle(String bookTitle);
+    
+    public String GetBooksByGeoLocation(String latitude, String longitude);
 }

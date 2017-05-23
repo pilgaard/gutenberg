@@ -7,6 +7,8 @@ package API;
 
 import Database.MySQLDBFacade;
 import Util.JsonBuilder;
+import java.math.BigDecimal;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -31,24 +33,43 @@ public class MySQLWebController implements IWebController {
         return JsonBuilder.ConvertStringToJson(
                 mysqlFacade.DoSomething(msg));
     }
-    //  http://localhost:8080/mysql/GetBooksByCity?city={city}
+    
     @Override
-    @RequestMapping(value = "/GetBooksByCity", method = RequestMethod.GET, produces = "application/json")
-    public String GetBooksByCity(@RequestParam(value = "city", defaultValue = "null") String cityName) {
+    @RequestMapping(
+            value = "/GetBooksByCity/{cityName}", 
+            method = RequestMethod.GET, 
+            produces = "application/json")
+    public String GetBooksByCity(@PathVariable String cityName) {
         String books = JsonBuilder.GetJsonFromBooks(
                 mysqlFacade.GetBooksByCity(cityName)
         );
         return books;
     }
 
-    //  http://localhost:8080/mysql/GetCitiesByBookTitle?title={title}
     @Override
-    @RequestMapping(value = "/GetCitiesByBookTitle", method = RequestMethod.GET, produces = "application/json")
-    public String GetCitiesByBookTitle(@RequestParam(value = "title", defaultValue = "null")String bookTitle) {
+    @RequestMapping(
+            value = "/GetCitiesByBookTitle/{bookTitle}", 
+            method = RequestMethod.GET, 
+            produces = "application/json")
+    public String GetCitiesByBookTitle(@PathVariable String bookTitle) {
         String coordinates = JsonBuilder.GetJsonFromCoordinates(
                 mysqlFacade.GetCitiesByBookTitle(bookTitle)
         );
         return coordinates;
+    }
+
+    @Override
+    @RequestMapping(
+            value = "/GetBooksByGeoLocation/{latitude}/{longitude}", 
+            method = RequestMethod.GET, 
+            produces = "application/json")
+    public String GetBooksByGeoLocation(@PathVariable String latitude, @PathVariable String longitude) {
+        BigDecimal tempLat = new BigDecimal(latitude);
+        BigDecimal tempLong = new BigDecimal(longitude);
+        String books = JsonBuilder.GetJsonFromBooks(
+                mysqlFacade.GetBooksByGeoLocation(tempLat, tempLong)
+        );
+        return books;
     }
     
     

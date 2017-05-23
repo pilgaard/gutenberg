@@ -41,5 +41,10 @@ public class GraphWebController implements IWebController {
     public String GetCitiesByBookTitle(String bookTitle) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
+
+    @Override
+    public String GetBooksByGeoLocation(String latitude, String longitude) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
     
 }
