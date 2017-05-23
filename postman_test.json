@@ -8,36 +8,6 @@
 	},
 	"item": [
 		{
-			"name": "mysql cities",
-			"event": [
-				{
-					"listen": "test",
-					"script": {
-						"type": "text/javascript",
-						"exec": [
-							"tests[\"Status code is 200\"] = responseCode.code === 200;",
-							"",
-							"var contentTypeHeaderExists = postman.getResponseHeader(\"Content-Type\");",
-							"",
-							"tests[\"Content-Type is present\"] = contentTypeHeaderExists;",
-							" ",
-							"if (contentTypeHeaderExists) {",
-							"    tests[\"Content-Type is json\"] = responseHeaders[\"Content-Type\"].has(\"application/json\");",
-							"}"
-						]
-					}
-				}
-			],
-			"request": {
-				"url": "{{server}}mysql/cities",
-				"method": "GET",
-				"header": [],
-				"body": {},
-				"description": ""
-			},
-			"response": []
-		},
-		{
 			"name": "mysql booksbycity",
 			"event": [
 				{
@@ -204,36 +174,6 @@
 			"response": []
 		},
 		{
-			"name": "graph cities",
-			"event": [
-				{
-					"listen": "test",
-					"script": {
-						"type": "text/javascript",
-						"exec": [
-							"tests[\"Status code is 200\"] = responseCode.code === 200;",
-							"",
-							"var contentTypeHeaderExists = postman.getResponseHeader(\"Content-Type\");",
-							"",
-							"tests[\"Content-Type is present\"] = contentTypeHeaderExists;",
-							" ",
-							"if (contentTypeHeaderExists) {",
-							"    tests[\"Content-Type is json\"] = responseHeaders[\"Content-Type\"].has(\"application/json\");",
-							"}"
-						]
-					}
-				}
-			],
-			"request": {
-				"url": "{{server}}graph/cities",
-				"method": "GET",
-				"header": [],
-				"body": {},
-				"description": ""
-			},
-			"response": []
-		},
-		{
 			"name": "graph booksbycity",
 			"event": [
 				{
@@ -395,6 +335,66 @@
 						}
 					]
 				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "mysql cities",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							"tests[\"Status code is 200\"] = responseCode.code === 200;",
+							"",
+							"var contentTypeHeaderExists = postman.getResponseHeader(\"Content-Type\");",
+							"",
+							"tests[\"Content-Type is present\"] = contentTypeHeaderExists;",
+							" ",
+							"if (contentTypeHeaderExists) {",
+							"    tests[\"Content-Type is json\"] = responseHeaders[\"Content-Type\"].has(\"application/json\");",
+							"}"
+						]
+					}
+				}
+			],
+			"request": {
+				"url": "{{server}}mysql/cities",
+				"method": "GET",
+				"header": [],
+				"body": {},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "graph cities",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							"tests[\"Status code is 200\"] = responseCode.code === 200;",
+							"",
+							"var contentTypeHeaderExists = postman.getResponseHeader(\"Content-Type\");",
+							"",
+							"tests[\"Content-Type is present\"] = contentTypeHeaderExists;",
+							" ",
+							"if (contentTypeHeaderExists) {",
+							"    tests[\"Content-Type is json\"] = responseHeaders[\"Content-Type\"].has(\"application/json\");",
+							"}"
+						]
+					}
+				}
+			],
+			"request": {
+				"url": "{{server}}graph/cities",
+				"method": "GET",
+				"header": [],
+				"body": {},
 				"description": ""
 			},
 			"response": []
