@@ -19,7 +19,7 @@ import java.util.List;
  */
 public class JsonBuilder {
     
-    private static final Gson gson = new GsonBuilder()
+    public static final Gson gson = new GsonBuilder()
                                         .setPrettyPrinting()
                                         .setFieldNamingPolicy(FieldNamingPolicy.IDENTITY)
                                         .create();
