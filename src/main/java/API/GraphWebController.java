@@ -70,5 +70,4 @@ public class GraphWebController implements IWebController {
         String json = gson.toJson(graphFacade.GetBooksByGeoLocation(latitude, longitude));
     return json;
     }
-    
 }

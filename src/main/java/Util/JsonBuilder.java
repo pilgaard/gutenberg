@@ -7,6 +7,7 @@ package Util;
 
 import DTO.BookDTO;
 import DTO.CityDTO;
+import DTO.Coordinate;
 import com.google.gson.FieldNamingPolicy;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
@@ -37,6 +38,10 @@ public class JsonBuilder {
     
     public static String GetJsonFromBooks(List<BookDTO> books){
         return gson.toJson(books);
+    }
+    
+    public static String GetJsonFromCoordinates(List<Coordinate> coordinates){
+        return gson.toJson(coordinates);
     }
     
     public static String ConvertStringToJson(String string){
