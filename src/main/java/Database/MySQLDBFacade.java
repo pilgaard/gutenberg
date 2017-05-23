@@ -229,4 +229,8 @@ public class MySQLDBFacade implements IDBFacade {
         }
         return booksBeingMentioned;
     }
+    
+    public String DoSomething(String msg){
+        return msg;
+    }
 }
