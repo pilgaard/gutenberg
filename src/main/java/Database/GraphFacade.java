@@ -58,7 +58,7 @@ public class GraphFacade implements IDBFacade {
                     System.out.println("record = " + record);
                 }
                 session.close();
-                driver.close();
+                //driver.close();
             }
         } catch (FileNotFoundException ex) {
             java.util.logging.Logger.getLogger(GraphFacade.class.getName()).log(Level.SEVERE, null, ex);
@@ -94,7 +94,7 @@ public class GraphFacade implements IDBFacade {
             cities.add(cityDTO);
         }
         session.close();
-        driver.close();
+        //driver.close();
         return cities;
     }
     
@@ -118,7 +118,7 @@ public class GraphFacade implements IDBFacade {
             books.add(book);
         }
         session.close();
-        driver.close();
+        //driver.close();
         return books;
     }
     
@@ -145,7 +145,7 @@ public class GraphFacade implements IDBFacade {
             citiesToReturn.add(cityDTO);
         }
         session.close();
-        driver.close();
+        //driver.close();
         for (CityDTO ci : citiesToReturn) {
             coordinates.add(new Coordinate(ci.getLongitude(), ci.getLatitude()));
         }
@@ -171,7 +171,7 @@ public class GraphFacade implements IDBFacade {
             books.add(book);
         }
         session.close();
-        driver.close();
+        //driver.close();
         return books;
     }
     
@@ -210,7 +210,7 @@ public class GraphFacade implements IDBFacade {
             books.add(book);
         }
         session.close();
-        driver.close();
+        //driver.close();
         return books;
     }
 }

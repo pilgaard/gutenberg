@@ -34,8 +34,8 @@ public class MySQLConnector {
         username = "root";
         password = "root";
         if (getInvironment()=="true") {
-            uri = "jdbc:mysql://localhost:7687/gutenberg";
-        } else uri = "jdbc:mysql://localhost:3306/gutenberg";
+            uri = "jdbc:mysql://localhost:7687/gutenberg?autoReconnect=true&useSSL=false";
+        } else uri = "jdbc:mysql://localhost:3306/gutenberg?autoReconnect=true&useSSL=false";
         
     }
 

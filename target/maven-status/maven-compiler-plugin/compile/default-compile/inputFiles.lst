@@ -1,16 +1,17 @@
-C:\Users\Andreas\Desktop\PBA Softwareudivkling 1. Semester\1. Semester Project\src\main\java\Entity\Book.java
-C:\Users\Andreas\Desktop\PBA Softwareudivkling 1. Semester\1. Semester Project\src\main\java\gutenberg\Main.java
-C:\Users\Andreas\Desktop\PBA Softwareudivkling 1. Semester\1. Semester Project\src\main\java\Entity\City.java
-C:\Users\Andreas\Desktop\PBA Softwareudivkling 1. Semester\1. Semester Project\src\main\java\Database\GraphFacade.java
-C:\Users\Andreas\Desktop\PBA Softwareudivkling 1. Semester\1. Semester Project\src\main\java\API\Application.java
-C:\Users\Andreas\Desktop\PBA Softwareudivkling 1. Semester\1. Semester Project\src\main\java\Database\DBInitializer.java
-C:\Users\Andreas\Desktop\PBA Softwareudivkling 1. Semester\1. Semester Project\src\main\java\Util\CityChekker.java
-C:\Users\Andreas\Desktop\PBA Softwareudivkling 1. Semester\1. Semester Project\src\main\java\Database\GraphConnector.java
-C:\Users\Andreas\Desktop\PBA Softwareudivkling 1. Semester\1. Semester Project\src\main\java\Database\MySQLConnector.java
-C:\Users\Andreas\Desktop\PBA Softwareudivkling 1. Semester\1. Semester Project\src\main\java\DTO\Coordinate.java
-C:\Users\Andreas\Desktop\PBA Softwareudivkling 1. Semester\1. Semester Project\src\main\java\Util\FileScanner.java
-C:\Users\Andreas\Desktop\PBA Softwareudivkling 1. Semester\1. Semester Project\src\main\java\DTO\CityDTO.java
-C:\Users\Andreas\Desktop\PBA Softwareudivkling 1. Semester\1. Semester Project\src\main\java\API\WebController.java
-C:\Users\Andreas\Desktop\PBA Softwareudivkling 1. Semester\1. Semester Project\src\main\java\Database\MySQLDBFacade.java
-C:\Users\Andreas\Desktop\PBA Softwareudivkling 1. Semester\1. Semester Project\src\main\java\Database\IDBFacade.java
-C:\Users\Andreas\Desktop\PBA Softwareudivkling 1. Semester\1. Semester Project\src\main\java\DTO\BookDTO.java
+/Users/Emil/examproject/gutenberg/src/main/java/Util/CityChekker.java
+/Users/Emil/examproject/gutenberg/src/main/java/Database/MySQLDBFacade.java
+/Users/Emil/examproject/gutenberg/src/main/java/Database/MySQLConnector.java
+/Users/Emil/examproject/gutenberg/src/main/java/gutenberg/Main.java
+/Users/Emil/examproject/gutenberg/src/main/java/Database/DBInitializer.java
+/Users/Emil/examproject/gutenberg/src/main/java/DTO/Coordinate.java
+/Users/Emil/examproject/gutenberg/src/main/java/Util/FileScanner.java
+/Users/Emil/examproject/gutenberg/src/main/java/Util/JsonBuilder.java
+/Users/Emil/examproject/gutenberg/src/main/java/Database/IDBFacade.java
+/Users/Emil/examproject/gutenberg/src/main/java/Database/GraphFacade.java
+/Users/Emil/examproject/gutenberg/src/main/java/Entity/City.java
+/Users/Emil/examproject/gutenberg/src/main/java/API/Application.java
+/Users/Emil/examproject/gutenberg/src/main/java/API/WebController.java
+/Users/Emil/examproject/gutenberg/src/main/java/DTO/CityDTO.java
+/Users/Emil/examproject/gutenberg/src/main/java/Database/GraphConnector.java
+/Users/Emil/examproject/gutenberg/src/main/java/DTO/BookDTO.java
+/Users/Emil/examproject/gutenberg/src/main/java/Entity/Book.java

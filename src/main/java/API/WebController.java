@@ -19,7 +19,7 @@ public class WebController {
 
     private static final String hello = "Hello ";
     
-    @RequestMapping(value = "/greet", method = RequestMethod.GET)
+    @RequestMapping(value = "/greet", method = RequestMethod.GET, produces = "application/json")
     public String GreetUser(@RequestParam(value="name", defaultValue="World") String name){
         return JsonBuilder.ConvertStringToJson(hello + name);
     }

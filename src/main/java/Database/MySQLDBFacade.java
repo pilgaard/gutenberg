@@ -29,7 +29,7 @@ public class MySQLDBFacade implements IDBFacade {
         this.connector = con;
     }
 
-    public void InsertBooksInDB(List<BookDTO> books) throws SQLException {
+    public void InsertBooksInDB(List<BookDTO> books) {
         //Book bookToInsert;
         try {
             statement = connector.GetConnection().createStatement();
@@ -68,13 +68,17 @@ public class MySQLDBFacade implements IDBFacade {
         } catch (Exception e) {
             e.printStackTrace();
         } finally {
-            statement.close();
-            rs.close();
+            try {
+                statement.close();
+                rs.close();
+            } catch (SQLException ex) {
+                Logger.getLogger(MySQLDBFacade.class.getName()).log(Level.SEVERE, null, ex);
+            }
         }
     }
     
     @Override
-    public List<CityDTO> GetCities() throws SQLException {
+    public List<CityDTO> GetCities() {
         List<CityDTO> citiesToReturn = new ArrayList();
         String query = "call GetCities()";
         try (Connection conn = connector.GetConnection();
@@ -86,13 +90,17 @@ public class MySQLDBFacade implements IDBFacade {
         } catch (Exception e) {
             e.printStackTrace();
         }finally{
+            try {
                 rs.close();
+            } catch (SQLException ex) {
+                Logger.getLogger(MySQLDBFacade.class.getName()).log(Level.SEVERE, null, ex);
+            }
         }
         return citiesToReturn;
     }
 
     @Override
-    public List<BookDTO> GetBooksByCity(String cityName) throws SQLException{
+    public List<BookDTO> GetBooksByCity(String cityName){
         ArrayList<BookDTO> booksToReturn = new ArrayList();
         String query = "call GetBooksByCity(?);";
         BookDTO dto;
@@ -110,13 +118,17 @@ public class MySQLDBFacade implements IDBFacade {
         }catch(SQLException ex){
             System.out.println(ex.getMessage());
         }finally{
-            rs.close();
+            try {
+                rs.close();
+            } catch (SQLException ex) {
+                Logger.getLogger(MySQLDBFacade.class.getName()).log(Level.SEVERE, null, ex);
+            }
         }
         return booksToReturn;
     }
 
     @Override
-    public List<Coordinate> GetCitiesByBookTitle(String bookTitle) throws SQLException {
+    public List<Coordinate> GetCitiesByBookTitle(String bookTitle){
         ArrayList<CityDTO> citiesToReturn = new ArrayList();
         List<Coordinate> coordinates = new ArrayList<Coordinate>();
         String query = "call GetCitiesByBookTitle(?)";
@@ -131,7 +143,11 @@ public class MySQLDBFacade implements IDBFacade {
         } catch (Exception e) {
             e.printStackTrace();
         }finally{
-            rs.close();
+            try {
+                rs.close();
+            } catch (SQLException ex) {
+                Logger.getLogger(MySQLDBFacade.class.getName()).log(Level.SEVERE, null, ex);
+            }
         } 
         for (CityDTO city : citiesToReturn) {
             coordinates.add(new Coordinate(city.getLongitude(), city.getLatitude()));
@@ -140,7 +156,7 @@ public class MySQLDBFacade implements IDBFacade {
     }
 
     @Override
-    public List<BookDTO> GetBooksByAuthorName(String authorName) throws SQLException{
+    public List<BookDTO> GetBooksByAuthorName(String authorName) {
         ArrayList<BookDTO> booksToReturn = new ArrayList();
         String query = "call GetBooksByAuthorName(?)";
  
@@ -163,13 +179,17 @@ public class MySQLDBFacade implements IDBFacade {
         } catch (SQLException ex) {
             System.out.println(ex.getMessage());
         }finally{
-            rs.close();
+            try {
+                rs.close();
+            } catch (SQLException ex) {
+                Logger.getLogger(MySQLDBFacade.class.getName()).log(Level.SEVERE, null, ex);
+            }
         }
         return booksToReturn;
     }
 
     @Override
-    public ArrayList<Coordinate> GetGeoLocationByBook(List<BookDTO> books) throws SQLException{
+    public ArrayList<Coordinate> GetGeoLocationByBook(List<BookDTO> books){
         List<CityDTO> cities = GetCities();
         ArrayList<Coordinate> coordinates = new ArrayList();
         for (BookDTO book : books) {
@@ -183,7 +203,7 @@ public class MySQLDBFacade implements IDBFacade {
     }
 
     @Override
-    public List<BookDTO> GetBooksByGeoLocation(BigDecimal latitude, BigDecimal longitude) throws SQLException{
+    public List<BookDTO> GetBooksByGeoLocation(BigDecimal latitude, BigDecimal longitude){
         String query = "call GetBooksByGeoLocation(?, ?)";
         BookDTO dto;
         List<BookDTO> booksBeingMentioned = new ArrayList<>();
@@ -201,7 +221,11 @@ public class MySQLDBFacade implements IDBFacade {
         }catch(SQLException ex){
             System.out.println(ex.getMessage());
         }finally{
-            rs.close();
+            try {
+                rs.close();
+            } catch (SQLException ex) {
+                Logger.getLogger(MySQLDBFacade.class.getName()).log(Level.SEVERE, null, ex);
+            }
         }
         return booksBeingMentioned;
     }

@@ -1,0 +1,17 @@
+gutenberg/Main.class
+Database/MySQLConnector.class
+DTO/BookDTO.class
+Database/GraphFacade.class
+Database/GraphConnector.class
+DTO/CityDTO.class
+API/Application.class
+Database/IDBFacade.class
+DTO/Coordinate.class
+Database/DBInitializer.class
+API/WebController.class
+Entity/Book.class
+Util/CityChekker.class
+Entity/City.class
+Util/FileScanner.class
+Database/MySQLDBFacade.class
+Util/JsonBuilder.class

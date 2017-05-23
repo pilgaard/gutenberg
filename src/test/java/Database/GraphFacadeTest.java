@@ -88,7 +88,7 @@ public class GraphFacadeTest {
      * Test of GetCitiesByBookTitle method, of class GraphFacade.
      */
     @Test
-    public void testGetCitiesByBookTitle() throws Exception {
+    public void testGetCitiesByBookTitle() {
         if (env.get("TRAVIS") ==null) {
             List<Coordinate> result = facade.GetCitiesByBookTitle(book.getTitle());
             assertThat(result.size(), is(97));

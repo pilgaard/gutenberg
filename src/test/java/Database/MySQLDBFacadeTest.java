@@ -63,7 +63,7 @@ public class MySQLDBFacadeTest {
      * Test of GetCities method, of class MySQLDBFacade.
      */
     @Test
-    public void testGetCities() throws SQLException {
+    public void testGetCities() {
         List<CityDTO> expResult = facade.GetCities();
         assertThat(expResult.size(), is(47847));
     }
@@ -72,7 +72,7 @@ public class MySQLDBFacadeTest {
      * Test of GetBooksByCity method, of class MySQLDBFacade.
      */
     @Test
-    public void testGetBooksByCity() throws SQLException {
+    public void testGetBooksByCity() {
         List<BookDTO> result = facade.GetBooksByCity(city.getCityName());
         assertThat(result.size(), is(5));
     }
@@ -81,7 +81,7 @@ public class MySQLDBFacadeTest {
      * Test of GetCitiesByBookTitle method, of class MySQLDBFacade.
      */
     @Test
-    public void testGetCitiesByBookTitle() throws SQLException {
+    public void testGetCitiesByBookTitle() {
         List<Coordinate> result = facade.GetCitiesByBookTitle(book.getTitle());
         assertThat(result.size(), is(97));
     }
@@ -90,7 +90,7 @@ public class MySQLDBFacadeTest {
      * Test of GetBooksByAuthorName method, of class MySQLDBFacade.
      */
     @Test
-    public void testGetBooksByAuthorName() throws SQLException {
+    public void testGetBooksByAuthorName() {
         List<BookDTO> result = facade.GetBooksByAuthorName(book.getAuthorName());
         assertThat(result.size(), is(1));
     }
@@ -99,7 +99,7 @@ public class MySQLDBFacadeTest {
      * Test of GetGeoLocationByBook method, of class MySQLDBFacade.
      */
     @Test
-    public void testGetGeoLocationByBook() throws SQLException {
+    public void testGetGeoLocationByBook() {
         List<Coordinate> result = facade.GetGeoLocationByBook(books);
         Coordinate answer = new Coordinate(new BigDecimal("9.57690000"), new BigDecimal("48.81680000"));
         assertThat(result.get(0).toString(), is(answer.toString()));
@@ -109,7 +109,7 @@ public class MySQLDBFacadeTest {
      * Test of GetBooksByGeoLocation method, of class MySQLDBFacade.
      */
     @Test
-    public void testGetBooksByGeoLocation() throws SQLException {
+    public void testGetBooksByGeoLocation() {
         List<BookDTO> result = facade.GetBooksByGeoLocation(city.getLatitude(), city.getLongitude());
         assertThat(result.size(), is(1768));
     }

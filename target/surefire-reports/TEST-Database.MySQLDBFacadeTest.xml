@@ -1,5 +1,5 @@
-<?xml version="1.0" encoding="UTF-8" ?>
-<testsuite tests="6" failures="0" name="Database.MySQLDBFacadeTest" time="2.386" errors="0" skipped="0">
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="Database.MySQLDBFacadeTest" time="2.04" tests="6" errors="0" skipped="0" failures="0">
   <properties>
     <property name="java.runtime.name" value="Java(TM) SE Runtime Environment"/>
     <property name="sun.boot.library.path" value="/Library/Java/JavaVirtualMachines/jdk1.8.0_60.jdk/Contents/Home/jre/lib"/>
@@ -14,7 +14,6 @@
     <property name="user.country" value="DK"/>
     <property name="sun.java.launcher" value="SUN_STANDARD"/>
     <property name="sun.os.patch.level" value="unknown"/>
-    <property name="test" value="Database.MySQLDBFacadeTest"/>
     <property name="java.vm.specification.name" value="Java Virtual Machine Specification"/>
     <property name="user.dir" value="/Users/Emil/examproject/gutenberg"/>
     <property name="java.runtime.version" value="1.8.0_60-b27"/>
@@ -22,8 +21,7 @@
     <property name="java.endorsed.dirs" value="/Library/Java/JavaVirtualMachines/jdk1.8.0_60.jdk/Contents/Home/jre/lib/endorsed"/>
     <property name="os.arch" value="x86_64"/>
     <property name="java.io.tmpdir" value="/var/folders/w3/bxw6yz9158x8nnj9czcdhjhw0000gn/T/"/>
-    <property name="line.separator" value="
-"/>
+    <property name="line.separator" value="&#10;"/>
     <property name="java.vm.specification.vendor" value="Oracle Corporation"/>
     <property name="os.name" value="Mac OS X"/>
     <property name="maven.ext.class.path" value="/Applications/NetBeans/NetBeans 8.2.app/Contents/Resources/NetBeans/java/maven-nblib/netbeans-eventspy.jar"/>
@@ -44,7 +42,7 @@
     <property name="java.vm.specification.version" value="1.8"/>
     <property name="sun.arch.data.model" value="64"/>
     <property name="java.home" value="/Library/Java/JavaVirtualMachines/jdk1.8.0_60.jdk/Contents/Home/jre"/>
-    <property name="sun.java.command" value="org.codehaus.plexus.classworlds.launcher.Launcher -Dtest=Database.MySQLDBFacadeTest -Dmaven.ext.class.path=/Applications/NetBeans/NetBeans 8.2.app/Contents/Resources/NetBeans/java/maven-nblib/netbeans-eventspy.jar surefire:test"/>
+    <property name="sun.java.command" value="org.codehaus.plexus.classworlds.launcher.Launcher -Dmaven.ext.class.path=/Applications/NetBeans/NetBeans 8.2.app/Contents/Resources/NetBeans/java/maven-nblib/netbeans-eventspy.jar clean install"/>
     <property name="java.specification.vendor" value="Oracle Corporation"/>
     <property name="user.language" value="da"/>
     <property name="awt.toolkit" value="sun.lwawt.macosx.LWCToolkit"/>
@@ -60,10 +58,10 @@
     <property name="sun.io.unicode.encoding" value="UnicodeBig"/>
     <property name="sun.cpu.isalist" value=""/>
   </properties>
-  <testcase classname="Database.MySQLDBFacadeTest" name="testGetBooksByAuthorName" time="0.68"/>
-  <testcase classname="Database.MySQLDBFacadeTest" name="testGetBooksByGeoLocation" time="0.109"/>
-  <testcase classname="Database.MySQLDBFacadeTest" name="testGetGeoLocationByBook" time="0.681"/>
-  <testcase classname="Database.MySQLDBFacadeTest" name="testGetCities" time="0.701"/>
-  <testcase classname="Database.MySQLDBFacadeTest" name="testGetCitiesByBookTitle" time="0.032"/>
-  <testcase classname="Database.MySQLDBFacadeTest" name="testGetBooksByCity" time="0.04"/>
+  <testcase name="testGetBooksByAuthorName" classname="Database.MySQLDBFacadeTest" time="0.56"/>
+  <testcase name="testGetBooksByGeoLocation" classname="Database.MySQLDBFacadeTest" time="0.249"/>
+  <testcase name="testGetGeoLocationByBook" classname="Database.MySQLDBFacadeTest" time="0.754"/>
+  <testcase name="testGetCities" classname="Database.MySQLDBFacadeTest" time="0.405"/>
+  <testcase name="testGetCitiesByBookTitle" classname="Database.MySQLDBFacadeTest" time="0.028"/>
+  <testcase name="testGetBooksByCity" classname="Database.MySQLDBFacadeTest" time="0.044"/>
 </testsuite>
