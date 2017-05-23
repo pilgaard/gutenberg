@@ -31,13 +31,6 @@ public class MySQLWebController implements IWebController {
     }
 
     @Override
-    @RequestMapping(value = "/msg", method = RequestMethod.GET, produces = "application/json", params="msg")
-    public String DoSomething(@RequestParam(value = "msg", defaultValue = "something") String msg) {
-        return JsonBuilder.ConvertStringToJson(
-                mysqlFacade.DoSomething(msg));
-    }
-
-    @Override
     @RequestMapping(value="/cities", method=RequestMethod.GET, produces = "application/json")
     public @ResponseBody String GetCities( ) {
         String json = gson.toJson(mysqlFacade.GetCities());

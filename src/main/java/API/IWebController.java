@@ -12,8 +12,6 @@ import java.math.BigDecimal;
  */
 public interface IWebController{
     
-    public String DoSomething(String msg);
-    
     public String GetCities();
     
     public String GetBooksByCity(String City);

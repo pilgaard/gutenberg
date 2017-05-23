@@ -214,7 +214,4 @@ public class GraphFacade implements IDBFacade {
         return books;
     }
     
-        public String DoSomething(String msg){
-        return msg;
-    }
 }
