@@ -4,6 +4,7 @@
  * and open the template in the editor.
  */
 package API;
+
 /**
  *
  * @author Andreas
@@ -11,4 +12,6 @@ package API;
 public interface IWebController{
     
     public String DoSomething(String msg);
+    public String GetBooksByCity(String cityName);
+    public String GetCitiesByBookTitle(String bookTitle);
 }

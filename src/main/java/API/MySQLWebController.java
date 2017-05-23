@@ -31,5 +31,26 @@ public class MySQLWebController implements IWebController {
         return JsonBuilder.ConvertStringToJson(
                 mysqlFacade.DoSomething(msg));
     }
+    //  http://localhost:8080/mysql/GetBooksByCity?city={city}
+    @Override
+    @RequestMapping(value = "/GetBooksByCity", method = RequestMethod.GET, produces = "application/json")
+    public String GetBooksByCity(@RequestParam(value = "city", defaultValue = "null") String cityName) {
+        String books = JsonBuilder.GetJsonFromBooks(
+                mysqlFacade.GetBooksByCity(cityName)
+        );
+        return books;
+    }
+
+    //  http://localhost:8080/mysql/GetCitiesByBookTitle?title={title}
+    @Override
+    @RequestMapping(value = "/GetCitiesByBookTitle", method = RequestMethod.GET, produces = "application/json")
+    public String GetCitiesByBookTitle(@RequestParam(value = "title", defaultValue = "null")String bookTitle) {
+        String coordinates = JsonBuilder.GetJsonFromCoordinates(
+                mysqlFacade.GetCitiesByBookTitle(bookTitle)
+        );
+        return coordinates;
+    }
+    
+    
 
 }

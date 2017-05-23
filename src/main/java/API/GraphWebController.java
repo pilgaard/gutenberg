@@ -31,5 +31,15 @@ public class GraphWebController implements IWebController {
         return JsonBuilder.ConvertStringToJson(
                 graphFacade.DoSomething(msg));
     }
+
+    @Override
+    public String GetBooksByCity(String cityName) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public String GetCitiesByBookTitle(String bookTitle) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
     
 }
