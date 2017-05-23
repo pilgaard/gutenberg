@@ -22,6 +22,7 @@ before_install:
   - neo4j-community-2.2.0/bin/neo4j start
 
   # install newman
+  - npm install -g update-node
   - npm install newman --global;
 
 script:
