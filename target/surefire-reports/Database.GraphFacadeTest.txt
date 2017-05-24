@@ -1,4 +1,4 @@
 -------------------------------------------------------------------------------
 Test set: database.GraphFacadeTest
 -------------------------------------------------------------------------------
-Tests run: 6, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 5.952 sec - in database.GraphFacadeTest
+Tests run: 6, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 4.09 sec - in database.GraphFacadeTest

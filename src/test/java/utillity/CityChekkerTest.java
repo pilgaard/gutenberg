@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package util;
+package utillity;
 
 import dto.BookDTO;
 import dto.CityDTO;
@@ -15,6 +15,7 @@ import org.junit.AfterClass;
 import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Test;
+import utillity.CityChekker;
 import static org.junit.Assert.*;
 
 /**

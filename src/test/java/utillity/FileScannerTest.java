@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package util;
+package utillity;
 
 import java.io.File;
 import java.util.ArrayList;
@@ -14,6 +14,7 @@ import org.junit.AfterClass;
 import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Test;
+import utillity.FileScanner;
 import static org.junit.Assert.*;
 
 /**
