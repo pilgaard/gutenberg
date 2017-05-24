@@ -7,13 +7,10 @@ package database;
 
 import dto.BookDTO;
 import dto.CityDTO;
-import java.io.File;
-import util.CityChekker;
+import utillity.CityChekker;
 import java.math.BigDecimal;
-import java.nio.file.Path;
 import java.sql.SQLException;
 import java.util.*;
-import javax.sound.midi.Patch;
 
 /**
  *
