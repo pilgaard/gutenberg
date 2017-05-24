@@ -14,12 +14,18 @@ import org.neo4j.driver.v1.*;
 public class GraphConnector {
     private static Driver driver;
     private Map<String, String> env = System.getenv();
+    private static final String ip = "bolt://localhost";
+    private static final String port = "7687";
+    private static final String travis_port = "7687";
+    private static final String username = "neo4j";
+    private static final String password = "class";
+    
     
     public GraphConnector(){
         if (env.get("TRAVIS") == null) {
-            driver = GraphDatabase.driver("bolt://localhost:7687", AuthTokens.basic("neo4j", "class"));
+            driver = GraphDatabase.driver(ip+":"+port, AuthTokens.basic(username, password));
         } else {
-            driver = GraphDatabase.driver("bolt://localhost:7474", AuthTokens.basic("neo4j", "class"));
+            driver = GraphDatabase.driver(ip+":"+travis_port, AuthTokens.basic(username, password));
         }
     }
     
