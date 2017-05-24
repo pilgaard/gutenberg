@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="database.MySQLSpeedTest" time="15.752" tests="5" errors="0" skipped="0" failures="0">
+<testsuite name="database.MySQLSpeedTest" time="2.862" tests="5" errors="0" skipped="0" failures="0">
   <properties>
     <property name="java.runtime.name" value="Java(TM) SE Runtime Environment"/>
     <property name="sun.boot.library.path" value="/Library/Java/JavaVirtualMachines/jdk1.8.0_60.jdk/Contents/Home/jre/lib"/>
@@ -58,9 +58,9 @@
     <property name="sun.io.unicode.encoding" value="UnicodeBig"/>
     <property name="sun.cpu.isalist" value=""/>
   </properties>
-  <testcase name="testGetBooksByAuthorName" classname="database.MySQLSpeedTest" time="0.202"/>
-  <testcase name="testGetBooksByGeoLocation" classname="database.MySQLSpeedTest" time="0.888"/>
-  <testcase name="testGetCities" classname="database.MySQLSpeedTest" time="1.401"/>
-  <testcase name="testGetCitiesByBookTitle" classname="database.MySQLSpeedTest" time="0.13"/>
-  <testcase name="testGetBooksByCity" classname="database.MySQLSpeedTest" time="13.131"/>
+  <testcase name="testGetBooksByAuthorName" classname="database.MySQLSpeedTest" time="0.244"/>
+  <testcase name="testGetBooksByGeoLocation" classname="database.MySQLSpeedTest" time="0.767"/>
+  <testcase name="testGetCities" classname="database.MySQLSpeedTest" time="1.438"/>
+  <testcase name="testGetCitiesByBookTitle" classname="database.MySQLSpeedTest" time="0.122"/>
+  <testcase name="testGetBooksByCity" classname="database.MySQLSpeedTest" time="0.291"/>
 </testsuite>
