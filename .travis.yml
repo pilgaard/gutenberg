@@ -28,11 +28,12 @@ before_install:
   - npm install
   - wget -qO- https://deb.nodesource.com/setup_4.x | sudo bash -
   - sudo apt-get install nodejs
-  - npm install newman --global;
+  - npm install newman --global
+
 
 script:
   - mvn verify
-  - mvn exec:java -Dexec.mainClass="src.main.java.api.Application"
+  - mvn test -B
   - newman run testFiles/postman_test.json -e testFiles/postman_environment.json
 
 
