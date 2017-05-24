@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="Database.GraphDBFacadeMockTest" time="0.343" tests="6" errors="0" skipped="0" failures="0">
+<testsuite name="database.GraphDBFacadeMockTest" time="0.351" tests="6" errors="0" skipped="0" failures="0">
   <properties>
     <property name="java.runtime.name" value="Java(TM) SE Runtime Environment"/>
     <property name="sun.boot.library.path" value="/Library/Java/JavaVirtualMachines/jdk1.8.0_60.jdk/Contents/Home/jre/lib"/>
@@ -15,7 +15,7 @@
     <property name="sun.java.launcher" value="SUN_STANDARD"/>
     <property name="sun.os.patch.level" value="unknown"/>
     <property name="java.vm.specification.name" value="Java Virtual Machine Specification"/>
-    <property name="user.dir" value="/Users/Emil/examproject/gutenberg"/>
+    <property name="user.dir" value="/Users/Emil/examproject/Gutenberg"/>
     <property name="java.runtime.version" value="1.8.0_60-b27"/>
     <property name="java.awt.graphicsenv" value="sun.awt.CGraphicsEnvironment"/>
     <property name="java.endorsed.dirs" value="/Library/Java/JavaVirtualMachines/jdk1.8.0_60.jdk/Contents/Home/jre/lib/endorsed"/>
@@ -58,10 +58,10 @@
     <property name="sun.io.unicode.encoding" value="UnicodeBig"/>
     <property name="sun.cpu.isalist" value=""/>
   </properties>
-  <testcase name="GetAllCities" classname="Database.GraphDBFacadeMockTest" time="0.334"/>
-  <testcase name="TestGetBooksByCity" classname="Database.GraphDBFacadeMockTest" time="0.003"/>
-  <testcase name="TestGetCitiesByBookTitle" classname="Database.GraphDBFacadeMockTest" time="0.001"/>
-  <testcase name="GetBooksByGeoLocation" classname="Database.GraphDBFacadeMockTest" time="0.003"/>
-  <testcase name="TestGetBooksByAuthorName" classname="Database.GraphDBFacadeMockTest" time="0.001"/>
-  <testcase name="TestGetGeoLocationByBook" classname="Database.GraphDBFacadeMockTest" time="0.001"/>
+  <testcase name="GetAllCities" classname="database.GraphDBFacadeMockTest" time="0.336"/>
+  <testcase name="TestGetBooksByCity" classname="database.GraphDBFacadeMockTest" time="0.004"/>
+  <testcase name="TestGetCitiesByBookTitle" classname="database.GraphDBFacadeMockTest" time="0.002"/>
+  <testcase name="GetBooksByGeoLocation" classname="database.GraphDBFacadeMockTest" time="0.008"/>
+  <testcase name="TestGetBooksByAuthorName" classname="database.GraphDBFacadeMockTest" time="0.001"/>
+  <testcase name="TestGetGeoLocationByBook" classname="database.GraphDBFacadeMockTest" time="0"/>
 </testsuite>

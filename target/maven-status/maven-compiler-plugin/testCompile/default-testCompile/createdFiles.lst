@@ -1,8 +1,8 @@
-Database/MySQLSpeedTest.class
-Database/MySQLDBFacadeTest.class
-Database/MySQLDBFacadeMockTest.class
-Database/GraphSpeedTest.class
-Database/GraphFacadeTest.class
-Util/FileScannerTest.class
-Database/GraphDBFacadeMockTest.class
-Util/CityChekkerTest.class
+database/GraphFacadeTest.class
+database/GraphDBFacadeMockTest.class
+database/MySQLSpeedTest.class
+util/FileScannerTest.class
+database/GraphSpeedTest.class
+util/CityChekkerTest.class
+database/MySQLDBFacadeTest.class
+database/MySQLDBFacadeMockTest.class

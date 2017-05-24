@@ -26,14 +26,15 @@ before_install:
   - node --version
   - npm --version
   - npm install
-  - npm test
   - wget -qO- https://deb.nodesource.com/setup_4.x | sudo bash -
   - sudo apt-get install nodejs
-  - npm install newman --global;
+  - npm install newman --global
+
 
 script:
   - mvn verify
-  - newman run postman_test.json -e postman_environment.json
+  - mvn test -B
+  - newman run testFiles/postman_test.json -e testFiles/postman_environment.json
 
 
 after_success:
