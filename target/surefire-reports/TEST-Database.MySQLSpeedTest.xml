@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="Database.MySQLSpeedTest" time="2.809" tests="5" errors="0" skipped="0" failures="0">
+<testsuite name="database.MySQLSpeedTest" time="3.327" tests="5" errors="0" skipped="0" failures="0">
   <properties>
     <property name="java.runtime.name" value="Java(TM) SE Runtime Environment"/>
     <property name="sun.boot.library.path" value="/Library/Java/JavaVirtualMachines/jdk1.8.0_60.jdk/Contents/Home/jre/lib"/>
@@ -15,7 +15,7 @@
     <property name="sun.java.launcher" value="SUN_STANDARD"/>
     <property name="sun.os.patch.level" value="unknown"/>
     <property name="java.vm.specification.name" value="Java Virtual Machine Specification"/>
-    <property name="user.dir" value="/Users/Emil/examproject/gutenberg"/>
+    <property name="user.dir" value="/Users/Emil/examproject/Gutenberg"/>
     <property name="java.runtime.version" value="1.8.0_60-b27"/>
     <property name="java.awt.graphicsenv" value="sun.awt.CGraphicsEnvironment"/>
     <property name="java.endorsed.dirs" value="/Library/Java/JavaVirtualMachines/jdk1.8.0_60.jdk/Contents/Home/jre/lib/endorsed"/>
@@ -58,9 +58,9 @@
     <property name="sun.io.unicode.encoding" value="UnicodeBig"/>
     <property name="sun.cpu.isalist" value=""/>
   </properties>
-  <testcase name="testGetBooksByAuthorName" classname="Database.MySQLSpeedTest" time="0.298"/>
-  <testcase name="testGetBooksByGeoLocation" classname="Database.MySQLSpeedTest" time="0.811"/>
-  <testcase name="testGetCities" classname="Database.MySQLSpeedTest" time="1.293"/>
-  <testcase name="testGetCitiesByBookTitle" classname="Database.MySQLSpeedTest" time="0.128"/>
-  <testcase name="testGetBooksByCity" classname="Database.MySQLSpeedTest" time="0.279"/>
+  <testcase name="testGetBooksByAuthorName" classname="database.MySQLSpeedTest" time="0.555"/>
+  <testcase name="testGetBooksByGeoLocation" classname="database.MySQLSpeedTest" time="0.956"/>
+  <testcase name="testGetCities" classname="database.MySQLSpeedTest" time="1.389"/>
+  <testcase name="testGetCitiesByBookTitle" classname="database.MySQLSpeedTest" time="0.12"/>
+  <testcase name="testGetBooksByCity" classname="database.MySQLSpeedTest" time="0.307"/>
 </testsuite>

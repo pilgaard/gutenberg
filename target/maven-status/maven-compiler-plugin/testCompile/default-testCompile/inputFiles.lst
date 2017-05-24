@@ -1,8 +1,8 @@
-/Users/Emil/examproject/gutenberg/src/test/java/Database/MySQLDBFacadeMockTest.java
-/Users/Emil/examproject/gutenberg/src/test/java/Database/GraphFacadeTest.java
-/Users/Emil/examproject/gutenberg/src/test/java/Util/FileScannerTest.java
-/Users/Emil/examproject/gutenberg/src/test/java/Database/GraphDBFacadeMockTest.java
-/Users/Emil/examproject/gutenberg/src/test/java/Database/MySQLSpeedTest.java
-/Users/Emil/examproject/gutenberg/src/test/java/Util/CityChekkerTest.java
-/Users/Emil/examproject/gutenberg/src/test/java/Database/GraphSpeedTest.java
-/Users/Emil/examproject/gutenberg/src/test/java/Database/MySQLDBFacadeTest.java
+/Users/Emil/examproject/Gutenberg/src/test/java/util/CityChekkerTest.java
+/Users/Emil/examproject/Gutenberg/src/test/java/database/GraphSpeedTest.java
+/Users/Emil/examproject/Gutenberg/src/test/java/database/MySQLSpeedTest.java
+/Users/Emil/examproject/Gutenberg/src/test/java/database/GraphDBFacadeMockTest.java
+/Users/Emil/examproject/Gutenberg/src/test/java/database/MySQLDBFacadeTest.java
+/Users/Emil/examproject/Gutenberg/src/test/java/database/MySQLDBFacadeMockTest.java
+/Users/Emil/examproject/Gutenberg/src/test/java/database/GraphFacadeTest.java
+/Users/Emil/examproject/Gutenberg/src/test/java/util/FileScannerTest.java
