@@ -22,6 +22,10 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 public class Application {
     
     public static void main(String[] args) {
+        start(args);
+    }
+    
+    public static void start(String[] args){
         MySQLConnector mysqlCon = new MySQLConnector();
         GraphConnector graphCon = new GraphConnector();
         MySQLDBFacade mysqlFacade = new MySQLDBFacade(mysqlCon);
