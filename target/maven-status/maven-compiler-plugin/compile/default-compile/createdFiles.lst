@@ -1,6 +1,5 @@
 dto/CityDTO.class
 api/GraphWebController.class
-util/FileScanner.class
 database/MySQLConnector.class
 dto/BookDTO.class
 database/GraphConnector.class
@@ -9,10 +8,8 @@ entity/City.class
 api/MySQLWebController.class
 database/DBInitializer.class
 dto/Coordinate.class
-util/JsonBuilder.class
 database/IDBFacade.class
 entity/Book.class
 database/MySQLDBFacade.class
 database/GraphFacade.class
 api/IWebController.class
-util/CityChekker.class

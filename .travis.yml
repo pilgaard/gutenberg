@@ -31,7 +31,8 @@ before_install:
 
 script:
   - mvn verify
-  #- newman run testFiles/postman_test.json -e testFiles/postman_environment.json
+  - nohup mvn exec:java -Dexec.mainClass &
+  - newman run testFiles/postman_test.json -e testFiles/postman_environment.json
 
 
 after_success:

@@ -1,6 +1,6 @@
+/Users/Emil/examproject/Gutenberg/src/main/java/utillity/JsonBuilder.java
+/Users/Emil/examproject/Gutenberg/src/main/java/utillity/FileScanner.java
 /Users/Emil/examproject/Gutenberg/src/main/java/api/IWebController.java
-/Users/Emil/examproject/Gutenberg/src/main/java/util/FileScanner.java
-/Users/Emil/examproject/Gutenberg/src/main/java/util/JsonBuilder.java
 /Users/Emil/examproject/Gutenberg/src/main/java/database/DBInitializer.java
 /Users/Emil/examproject/Gutenberg/src/main/java/database/MySQLDBFacade.java
 /Users/Emil/examproject/Gutenberg/src/main/java/api/Application.java
@@ -13,6 +13,6 @@
 /Users/Emil/examproject/Gutenberg/src/main/java/database/MySQLConnector.java
 /Users/Emil/examproject/Gutenberg/src/main/java/entity/Book.java
 /Users/Emil/examproject/Gutenberg/src/main/java/dto/BookDTO.java
+/Users/Emil/examproject/Gutenberg/src/main/java/utillity/CityChekker.java
 /Users/Emil/examproject/Gutenberg/src/main/java/dto/Coordinate.java
 /Users/Emil/examproject/Gutenberg/src/main/java/api/MySQLWebController.java
-/Users/Emil/examproject/Gutenberg/src/main/java/util/CityChekker.java
