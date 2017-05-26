@@ -16,6 +16,7 @@
 						"type": "text/javascript",
 						"exec": [
 							"tests[\"Status code is 200\"] = responseCode.code === 200;",
+							"tests[\"Status code name is OK\"] = responseCode.name.has(\"OK\");",
 							"",
 							"var contentTypeHeaderExists = postman.getResponseHeader(\"Content-Type\");",
 							"",
@@ -23,7 +24,13 @@
 							" ",
 							"if (contentTypeHeaderExists) {",
 							"    tests[\"Content-Type is json\"] = responseHeaders[\"Content-Type\"].has(\"application/json\");",
-							"}"
+							"}",
+							"",
+							"tests[\"Body matches authorName\"] = responseBody.has(\"authorName\");",
+							"",
+							"tests[\"Body matches title\"] = responseBody.has(\"title\");",
+							"",
+							""
 						]
 					}
 				}
@@ -56,6 +63,7 @@
 						"type": "text/javascript",
 						"exec": [
 							"tests[\"Status code is 200\"] = responseCode.code === 200;",
+							"tests[\"Status code name is OK\"] = responseCode.name.has(\"OK\");",
 							"",
 							"var contentTypeHeaderExists = postman.getResponseHeader(\"Content-Type\");",
 							"",
@@ -63,7 +71,13 @@
 							" ",
 							"if (contentTypeHeaderExists) {",
 							"    tests[\"Content-Type is json\"] = responseHeaders[\"Content-Type\"].has(\"application/json\");",
-							"}"
+							"}",
+							"",
+							"tests[\"Body matches latitude\"] = responseBody.has(\"latitude\");",
+							"",
+							"tests[\"Body matches longitude\"] = responseBody.has(\"longitude\");",
+							"",
+							""
 						]
 					}
 				}
@@ -96,6 +110,7 @@
 						"type": "text/javascript",
 						"exec": [
 							"tests[\"Status code is 200\"] = responseCode.code === 200;",
+							"tests[\"Status code name is OK\"] = responseCode.name.has(\"OK\");",
 							"",
 							"var contentTypeHeaderExists = postman.getResponseHeader(\"Content-Type\");",
 							"",
@@ -103,7 +118,16 @@
 							" ",
 							"if (contentTypeHeaderExists) {",
 							"    tests[\"Content-Type is json\"] = responseHeaders[\"Content-Type\"].has(\"application/json\");",
-							"}"
+							"}",
+							"",
+							"tests[\"Body matches authorName\"] = responseBody.has(\"authorName\");",
+							"",
+							"tests[\"Body matches title\"] = responseBody.has(\"title\");",
+							"",
+							"tests[\"Body matches cityId\"] = responseBody.has(\"cityId\");",
+							"",
+							"",
+							""
 						]
 					}
 				}
@@ -136,6 +160,7 @@
 						"type": "text/javascript",
 						"exec": [
 							"tests[\"Status code is 200\"] = responseCode.code === 200;",
+							"tests[\"Status code name is OK\"] = responseCode.name.has(\"OK\");",
 							"",
 							"var contentTypeHeaderExists = postman.getResponseHeader(\"Content-Type\");",
 							"",
@@ -143,7 +168,13 @@
 							" ",
 							"if (contentTypeHeaderExists) {",
 							"    tests[\"Content-Type is json\"] = responseHeaders[\"Content-Type\"].has(\"application/json\");",
-							"}"
+							"}",
+							"",
+							"tests[\"Body matches authorName\"] = responseBody.has(\"authorName\");",
+							"",
+							"tests[\"Body matches title\"] = responseBody.has(\"title\");",
+							"",
+							""
 						]
 					}
 				}
@@ -182,6 +213,7 @@
 						"type": "text/javascript",
 						"exec": [
 							"tests[\"Status code is 200\"] = responseCode.code === 200;",
+							"tests[\"Status code name is OK\"] = responseCode.name.has(\"OK\");",
 							"",
 							"var contentTypeHeaderExists = postman.getResponseHeader(\"Content-Type\");",
 							"",
@@ -189,7 +221,14 @@
 							" ",
 							"if (contentTypeHeaderExists) {",
 							"    tests[\"Content-Type is json\"] = responseHeaders[\"Content-Type\"].has(\"application/json\");",
-							"}"
+							"}",
+							"",
+							"tests[\"Body matches authorName\"] = responseBody.has(\"authorName\");",
+							"",
+							"tests[\"Body matches title\"] = responseBody.has(\"title\");",
+							"",
+							"",
+							""
 						]
 					}
 				}
@@ -222,6 +261,7 @@
 						"type": "text/javascript",
 						"exec": [
 							"tests[\"Status code is 200\"] = responseCode.code === 200;",
+							"tests[\"Status code name is OK\"] = responseCode.name.has(\"OK\");",
 							"",
 							"var contentTypeHeaderExists = postman.getResponseHeader(\"Content-Type\");",
 							"",
@@ -229,7 +269,11 @@
 							" ",
 							"if (contentTypeHeaderExists) {",
 							"    tests[\"Content-Type is json\"] = responseHeaders[\"Content-Type\"].has(\"application/json\");",
-							"}"
+							"}",
+							"",
+							"tests[\"Body matches latitude\"] = responseBody.has(\"latitude\");",
+							"",
+							"tests[\"Body matches longitude\"] = responseBody.has(\"longitude\");"
 						]
 					}
 				}
@@ -262,6 +306,7 @@
 						"type": "text/javascript",
 						"exec": [
 							"tests[\"Status code is 200\"] = responseCode.code === 200;",
+							"tests[\"Status code name is OK\"] = responseCode.name.has(\"OK\");",
 							"",
 							"var contentTypeHeaderExists = postman.getResponseHeader(\"Content-Type\");",
 							"",
@@ -269,7 +314,14 @@
 							" ",
 							"if (contentTypeHeaderExists) {",
 							"    tests[\"Content-Type is json\"] = responseHeaders[\"Content-Type\"].has(\"application/json\");",
-							"}"
+							"}",
+							"",
+							"tests[\"Body matches authorName\"] = responseBody.has(\"authorName\");",
+							"",
+							"tests[\"Body matches title\"] = responseBody.has(\"title\");",
+							"",
+							"",
+							""
 						]
 					}
 				}
@@ -302,6 +354,7 @@
 						"type": "text/javascript",
 						"exec": [
 							"tests[\"Status code is 200\"] = responseCode.code === 200;",
+							"tests[\"Status code name is OK\"] = responseCode.name.has(\"OK\");",
 							"",
 							"var contentTypeHeaderExists = postman.getResponseHeader(\"Content-Type\");",
 							"",
@@ -309,7 +362,14 @@
 							" ",
 							"if (contentTypeHeaderExists) {",
 							"    tests[\"Content-Type is json\"] = responseHeaders[\"Content-Type\"].has(\"application/json\");",
-							"}"
+							"}",
+							"",
+							"tests[\"Body matches authorName\"] = responseBody.has(\"authorName\");",
+							"",
+							"tests[\"Body matches title\"] = responseBody.has(\"title\");",
+							"",
+							"",
+							""
 						]
 					}
 				}
@@ -348,6 +408,7 @@
 						"type": "text/javascript",
 						"exec": [
 							"tests[\"Status code is 200\"] = responseCode.code === 200;",
+							"tests[\"Status code name is OK\"] = responseCode.name.has(\"OK\");",
 							"",
 							"var contentTypeHeaderExists = postman.getResponseHeader(\"Content-Type\");",
 							"",
@@ -355,7 +416,13 @@
 							" ",
 							"if (contentTypeHeaderExists) {",
 							"    tests[\"Content-Type is json\"] = responseHeaders[\"Content-Type\"].has(\"application/json\");",
-							"}"
+							"}",
+							"",
+							"tests[\"Body matches id\"] = responseBody.has(\"id\");",
+							"tests[\"Body matches Latitude\"] = responseBody.has(\"Latitude\");",
+							"tests[\"Body matches Longitude\"] = responseBody.has(\"Longitude\");",
+							"tests[\"Body matches cityName\"] = responseBody.has(\"cityName\");",
+							""
 						]
 					}
 				}
@@ -378,6 +445,7 @@
 						"type": "text/javascript",
 						"exec": [
 							"tests[\"Status code is 200\"] = responseCode.code === 200;",
+							"tests[\"Status code name is OK\"] = responseCode.name.has(\"OK\");",
 							"",
 							"var contentTypeHeaderExists = postman.getResponseHeader(\"Content-Type\");",
 							"",
@@ -385,7 +453,13 @@
 							" ",
 							"if (contentTypeHeaderExists) {",
 							"    tests[\"Content-Type is json\"] = responseHeaders[\"Content-Type\"].has(\"application/json\");",
-							"}"
+							"}",
+							"",
+							"tests[\"Body matches id\"] = responseBody.has(\"id\");",
+							"tests[\"Body matches Latitude\"] = responseBody.has(\"Latitude\");",
+							"tests[\"Body matches Longitude\"] = responseBody.has(\"Longitude\");",
+							"tests[\"Body matches cityName\"] = responseBody.has(\"cityName\");",
+							""
 						]
 					}
 				}
