@@ -33,7 +33,7 @@ script:
   - mvn verify
   - nohup mvn exec:java -Dexec.mainClass &
   - sleep 10
-  - newman run testFiles/postman_test.json -e testFiles/postman_environment.json
+  - newman run testFiles/postman_test.json -e testFiles/postman_environment_travis.json
 
 
 after_success:

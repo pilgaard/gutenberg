@@ -9,10 +9,6 @@ import database.GraphConnector;
 import database.GraphFacade;
 import database.MySQLConnector;
 import database.MySQLDBFacade;
-import java.net.InetAddress;
-import java.net.UnknownHostException;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
@@ -29,15 +25,7 @@ public class Application {
         start(args);
     }
     
-    public static void start(String[] args) {
-        try {
-            InetAddress ip;
-            String hostname;
-            ip = InetAddress.getLocalHost();
-            hostname = ip.getHostName();
-            System.out.println("Your current IP address : " + ip);
-            System.out.println("Your current Hostname : " + hostname);
-            
+    public static void start(String[] args) { 
             MySQLConnector mysqlCon = new MySQLConnector();
             GraphConnector graphCon = new GraphConnector();
             MySQLDBFacade mysqlFacade = new MySQLDBFacade(mysqlCon);
@@ -45,8 +33,6 @@ public class Application {
             GraphWebController.SetFacade(graphFacade);
             MySQLWebController.SetFacade(mysqlFacade);
             SpringApplication.run(Application.class, args);
-        } catch (UnknownHostException ex) {
-            Logger.getLogger(Application.class.getName()).log(Level.SEVERE, null, ex);
-        }
     }
 }
+    

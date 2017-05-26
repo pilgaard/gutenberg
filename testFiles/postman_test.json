@@ -212,12 +212,14 @@
 					"script": {
 						"type": "text/javascript",
 						"exec": [
+							"if (environment.neo4j===true) {",
 							"tests[\"Status code is 200\"] = responseCode.code === 200;",
 							"tests[\"Status code name is OK\"] = responseCode.name.has(\"OK\");",
 							"",
 							"var contentTypeHeaderExists = postman.getResponseHeader(\"Content-Type\");",
 							"",
 							"tests[\"Content-Type is present\"] = contentTypeHeaderExists;",
+							"",
 							" ",
 							"if (contentTypeHeaderExists) {",
 							"    tests[\"Content-Type is json\"] = responseHeaders[\"Content-Type\"].has(\"application/json\");",
@@ -226,7 +228,9 @@
 							"tests[\"Body matches authorName\"] = responseBody.has(\"authorName\");",
 							"",
 							"tests[\"Body matches title\"] = responseBody.has(\"title\");",
-							"",
+							"} else {",
+							"    tests[\"Status code is 500\"] = responseCode.code === 500;",
+							"}",
 							"",
 							""
 						]
@@ -260,6 +264,7 @@
 					"script": {
 						"type": "text/javascript",
 						"exec": [
+							"if (environment.neo4j===true) {",
 							"tests[\"Status code is 200\"] = responseCode.code === 200;",
 							"tests[\"Status code name is OK\"] = responseCode.name.has(\"OK\");",
 							"",
@@ -273,7 +278,10 @@
 							"",
 							"tests[\"Body matches latitude\"] = responseBody.has(\"latitude\");",
 							"",
-							"tests[\"Body matches longitude\"] = responseBody.has(\"longitude\");"
+							"tests[\"Body matches longitude\"] = responseBody.has(\"longitude\");",
+							"} else {",
+							"    tests[\"Status code is 500\"] = responseCode.code === 500;",
+							"}"
 						]
 					}
 				}
@@ -305,7 +313,8 @@
 					"script": {
 						"type": "text/javascript",
 						"exec": [
-							"tests[\"Status code is 200\"] = responseCode.code === 200;",
+							"if (environment.neo4j===true) {",
+							"    tests[\"Status code is 200\"] = responseCode.code === 200;",
 							"tests[\"Status code name is OK\"] = responseCode.name.has(\"OK\");",
 							"",
 							"var contentTypeHeaderExists = postman.getResponseHeader(\"Content-Type\");",
@@ -319,7 +328,9 @@
 							"tests[\"Body matches authorName\"] = responseBody.has(\"authorName\");",
 							"",
 							"tests[\"Body matches title\"] = responseBody.has(\"title\");",
-							"",
+							"} else {",
+							"    tests[\"Status code is 500\"] = responseCode.code === 500;",
+							"}",
 							"",
 							""
 						]
@@ -353,7 +364,8 @@
 					"script": {
 						"type": "text/javascript",
 						"exec": [
-							"tests[\"Status code is 200\"] = responseCode.code === 200;",
+							"if (environment.neo4j===true) {",
+							"    tests[\"Status code is 200\"] = responseCode.code === 200;",
 							"tests[\"Status code name is OK\"] = responseCode.name.has(\"OK\");",
 							"",
 							"var contentTypeHeaderExists = postman.getResponseHeader(\"Content-Type\");",
@@ -367,7 +379,9 @@
 							"tests[\"Body matches authorName\"] = responseBody.has(\"authorName\");",
 							"",
 							"tests[\"Body matches title\"] = responseBody.has(\"title\");",
-							"",
+							"} else {",
+							"    tests[\"Status code is 500\"] = responseCode.code === 500;",
+							"}",
 							"",
 							""
 						]
@@ -444,6 +458,7 @@
 					"script": {
 						"type": "text/javascript",
 						"exec": [
+							"if (environment.neo4j===true) {",
 							"tests[\"Status code is 200\"] = responseCode.code === 200;",
 							"tests[\"Status code name is OK\"] = responseCode.name.has(\"OK\");",
 							"",
@@ -459,7 +474,9 @@
 							"tests[\"Body matches Latitude\"] = responseBody.has(\"Latitude\");",
 							"tests[\"Body matches Longitude\"] = responseBody.has(\"Longitude\");",
 							"tests[\"Body matches cityName\"] = responseBody.has(\"cityName\");",
-							""
+							"} else {",
+							"    tests[\"Status code is 500\"] = responseCode.code === 500;",
+							"}"
 						]
 					}
 				}
