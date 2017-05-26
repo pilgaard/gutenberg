@@ -78,10 +78,10 @@ public class GraphFacadeTest {
      */
     @Test
     public void testGetBooksByCity() {
-        //if (env.get("TRAVIS") ==null) {
+        if (env.get("TRAVIS") ==null) {
             List<BookDTO> result = facade.GetBooksByCity(city.getCityName());
             assertThat(result.size(), is(5));
-        //}
+        }
     }
 
     /**
