@@ -34,10 +34,10 @@ public class GraphFacadeTest {
     private Map<String, String> env = System.getenv();
 
     public GraphFacadeTest() {
-        if (env.get("TRAVIS") != "true") {
+       // if (env.get("TRAVIS") != "true") {
         gc = new GraphConnector();
         facade = new GraphFacade(gc);
-        }
+        //}
         city = new CityDTO(3206285L, new BigDecimal(48.8168D), new BigDecimal(9.5769D), "Urbach");
         List<Long> cities = new ArrayList();
         cities.add(city.getId());
@@ -78,10 +78,10 @@ public class GraphFacadeTest {
      */
     @Test
     public void testGetBooksByCity() {
-        if (env.get("TRAVIS") ==null) {
+        //if (env.get("TRAVIS") ==null) {
             List<BookDTO> result = facade.GetBooksByCity(city.getCityName());
             assertThat(result.size(), is(5));
-        }
+        //}
     }
 
     /**
